@@ -76,36 +76,3 @@ git commit -m "blog souce commit"
 git push origin hexo
 
 # 依次执行git add .、git commit -m "..."、git push origin hexo指令将改动推送到GitHub（此时当前分支应为hexo）；然后再执行hexo g -d发布网站到master分支上。
-
-
-
-
-
-
-
-
-- * blog * -
-查机器信息
-	系统 cpu 内存 硬盘 ->shell
-杀进程 kill pkill killall 信号：hup -9  ->说明文档
-ssh config ssh远程执行 scp传输 
-文字处理 三剑客 grep awk sed cut 
-find xargs expect
-vi 快捷
-中间件
-	Apache
-	Nginx
-	Jboss
-	WAS
-	tomcat
-	MQ
-	Mysql
-	redis
-	varnish
-	docker
-log level
-驱动安装 网卡 显卡
-ubuntu 图形界面安装 + 链接
-Git + Hexo + Material
-strace tcpdump sysstat
-pgrep ps -ef -aux
