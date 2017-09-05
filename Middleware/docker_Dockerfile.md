@@ -1,4 +1,4 @@
 # Dockerfile
-'''shell
+```shell
 #!/bin/bash
-'''
+```
