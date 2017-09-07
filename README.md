@@ -3,7 +3,13 @@
 ---
 ### markdown简单教程
 - 强调
-  + hellp
-
+  + ** or __ means `strong`
+  + * or _ means `em`
+- 分割线
+  + --- or more
+- 引用
+  + >
+  + 示例：
+> 引用
 
 
