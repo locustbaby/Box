@@ -4,3 +4,10 @@
 ```shell
 #!/bin/bash
 ```
+```sh
+#!/bin/bash
+```
+```bash
+#!/bin/bash
+```
+
