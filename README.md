@@ -28,8 +28,8 @@
 
 
 
-{% codeblock [title] [lang:shell] [url] [link text] %}
-  # Setup env
+```shell
+# Setup env
 DIRNAME=`dirname "$0"`
 CURDIR=`cd $DIRNAME;pwd`
 . $CURDIR/env.conf
@@ -39,4 +39,4 @@ cygwin=false;
 if  [ `uname|grep -i CYGWIN` ]; then
     cygwin=true;
 fi
-{% endcodeblock %}
+```
