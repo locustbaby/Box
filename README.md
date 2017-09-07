@@ -3,8 +3,8 @@
 ---
 ### markdown简单教程
 - 强调
-  + ** or __ means `strong`
-  + * or _ means `em` +
+  + ** or __ means `strong` **强调**
+  + * or _ means `em`
   *倾斜*
 - 分割线
   + --- or more
