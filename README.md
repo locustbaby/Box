@@ -5,7 +5,7 @@
 - 强调
   + ** or __ means `strong`
   + * or _ means `em`
-  *倾斜
+  *倾斜*
 - 分割线
   + --- or more
 - 引用
