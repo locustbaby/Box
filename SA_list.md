@@ -1,4 +1,9 @@
 - * blog * -
+# Linux基础
+ssh
+ftp
+top
+
 查机器信息
 	系统 cpu 内存 硬盘 ->shell
 杀进程 kill pkill killall 信号：hup -9  ->说明文档
