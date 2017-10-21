@@ -30,3 +30,5 @@ strace tcpdump sysstat
 pgrep ps -ef -aux
 用户 用户组
 返回码 400 500
+git操作
+C
