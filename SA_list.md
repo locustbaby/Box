@@ -32,3 +32,4 @@ pgrep ps -ef -aux
 返回码 400 500
 git操作
 C
+ES logstash zk kafka
