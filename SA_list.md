@@ -10,6 +10,7 @@
  + 单线程架构
  + I/O多路复用 非阻塞IO epoll 线程切换、竞态 
 3. Linux基础
++ | xargs -exec >重定向 ！\ && || 
 + 正则
 + RHEL 7 by红帽
 + curl
@@ -39,6 +40,7 @@
 + 伪代码
 + C、C++
 + python
++ lua
 5. 中间件
 + 数据库 实例 索引
 + Apache
