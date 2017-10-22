@@ -1,7 +1,18 @@
 # SA_list
 1. 系统基础
  + 操作系统原理
-2. Linux基础
+ + 分布式
+ + ceph
+ + 负载均衡
+2. 算法基础
+ + 时间空间复杂度
+ + 数据结构和编码 json xml
+ + 单线程架构
+ + I/O多路复用 非阻塞IO epoll 线程切换、竞态 
+3. Linux基础
++ 正则
++ RHEL 7 by红帽
++ curl
 + ssh
 + ftp
 + top
@@ -23,22 +34,27 @@
 + git操作
 + C
 + ES logstash zk kafka
-3. Code
+4. Code
++ 汇编
++ 伪代码
 + C、C++
 + python
-3. 中间件
-+ 中间件
+5. 中间件
++ 数据库 实例 索引
 + Apache
 + Nginx
 + Jboss
 + WAS
-+ tomcat
++ Tomcat
 + MQ
 + Mysql
 + redis
 + varnish
 + docker
-4. IaaS
++ saltstack
+6. IaaS
 + openstack
 + KVM
 + Docker
+7. Language
++ TED x
