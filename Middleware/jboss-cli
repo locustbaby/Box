@@ -1,0 +1,321 @@
+在命令行启动脚本时，可指定的主要参数如下：
+--help (-h)     显示帮助菜单
+--connect (-c)  运行脚本时连接上控制器
+--controller    指定控制器，默认为localhost:9990
+--user (-u)     指定连接的用户
+--password (-p) 指定连接用户的密码，包含特殊字符的密码加单引号
+--command       非交互模式，指定连接后要执行的一个命令
+--commands      非交互模式，指定连接后要执行的多个命令，最后一个命令执行完毕或中途执行失败时终止
+--file          以文件的方式来执行命令，最后一个命令执行完毕或中途执行失败时终止
+--timeout       指定命令发出后等待响应的时间，默认5s
+
+
+	http://10.37.61.101:9990/console/  admin	p!shvX985djf
+	http://10.37.61.105:9990/console/	 admin	adxWS^mF~S^7
+
+
+HTTP_API
+curl
+--digest                      开启http用户登录认证
+-u/--user <user:password>     用户名/密码信息
+-s/--silent                   屏蔽curl下载信息和错误信息
+-S/--show-error               与-s一起用时显示错误信息
+-m/--max-time <seconds>       设置超时时间(s)
+-H/--header <header>          设置请求头信息
+-d/--data <data>              模拟浏览器发送http post请求的数据
+-o /dev/null                  不输出返回内容
+-w %{http_code}               输出http返回码
+
+Mapping users and groups to roles
+We need to map our users to the relevant roles to allow them access.
+In order to do this we need the following command:
+role-mapping=ROLENAME/include=ALIAS:add(name=USERNAME, type=USER)
+Where rolename is one of the pre-configured roles, alias is a unique name for the mapping and user is the name of the user to map.
+So, lets map the user Andy to the SuperUser role.
+./role-mapping=SuperUser/include=user-Andy:add(name=Andy, type=USER)
+
+./jboss-cli.sh -c --controller=10.37.61.101:9990 -u=admin -p='p!shvX985djf' --command=":read-attribute(name=release-codename)"
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/?operation=attribute\&name=release-codename 
+
+获取版本信息：
+./jboss-cli.sh -c --controller=10.37.61.101:9990 -u=admin -p='p!shvX985djf' --command=":read-attribute(name=release-version)"
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/?operation=attribute\&name=release-version 
+
+获取部署模式：
+./jboss-cli.sh -c --controller=10.37.61.101:9990 -u=admin -p='p!shvX985djf' --command=":read-attribute(name=launch-type)"
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/?operation=attribute\&name=launch-type 
+
+获取操作系统信息：
+standalone:
+/core-service=platform-mbean/type=operating-system:read-resource(include-runtime=true,include-defaults=true)
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/core-service/platform-mbean/type/operating-system?operation=resource\&include-runtime=true\&include-defaults=true\&json.pretty=true
+json.pretty=true 用于格式化返回的json串
+
+domain: (domain比standalone多了指定服务的步骤：/host=master/server=server1)
+/host=master/server=server1/core-service=platform-mbean/type=operating-system:read-resource(include-runtime=true,include-defaults=true)
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/host/master/server/server1/core-service/platform-mbean/type/operating-system?operation=resource\&include-runtime=true\&include-defaults=true\&json.pretty=true
+
+获取JVM版本（以下只列出domain模式下的查询指令）：
+/host=master/server=server1/core-service=platform-mbean/type=runtime:read-attribute(name=spec-version)
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/host/master/server/server1/core-service/platform-mbean/type/runtime?operation=attribute\&name=spec-version
+
+获取JVM的启动参数（以下只列出domain模式下的查询指令）：
+/host=master/server=server1/core-service=platform-mbean/type=runtime:read-attribute(name=input-arguments,include-defaults=true)
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/host/master/server/server1/core-service/platform-mbean/type/runtime?operation=attribute\&name=input-arguments\&include-defaults=true\&json.pretty=true
+
+获取JVM堆内存信息：
+/host=master/server=server1/core-service=platform-mbean/type=memory:read-attribute(name=heap-memory-usage,include-defaults=true)
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/host/master/server/server1/core-service/platform-mbean/type/memory?operation=attribute\&name=heap-memory-usage\&include-defaults=true\&json.pretty=true
+
+获取JVM非堆内存信息：
+/host=master/server=server1/core-service=platform-mbean/type=memory:read-attribute(name=non-heap-memory-usage,include-defaults=true)
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/host/master/server/server1/core-service/platform-mbean/type/memory?operation=attribute\&name=non-heap-memory-usage\&include-defaults=true\&json.pretty=true
+
+获取JVM Metaspace or PermGen的大小：
+/host=master/server=server1/core-service=platform-mbean/type=memory-pool/name=PS_Perm_Gen:read-resource(include-runtime=true,include-defaults=true)
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/host/master/server/server1/core-service/platform-mbean/type/memory-pool/name/PS_Perm_Gen?operation=resource\&include-runtime=true\&include-defaults=true\&json.pretty=true
+
+获取JVM Eden的大小：
+/host=master/server=server1/core-service=platform-mbean/type=memory-pool/name=PS_Eden_Space:read-resource(include-runtime=true,include-defaults=true)
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/host/master/server/server1/core-service/platform-mbean/type/memory-pool/name/PS_Eden_Space?operation=resource\&include-runtime=true\&include-defaults=true\&json.pretty=true
+
+获取JVM Old的大小：
+/host=master/server=server1/core-service=platform-mbean/type=memory-pool/name=PS_Old_Gen:read-resource(include-runtime=true,include-defaults=true)
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/host/master/server/server1/core-service/platform-mbean/type/memory-pool/name/PS_Old_Gen?operation=resource\&include-runtime=true\&include-defaults=true\&json.pretty=true
+
+获取JVM Survivor的大小：
+/host=master/server=server1/core-service=platform-mbean/type=memory-pool/name=PS_Survivor_Space:read-resource(include-runtime=true,include-defaults=true)
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/host/master/server/server1/core-service/platform-mbean/type/memory-pool/name/PS_Survivor_Space?operation=resource\&include-runtime=true\&include-defaults=true\&json.pretty=true
+
+获取服务状态：
+/host=master/server=server1:read-attribute(name=server-state)
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/host/master/server/server1?operation=attribute\&name=server-state
+
+获取master和slave节点的ip:
+/opt/jboss/bin/jboss-cli.sh -c --command=":read-children-names(child-type=host)"
+/opt/jboss/bin/jboss-cli.sh -c --command="/host=master/interface=management:read-attribute(name=inet-address)"
+(host=master替换成第一步获取的列表中的节点名）
+
+获取JNDI配置信息：
+/host=master/server=server1/subsystem=naming:jndi-view
+
+
+--------------------------操作类----------------------------------
+启停：
+/host=master/server=server1:stop()
+/host=master/server=server1:start()
+重载配置：
+:reload-servers()
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/ -X POST -H "Content-Type:application/json" -d '{"operation":"reload-servers"}'
+
+基于组（server group）的服务操作：
+启停：
+/server-group=default-group2:stop-servers()
+/server-group=default-group2:start-servers()
+/server-group=default-group2:restart-servers()
+重载配置：
+/server-group=default-group2:reload-servers()
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/ -X POST -H "Content-Type: application/json" -d '{"operation":"reload-servers","address":[{"server-group":"default-group2"}]}'
+
+创建、删除一个server-group:
+/server-group=default-group3:add(profile=default-ha,socket-binding-group=default-ha-sockets)
+/server-group=default-group3:remove()
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/ -X POST -H "Content-Type: application/json" -d '{"operation": "composite", "address" : [], "steps" : [{"operation" : "add", "address": {"server-group" : "default-group3"}, "profile" : "default-ha", "socket-binding-group" : "default-ha-sockets"}]}'
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/ -X POST -H "Content-Type: application/json" -d '{"operation":"remove","address":[{"server-group":"default-group3"}]}'
+
+创建、删除一个server:
+/host=master/server-config=server3:add(group=default-group1,auto-start=true,socket-binding-port-offset=450)
+/host=master/server-config=server3:remove()
+curl --digest --user admin:'p!shvX985djf' http://10.37.61.101:9990/management/ -X POST -H "Content-Type: application/json" -d '{"operation": "composite", "address" : [], "steps" : [{"operation" : "add", "address": [{"host" : "master"},{"server-config" : "server3"}], "group" :"default-group1", "auto-start" : "true", "socket-binding-port-offset": "450"}]}'
+
+部署应用：
+deploy example.war
+deployment-info example.war
+undeploy example.war
+
+
+---------------------------------------------------------------------------------------------------------------
+/host=slave04/server=server1/subsystem=datasources/data-source=sldesRDS:read-attribute(name=max-pool-size)
+/host=slave04/server=server1/subsystem=datasources/data-source=sldesRDS/statistics=pool:read-resource(include-runtime=true)
+
+
+数据源操作：
+启用数据源：
+/profile=default-ha/subsystem=datasources/data-source=test01:write-attribute(name=enabled,value=true)
+
+mysql:
+/profile=default-ha/subsystem=datasources/data-source=sccp05-mysql:add(jndi-name=java:jboss/jdbc/sccp2,connection-url="jdbc:mysql://10.27.143.122:3306/sccppre2?characterEncoding=utf8&generateSimpleParameterMetadata=true",min-pool-size=1,max-pool-size=2,user-name=sccpusr,password=Vq16v5oKremw,driver-name=com.mysql,enabled=true,transaction-isolation=TRANSACTION_READ_COMMITTED,use-ccm=true,jta=true,flush-strategy=EntirePool,idle-timeout-minutes=10,check-valid-connection-sql="select 1",validate-on-match=true,background-validation=true,background-validation-millis=60000)
+
+db2:
+/profile=default-ha/subsystem=datasources/data-source=MDROPDS:add(jndi-name="java:jboss/datasources/MDROPDS",enabled="true",use-java-context="true",connection-url="jdbc:db2://10.104.98.111:60004/IRSDB2|jdbc:db2://10.104.98.112:60004/IRSDB2",driver-name="com.db2",transaction-isolation="TRANSACTION_READ_COMMITTED",min-pool-size="10",max-pool-size="50",pool-prefill="false",flush-strategy="FailingConnectionOnly",user-name="sopdmusr",password="bYi1FSZfP2vM",check-valid-connection-sql="SELECT 1 FROM SYSIBM.SYSDUMMY1",validate-on-match="true",background-validation="true",background-validation-millis="60000",idle-timeout-minutes="10",url-delimiter="|")
+ 
+删除数据源：
+/profile=front-ha/subsystem=datasources/data-source=scrpsMyCatDS:remove
+
+--------------------------------------------------------------------
+两个系统复用同一个域名下的Jsession配置（修改其中一个系统的jsession-cookie-name，以避免不同系统相同sessionid的cookie内容覆盖）：
+/profile=default-ha/subsystem=undertow/servlet-container=default/setting=session-cookie:add(name=MDROP_WEB_SESSIONID)
+
+/profile=default-ha/subsystem=undertow/servlet-container=default/setting=session-cookie:read-resource
+-----------------------------------------------------------
+对于大部分节点的read属性，可以通过get方法获取返回值：
+read-attribute
+read-operation-names
+read-operation-description
+read-resource
+read-resource-description
+只能通过post方法获取返回值：
+read-children-names
+read-children-types
+read-children-resources
+wildfly官方对于这个的解释是为了防止jvm的运行时（runtime）属性被修改（虽然这三个看起来不会）,论坛上官方给的答复是后面的版本会有flag以给出错误提示
+
+curl -sS -m5 --digest -u 'operator:L6^9J8JLkLt!' 'http://10.37.60.206:9990/management' -H "Content-type: application/json" -d '{"operation":"read-children-names","child-type":"host","json.pretty":1}'
+
+
+查看domain.xml中定义的默认socket端口（ajp,http,https..）
+ /socket-binding-group=default-ha-sockets/socket-binding=http:read-attribute(name=port)
+ 
+查看server各协议端口的详细信息：
+ /host=master/server=server1:read-children-resources(child-type=socket-binding-group,include-runtime=true,recursive-depth=2)
+类似的可以查看某个节点的子节点的详细信息（通过修改child-type的类型，找到关键字）
+
+
+查看socket-binding-group:
+ /host=master/server=server1:read-children-names(child-type=socket-binding-group)
+ curl -sS -m5 --digest -u 'operator:L6^9J8JLkLt!' 'http://10.37.60.206:9990/management' -H "Content-type: application/json" -d '{"operation":"read-children-names""child-type":"socket-binding-group","address":{"host":"master","server":"server1"}}'
+
+查看server具体的绑定端口：
+/host=master/server=server1/socket-binding-group=default-ha-sockets/socket-binding=http:read-attribute(name=bound-port)
+curl -s -m5 --digest --user 'operator:L6^9J8JLkLt!' 'http://10.37.60.206:9990/management/host/master/server/server1/socket-binding-group/default-ha-sockets/socket-binding/http?operation=attribute&name=bound-port'
+curl -sS -m5 --digest -u 'operator:L6^9J8JLkLt!' 'http://10.37.60.206:9990/management' -H "Content-type: application/json" -d '{"operation":"read-attribute", "name":"bound-port", "address":{"host":"master","server":"server1","socket-binding-group":"default-ha-sockets","socket-binding":"http"}}'
+
+
+集群关联的apache主机：
+ /profile=default-ha/subsystem=modcluster/mod-cluster-config=configuration:read-attribute(name=proxy-list)
+ curl -s -m5 --digest --user 'operator:L6^9J8JLkLt!' 'http://10.37.60.206:9990/management/profile/default-ha/subsystem/modcluster/mod-cluster-config/configuration?operation=attribute&name=proxy-list'
+
+
+http://10.37.60.206:9990/management/profile/default-ha/subsystem/datasources/data-source/test01?json.pretty
+########### jdbc ##############
+profile	default-ha
+
+jdbc-name	gmdataDS
+
+jndi-name	java:jboss/gmdataDS
+enabled	TRUE
+driver-name	com.mysql
+
+connection-url	jdbc:mysql://10.37.64.203:3306/gmdatasit1
+transaction-isolation	TRANSACTION_READ_COMMITTED
+use-ccm	TRUE
+jta	TRUE
+
+通过http-api无法获取到jdbc的用户名密码，提示权限不足
+user-name
+password
+
+min-pool-size	10
+max-pool-size	100
+flush-strategy	EntirePool
+idle-timeout-minutes	10L
+
+check-valid-connection-sql	1
+validate-on-match	TRUE
+background-validation	TRUE
+background-validation-millis	60000L
+###############################
+
+
+########### jms ##############
+profile	front-ha
+resource-adapters	wmq.jmsra-7.0.1.12.rar
+enabled	TRUE
+name	sccpsConnectionFactoryOld
+jndi-name	java:jboss/sccpsConnectionFactoryOld
+class-name	com.ibm.mq.connector.outbound.ManagedConnectionFactoryImpl
+
+hostName	esbmqsit.cnsuning.com
+channel	CHANNEL_SCCPS
+port	1430
+CCSID	1208
+queueManager	B2B_QM
+
+min-pool-size	0
+max-pool-size	20
+##############################
+
+
+############### jms ###############
+#删除队列驱动（会删除所有的队列工厂和队列配置）
+/profile=default-ha/subsystem=resource-adapters/resource-adapter=wmq.jmsra-7.0.1.12.rar:remove
+#卸载server-group上挂的包（控制台assign的数字不会减少）：
+/server-group=default-group1/deployment=wmq.jmsra-7.0.1.12.rar:undeploy()
+/server-group=default-group2/deployment=wmq.jmsra-7.0.1.12.rar:undeploy()
+#         <deployment name="wmq.jmsra-7.0.1.12.rar" runtime-name="wmq.jmsra-7.0.1.12.rar" enabled="false"/>
+#删除关联的server-group中的配置：
+/server-group=default-group1/deployment=wmq.jmsra-7.0.1.12.rar:remove
+/server-group=default-group2/deployment=wmq.jmsra-7.0.1.12.rar:remove
+#卸载已部署的包
+/deployment=wmq.jmsra-7.0.1.12.rar:remove
+
+上传要发布的包：
+curl -sS -m5 -F "file=@/home/jbossuser/wmq.jmsra-7.0.1.12.rar" --digest -u 'operator:L6^9J8JLkLt!' 'http://10.37.60.206:9990/management/add-content'
+{"outcome" : "success", "result" : { "BYTES_VALUE" : "F7RUGxTX6ovDYVXIj8q52flcq30=" }}
+ curl -sS -m5 --digest -u 'operator:L6^9J8JLkLt!' 'http://10.37.60.206:9990/management' -H "Content-type: application/json" -d 
+'{"content":[{"hash": {"BYTES_VALUE" : "F7RUGxTX6ovDYVXIj8q52flcq30="}}], "address": [{"deployment":"wmq.jmsra-7.0.1.12.rar"}], "operation":"add", "enabled":"true"}'
+
+
+#cli对应命令：
+/deployment=wmq.jmsra-7.0.1.12.rar:add(content=[{url=file:///home/jbossuser/wmq.jmsra-7.0.1.12.rar}]
+
+
+关联应用包到server-group:
+/server-group=default-group1/deployment=wmq.jmsra-7.0.1.12.rar:add(enabled=true)
+/server-group=default-group2/deployment=wmq.jmsra-7.0.1.12.rar:add(enabled=true)
+
+
+
+---------------------- connection factory ----------------------
+factory-name:  sccpConnectionFactory
+jndi-name:     java:jboss/sccpConnectionFactory
+enabled:       true
+profile:       back-ha
+class-name:    com.ibm.mq.connector.outbound.ManagedConnectionFactoryImpl
+min-pool-size: 0
+max-pool-size: 50
+CCSID:         1208
+channel:       CHANNEL_SCCP
+hostName:      10.27.210.26
+port:          1430
+queueManager:  B2B_QM
+----------------------------------------------------------------
+/profile=default-ha/subsystem=resource-adapters/resource-adapter=wmq.jmsra-7.0.1.12.rar:add(archive=wmq.jmsra-7.0.1.12.rar,transaction-support=NoTransaction)
+
+/profile=default-ha/subsystem=resource-adapters/resource-adapter=wmq.jmsra-7.0.1.12.rar/connection-definitions=sccpConnectionFactory:add(jndi-name="java:jboss/sccpConnectionFactory",enabled=true,class-name=com.ibm.mq.connector.outbound.ManagedConnectionFactoryImpl,min-pool-size=0,max-pool-size=20)
+
+/profile=default-ha/subsystem=resource-adapters/resource-adapter=wmq.jmsra-7.0.1.12.rar/connection-definitions=sccpConnectionFactory/config-properties=CCSID:add(value=1208)
+/profile=default-ha/subsystem=resource-adapters/resource-adapter=wmq.jmsra-7.0.1.12.rar/connection-definitions=sccpConnectionFactory/config-properties=port:add(value=1430)
+/profile=default-ha/subsystem=resource-adapters/resource-adapter=wmq.jmsra-7.0.1.12.rar/connection-definitions=sccpConnectionFactory/config-properties=channel:add(value=CHANNEL_SCCP)
+/profile=default-ha/subsystem=resource-adapters/resource-adapter=wmq.jmsra-7.0.1.12.rar/connection-definitions=sccpConnectionFactory/config-properties=hostName:add(value=10.27.210.26)
+/profile=default-ha/subsystem=resource-adapters/resource-adapter=wmq.jmsra-7.0.1.12.rar/connection-definitions=sccpConnectionFactory/config-properties=queueManager:add(value=B2B_QM)
+
+
+#http-api添加需要管理权限的用户(admin): 
+ curl -sS -m5 --digest -u 'admin:0u81Ul56q^3B' 'http://10.37.60.206:9990/management' -H "Content-type: application/json" -d '{"operation":"add","value":"hello","address":{"profile":"default-ha","subsystem":"resource-adapters","resource-adapter":"wmq.jmsra-7.0.1.12.rar","connection-definitions":"sccpConnectionFactory","config-properties":"test"}}'
+
+
+检测连接工厂的连通性：(只能检测工厂，不能检测队列)
+:reload-servers(blocking=true)
+/host=slave204/server=server2/subsystem=resource-adapters/resource-adapter=wmq.jmsra-7.0.1.12.rar/connection-definitions=yzdhVoucherStartFactory:test-connection-in-pool
+----------------------- connection queue -----------------------
+queue-name:    MBF_brandAuthDistribute_SCCP
+jndi-name:     java:jboss/MBF_brandAuthDistribute_SCCP
+enabled:       true
+profile:       back-ha
+class-name:    com.ibm.mq.connector.outbound.MQQueueProxy
+baseQueueName: MBF_brandAuthDistribute_SCCP
+----------------------------------------------------------------
+/profile=default-ha/subsystem=resource-adapters/resource-adapter=wmq.jmsra-7.0.1.12.rar/admin-objects=MBF_brandAuthDistribute_SCCP:add(jndi-name="java:jboss/MBF_brandAuthDistribute_SCCP",enabled=true,class-name=com.ibm.mq.connector.outbound.MQQueueProxy)
+/profile=default-ha/subsystem=resource-adapters/resource-adapter=wmq.jmsra-7.0.1.12.rar/admin-objects=MBF_brandAuthDistribute_SCCP/config-properties=baseQueueName:add(value=MBF_brandAuthDistribute_SCCP
+
