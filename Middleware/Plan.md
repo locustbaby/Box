@@ -15,3 +15,5 @@ jboss ELK zk varnish redis
 [Jboss wiki](https://docs.jboss.org/author/display/WFLY9/Admin+Guide#)
 python 巡检
 bash -s Navicat for MySQL
+
+update： python函数：sqlalchemy paramiko threading
