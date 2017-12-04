@@ -30,3 +30,5 @@ search 是存放搜索内容的变量​
 user = ​User.query.filter(User.name.like("%"+search+"%") if search is not None else "", User.age.like("%"+search+"%") if search is not None else "")
 
 这个样子，原本需要N多情况判断的模糊查询用一句话就可以了。
+
+上传 下载 
