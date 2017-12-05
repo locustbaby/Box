@@ -32,3 +32,7 @@ user = ​User.query.filter(User.name.like("%"+search+"%") if search is not None
 这个样子，原本需要N多情况判断的模糊查询用一句话就可以了。
 
 上传 下载 
+
+**12-5**
+
+scripts update => everyone UP DOWN  ssh的-o
