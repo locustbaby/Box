@@ -35,4 +35,5 @@ user = ​User.query.filter(User.name.like("%"+search+"%") if search is not None
 
 **12-5**
 
-scripts update => everyone UP DOWN  ssh的-o
+scripts update => everyone UP DOWN  ssh的-o 
+脚本：ftp down 包 配置 if没有配置 up down 配置 => server
