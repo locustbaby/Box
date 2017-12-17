@@ -70,6 +70,9 @@
 + ELK ES Logstash Kinaba
 + zk 
 + kafka
++ Hive
++ Spark
++jvm
 
 6. IaaS
 + openstack
