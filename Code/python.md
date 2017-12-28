@@ -5,3 +5,18 @@
   单引 双引 三引号
 ## 3. [字符串操作 下](http://www.mindg.cn/?p=1869)
 
+## 4. list = []
+
+## 5. tuple = []
+
+## 6. dic = {
+    'Adam':95,
+    'Lisa':85,
+    'Bart':59,
+    'Paul':75,
+}
+
+## 7. s = set([])
+  add()
+  remove()
+  
