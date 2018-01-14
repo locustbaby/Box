@@ -1,10 +1,10 @@
 # Plan in 3 years
 ## Language:Markdown
 ---
-1. Python
+1. Python : 9h
    - Regular expression： *re* : 1.5h
    - Tornado & Django
-      - WEB ：H5 CSS JS
+      - WEB ：H5 CSS : 10h JS : 12h
       - BootStrap : 10h
       - Jquery : 2.5h
       - 
@@ -14,6 +14,7 @@
          - BeautifulSoup 
       + Scrapy
    - Request : 3h
+   - Collection : 2h
    - File : 2h
    - Exception : 1.5h
    - Auto ：6h
@@ -23,7 +24,7 @@
       + Chef
    - 数据分析 & 机器学习
 2. Operation 
-   - Redis
+   - Redis : 3h
         + sentienl
         + shardname
         + Jedis
