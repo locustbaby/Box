@@ -21,7 +21,7 @@
       + Saltstack
       + Puppet
       + Chef
-   - 数据分析 & 机器学习
+   - 数据分析 & 机器学习
 2. Operation 
    - Redis
         + sentienl
