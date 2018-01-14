@@ -1,14 +1,14 @@
 # Plan in 3 years
 ## Language:Markdown
 ---
-1. Python 
+1. Python
    - Regular expression： *re* : 1.5h
    - Tornado & Django
       - WEB ：H5 CSS JS
       - BootStrap : 10h
       - Jquery : 2.5h
       - 
-   - Crawler
+   - [Crawler](http://mp.weixin.qq.com/s/i_LRetBNXLHZWDipgGaJsg)
       + Spider : 1.5h & 2.5h
          - Urllib
          - BeautifulSoup 
@@ -19,15 +19,22 @@
    - Auto ：6h
       + Ansible
       + Saltstack
-      + Puppet
+      + Puppet
+      + Chef
    - 数据分析 & 机器学习
 2. Operation 
    - Redis
         + sentienl
         + shardname
+        + Jedis
    - Nginx
    - Apache
    - Tomcat
    - Zabbix
    - Mysql
    - TCP/IP
+   - ELK & kafka
+   - DNS & [bind](https://mp.weixin.qq.com/s/uKfg5ATddOldRZ2C0j7FmA)
+3. [CI/CD](https://www.mindtheproduct.com/2016/02/what-the-hell-are-ci-cd-and-devops-a-cheatsheet-for-the-rest-of-us/ )
+4. Docker & K8s
+5. HDFS 多线程 异步 高性能设计 性能调优
