@@ -12,7 +12,7 @@ ps -fC java :查找java进程
 ps -zxjf :类似 pstree
 ps -eo pid,user,args ： -o 控制输出
 	能够与-e 参数 一起使用的关键字是args, cmd, comm, command, fname, ucmd, ucomm, lstart, bsdstart 和 start
-ps -U root -u root u ：-U 参数按真实用户ID(RUID)筛选进程，它会从用户列表中选择真实用户名或 ID；-u 参数用来筛选有效用户ID（EUID）；最后的u参数用来决定以针对用户的格式输出，由		User, PID, %CPU, %MEM, VSZ, RSS, TTY, STAT, START, TIME 和 COMMAND这几列组成。
+ps -U root -u root u ：-U 参数按真实用户ID(RUID)筛选进程，它会从用户列表中选择真实用户名或 ID；-u 参数用来筛选有效用户ID（EUID）；最后的u参数用来决定以针对用户的格式输出
 	USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 watch -n 1 ‘ps -aux --sort -pmem, -pcpu |head 20’ ：动态
 ```
