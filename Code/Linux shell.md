@@ -17,3 +17,25 @@ ps -U root -u root u ：-U 参数按真实用户ID(RUID)筛选进程，它会从
 watch -n 1 ‘ps -aux --sort -pmem, -pcpu |head 20’ ：动态
 ```
 
+##### awk
+
+```shell
+两种形式
+awk [-F ERE] [-v assignment] ... program [argument ...]
+awk [-F ERE] -f progfile ...  [-v assignment] ...[argument ...]
+INPUT ：默认 \n 可以用内置变量RS更改
+FIELD ：-F ERE 或者 内置变量FS更改	awk中可以用$0,$1,$2...(同shell 命令行参数)
+
+参数：
+	-F ERE ：指定分隔符
+		echo "1:2:3" | awk -F: '{print $1 " and " $2 " and " $3}'
+		1 and 2 and 3
+	-f program ：指定awk脚本
+	-v assignment ：定义awk变量，同awk中的赋值，赋值发生在文本处理之前
+		echo | awk -v a=1 'BEGIN {print a}'
+		1
+	argument ：输入文件 和 变量赋值
+
+
+```
+
