@@ -151,5 +151,78 @@ sed -n Np file
 sed -i '3s/aaa/fff/' file --表示针对file文件中的第三行，将其中的aaa替换为fff
 sed -i '/xxx/s/aaa/fff/g' file --表示针对文件，找出包含xxx的行，并将其中的aaa替换为fff
 sed -i '1s/[#*]/fff/gp' file --表示针对文件第1行，将其中的#号或是*号替换为fff
+g 全替换 p 打印 w file，将替换的结果写到文件中
 ```
+
+##### 基础
+
+```shell
+echo 
+	-e 转义字符处理，比如\t显示为制表符而不是显示输出\t
+	-n 把文本字符串和命令输出显示在同一行中
+##### 运算
+result=$(expr 5 + 5) 注意点：*乘法运算符号需要转义
+result=$[5 + 5] 
+##### 判断
+if [ x$1 = x];then
+    no key;
+elif [];then
+else
+fi
+数值比较 ：-eq	-ge -gt -le -lt -ne 
+字符比较 ：= !=  < > -n(字符串长度非0) -z(字符串长度为0)
+文件比较 ：-d(directory) -e(exit) -f(file) -r(read) -s(存在且非空) -w(write) -x(execut) -O(是否存在且属当前用户) -G(存在且默认组与当前用户相同) -nt(newer than) -ot(older than) 
+##### 循环
+for
+	c : for (( i = 0; i < 10; i++ )); do  CODE   ;done
+	in : for line in $(cat $file);do  CODE  ;done
+while [[ i -lt 10 ]]; do
+	CODE
+done
+until [[ i -lt 10 ]]; do
+	CODE
+done
+```
+
+##### 函数
+
+```shell
+function func1 {
+}
+func2(){
+	echo $1,$2
+}
+return 最大返回256，表示结果码，有特殊含义，并且只能返回数值
+参数的获取使用$1,$2以此类推，特别地$0表示文件名、$#表示参数的个数
+```
+
+##### 读取
+
+```shell
+$IFS是文件循环处理的分隔符，按按行处理数据需要把该值设置为$'\n'，处理完成之后恢复旧值
+```
+
+##### 模块
+
+```shell
+##### 流程模块
+处理参数使用getopts命令实现，getopts optionstring opt其中optionstring格式:i:o:，i和o之后的:表示指定i选项和o选项需要有参数，第一个:表示忽略错误，使用case分支处理参数选项对应的参数值。
+# 参数解析echo "参数>>${@}"while getopts :i:o: optdo
+	case "$opt" in
+		i) param_input_dir=$OPTARG
+			echo "Found the -i option, with parameter value $OPTARG"
+			;;
+		o) param_output_file=$OPTARG
+			echo "Found the -o option, with parameter value $OPTARG"
+			;;
+		*) echo "Unknown option: $opt";;	esacdoneecho "param_input_dir = ${param_input_dir}"echo "param_output_file = ${param_output_file}"
+##### 菜单模块
+read -n 1 option命令中用了-n选项来限制只读取一个字符
+clear命令是用来清空命令行的屏幕的
+echo -e -e 选项用来处理转义字符
+echo -en -n 选项让光标处于同一行，用户的输入会显示在同一行
+使用while循环获取用户的输入，在while循环中使用case分支处理不同的操作
+```
+
+
 
