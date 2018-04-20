@@ -1,3 +1,12 @@
+##### bash
+
+```shell
+bash
+	-c : string with args
+	-i : interactive
+	-l : shell act as login shell
+```
+
 ##### ps
 
 ```shell
@@ -160,9 +169,11 @@ g 全替换 p 打印 w file，将替换的结果写到文件中
 echo 
 	-e 转义字符处理，比如\t显示为制表符而不是显示输出\t
 	-n 把文本字符串和命令输出显示在同一行中
+##### cat追加 ： cat  - file <<< "start:"
 ##### 运算
 result=$(expr 5 + 5) 注意点：*乘法运算符号需要转义
 result=$[5 + 5] 
+let i++ ; let i-- ; let i+=10 ; let i-=10
 ##### 判断
 if [ x$1 = x];then
     no key;
@@ -196,10 +207,33 @@ return 最大返回256，表示结果码，有特殊含义，并且只能返回�
 参数的获取使用$1,$2以此类推，特别地$0表示文件名、$#表示参数的个数
 ```
 
+#####  数组
+
+```shell
+array_name=(value0 value1 value2 value3)
+#读取
+${数组名[下标]}
+# 取得数组元素的个数
+length=${#array_name[@]}
+# 或者
+length=${#array_name[*]}
+# 取得数组单个元素的长度
+lengthn=${#array_name[n]}
+#### 可做子串切分
+```
+
 ##### 读取
 
 ```shell
 $IFS是文件循环处理的分隔符，按按行处理数据需要把该值设置为$'\n'，处理完成之后恢复旧值
+echo "=======循环for in======="file="data"
+IFS_OLD=$IFS
+IFS=$'\n'
+for line in $(cat $file)
+do
+	echo "${line}"
+done
+IFS=${IFS_OLD}# 输出：=======
 ```
 
 ##### 模块
