@@ -5,6 +5,7 @@
 
 ```
 shutdown save
+动态操作配置文件：
 config get *
 config set ; config rewrite -> redis conf
 批量操作：
