@@ -96,6 +96,15 @@ date -d @1361542596 +"%Y-%m-%d %H:%M:%S"
 -x 10.19.110.55:8080 https://artifacts.elastic.co/downloads/logstash/logstash-6.1.3.tar.gz -O
 -D cookie0001.txt 存储cookie
 -b cookie 使用cookie
+FTP
+curl ftp://www.xxx.com/ --user name:passwd	//列出目录列表
+curl ftp://www.xxx.com/ –u name:passwd #简洁写法
+curl ftp://name:passwd@www.xxx.com #简洁写法2
+curl ftp://www.xxx.com –u name:passwd -s	//只列出目录
+curl ftp://www.xxx.com/size.zip –u name:passwd -o size.zip	//下载 -O保留文件名
+curl –u name:passwd -T size.mp3 ftp://www.xxx.com/mp3/	//上传
+curl –u name:passwd ftp://www.xxx.com/ -X 'DELE mp3/size.mp3'	//删除
+
 ```
 
 ##### tar
