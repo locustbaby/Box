@@ -90,12 +90,41 @@ continue
 def my_abs(x):
     return nx, ny	//多返回值返回的是 tuple
 递归	：
-def fact(n):
-    if n==1:
-        return 1
-    return n * fact(n - 1)
+class A(self):
+	def __fact(n):
+    	'fact __doc__属性可以查看 '	//文档化函数
+    	if n==1:
+        	return 1
+    	return n * fact(n - 1)
+s._A__fact
 默认参数	：//简化调用 默认参数只能定义在必需参数的后面：
 可变参数	：*args //positional arguments tuple | **kwargs //keyword arguments dict
+超类	（基类）：__bases__ ; issubclass ; isinstance ; __class__
+多基类	：class A(cal, sss) //多重继承  注意：先继承的类中的方法会覆盖后继承的类中方法 （MRO顺序）
+
+内省	：
+hasattr（tc, 'talk'） // （类， 方法）
+callable(getattr(tc, 'talk', None))	//3.0 hasattr(x.'__call__')代替callable（x）
+setattr(tc, 'name', 'Mr. Gumby')	//设置对象的特性
+__dict__ 特性查看对象内所有储存的值
+```
+
+###### 异常
+
+```python
+内建异常	:
+Exception :
+AttributeError :
+IOError :
+IndexError :
+KeyError :
+NameError ：
+SyntaError :
+TypeError :
+ValueError :
+ZeroDivisionError :
+捕捉异常 ：
+class 
 ```
 
 ###### 模块
