@@ -62,7 +62,60 @@ def bibao(func):
 def a():
     print("heallo!") #3
 a()
+
+无参数decorator
+def log(f):
+    def fn(*args, **kw):
+        print 'call ' + f.__name__ + '()...'
+        return f(*args, **kw)
+    return fn
+@log
+
+带参数decorator
+def log(prefix):
+    def log_decorator(f):
+        def wrapper(*args, **kw):
+            print '[%s] %s()...' % (prefix, f.__name__)
+            return f(*args, **kw)
+        return wrapper
+    return log_decorator
+
+@log('DEBUG')
+def test():
+    pass
+print test()
+
+完善decorator
+import time, functools
+
+def performance(unit):
+    def fn(f):
+        @functools.wraps(f)	//属性复制
+        def wrapper(*args, **kw):
+            t0 = time.time()
+            back = f(*args, **kw)
+            t1 = time.time()
+            t = (t1 - t0) if unit =='s' else (t1 - t0) * 1000
+            print 'call %s() in %s %s' % (f.__name__, t, unit)
+            return back
+        return wrapper
+    return fn
+
+@performance('ms')
+def factorial(n):
+    return reduce(lambda x,y: x*y, range(1, n+1))
+
+print factorial(3)
+print factorial.__name__
 ```
 
+##### 偏函数
 
+```python
+def int2(x, base=2):
+    return int(x, base)
+int2('100010')
+//偏函数
+int2 = functools.partial(int, base=2)
+```
 
