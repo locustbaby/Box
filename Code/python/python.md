@@ -25,9 +25,9 @@ Sequence :
         方法：append,insert,pop,count,index,remove,reverse,sort
         切片 ：L[::2]	//起 终 间隔 半闭包[) 	L[::2] L[-4:-1:2] 插入：L[1:1] = L1	删除：L[1:4] = []; L[:] 复制列表
         内建函数	：len min max
-    tuple:	//不可变
+    tuple:	//有序 不可变
         T = ('s','d'),T = (1,)//单元素,T = ('a',['s','d']) ；tuple()函数
-    dict:
+    dict:  //无序
         d = {	//无序 关键字
             'a':'s'
         }
@@ -35,7 +35,7 @@ Sequence :
 		字典的格式化字符： phone = {'a':'1111'};"a's number's %(a)s" % phone
 		方法：clear copy fromkeys get has_key items iteritems keys iterkeys pop popitem//返回键值对 setdefault update values itervalues
 		函数： items = [('', ''), ('', '')] ;d = dict(items); del d[key]
-    set:
+    set: //无序
         s = set(['A', 'C', 'B']) //内部无序 不可重复 ； 'A' in s :True ; s.add() ;s.remove(4) //4必须在 set中，不然会报错
 ```
 
@@ -101,12 +101,24 @@ s._A__fact
 可变参数	：*args //positional arguments tuple | **kwargs //keyword arguments dict
 超类	（基类）：__bases__ ; issubclass ; isinstance ; __class__
 多基类	：class A(cal, sss) //多重继承  注意：先继承的类中的方法会覆盖后继承的类中方法 （MRO顺序）
+匿名函数 ：lambda x: x * x
+    			参数 ： 表达式 （不写return）
 
 内省	：
 hasattr（tc, 'talk'） // （类， 方法）
 callable(getattr(tc, 'talk', None))	//3.0 hasattr(x.'__call__')代替callable（x）
 setattr(tc, 'name', 'Mr. Gumby')	//设置对象的特性
 __dict__ 特性查看对象内所有储存的值
+```
+
+##### 高阶函数
+
+```python
+函数也可作为参数
+map(func,[1,2,3])
+reduce(func,[1,2,3,4],100)	//func, list, 初始值
+filter(func,[1,2,3]) 	//filter根据判断结果自动过滤掉不符合条件的元素
+sorted（list）
 ```
 
 ###### 异常
