@@ -124,7 +124,25 @@ TypeError :
 ValueError :
 ZeroDivisionError :
 捕捉异常 ：
-class 
+class muffledcalculator：
+	muffled= False
+    def calc(self. expr):
+        try:
+            return eval(expr)
+        except (ZeroDivisionError, NamwError):
+            if self.muffled:
+                print '0 is illegal'
+            else:
+                raise
+        except (TypeError), e:
+            print e
+        except:
+            print 'something broken'
+        else:
+            print 'runs ok'
+        finally：
+        	print 'cleaning up'
+            del x
 ```
 
 ###### 模块
