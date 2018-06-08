@@ -88,4 +88,25 @@ p1 = Person('Bob')
 print Person.how_many()
 ```
 
+类 继承 
+
+```python
+Person —— 父类，基类，超类
+student —— 子类，派生类，继承类
+class Person(object):
+    def __init__(self, name, gender):
+        self.name = name
+        self.gender = gender
+class Student(Person):
+    def __init__(self, name, gender, score):
+        super(Student, self).__init__(name, gender)
+        self.score = score
+# 一定要用 super(Student, self).__init__(name, gender) 去初始化父类，否则，继承自 Person 的 Student 将没有 name 和 gender。self参数已在super()中传入，在__init__()中将隐式传递，不需要写出（也不能写）。
+```
+
+类 多态
+
+```python
+
+```
 
