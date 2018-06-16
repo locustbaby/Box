@@ -33,22 +33,38 @@
 
 ##### Zookeeper介绍
 
-###### 停起ZooKeeper
+###### ZooKeeper 基本操作
 
 ```shell
+# 启停
 START: bin/zkServer.sh start
 CLI: bin/zkCli.sh
+	ls /
+	Created /HelloWorld
+	delete HelloWorld
 STOP: bin/zkServer.sh stop
+echo ruok |nc localhost 2181 #验证是否正常
+# 基本操作
+create	#创建一个znode（必须有父节点）
+delete	#删除一个znode（不能有任何子节点）
+exists	#测试一个znode是否存在并查询他的元数据
+getACL，setACL	#获取/设置一个znode的子节点列表
+getChildren	#获取一个znode的子节点列表
+getData，setData	#获取、设置一个znode所保存的数据
+sync	#将客户端的znode的视图与ZooKeeper同步
+# 集合更新 multi （事物）
 ```
 
 ###### 配置ZooKeeper
 
-```
-tickTime=2000
-dataDir=/zkdata		快照数据dataDir=/zkdata 
-dataLogDir=/zkdatalog	事务日志dataLogDir=/zkdatalog
+[ZooKeeper管理员](https://blog.csdn.net/y_xianjun/article/details/8190047)
+
+```shell
+tickTime=2000	 #基本时间单元（毫米）
+dataDir=/zkdata	 #存储持久数据的本地系统位置
+dataLogDir=/zkdatalog	#事务日志
 先写事务日志，再写内存，周期性落到磁盘（刷新内存到快照文件）。事务日志的对写请求的性能影响很大，保证dataLogDir所在磁盘性能良好、没有竞争者。
-clientPort=2181	
+clientPort=2181	 #监听端口
 默认jvm没有配置Xmx、Xms等信息，可以在conf目录下创建java.env文件（内存堆空间一定要小于机器内存，避免使用swap）
 export JVMFLAGS="-Xms2048m -Xmx2048m $JVMFLAGS"
 
@@ -59,4 +75,110 @@ server.3=zkip:2888:3888
 
 echo num> dataDir/myid
 ```
+
+##### ZK四字命令
+
+```shell
+服务器状态	 命令		描述
+			ruok	 如果服务器正在运行且未出于出错状态，则输出imok
+			conf	 输出服务器的配置信息
+			envi	 输出服务器环境信息，包括zk版本，java版本和其他系统信息
+			srvr	 输出服务器的统计信息，包括延迟统计，znode数量和服务器运行模（standalone,leader或follower）
+			stat	 输出服务器的统计信息和已连接的客户端
+			srst	 重置服务器的统计信息
+			isro	 显示服务器是否出于只读(rw)模式，或者读写(rw)模式
+客户端链接	 dump	  列出集合体中的所有会话和短暂znode
+			cons	 列出所有服务器客户端的连接统计信息
+			crst	 重置连接统计信息
+观察		   wchs		列出服务器上所有观察的摘要信息
+			wchc	 按连接列出服务器上所有的观察。如果观察的数量较多，此命令会影响服务器的性能
+			wchp	 按znode路径列出服务器上所有的观察。
+监控		   mntr		按java属性格式列出服务器统计信息，适合于用作Ganglia和Nagios等监控系统的信息源
+```
+
+##### zk API
+
+```java
+public class CreateGroup implements Watcher {
+    private static final int SESSION_TIMEOUT  = 5000;
+    
+    private Zookeeper zk;
+    private CountDownLatch connectedSignal = new CountDownLatch(1);
+    
+    public void connect(String hosts) throws IOException, InterruptedException {
+        zk = new Zookeeper(hosts, SESSION_TIMEOUT, this);//host, 超时时间毫秒， Watcher对象实例
+        connectedSignal.await();
+    }
+    @Override
+    public void process(WatchedEvent event) { // Watcher interface
+        if (event.getState() == KeeperState.SyncConected) {
+            connectedSignal.countDown();
+        }
+    }
+    public void create(String groupName) throws KeeperException,
+    	InterruptedException {
+       String path = "/" + groupName;
+       String createPath = zk.create(path, null/*data*/, Ids.OPEN_ACL_UNSAFE,
+                                    CreateMode.PERSISTENT);
+       System.out.println("Created" + createPath);
+    }
+    public void close() throws InterruptedException {
+        zk.close();
+    }
+    public static void main(String[] args) throws Exception {
+        CreateGroup createGroup = new CreateGroup();
+        createGroup.connect(args[0]);
+        createGroup.create(args[1]);
+        createGroup.close();
+    }
+}
+```
+
+##### ZooKeeper
+
+```shell
+# 数据模型
+树状 znode<1MB 关联ACL
+数据访问：原子性
+# znode
+短暂znode 会话结束时被删除，不可有子节点
+顺序znode 名称中包含 ZooKeeper指定顺序号的znode
+# 观察触发器
+设置观察的操作	 创建znode 	创建子节点 		  删除znode 	删除子节点 			setData
+exists		  NodeCreated  				     NodeDeleted					NodeData Chaged
+getData									    NodeDeleted					   NodeData Chaged
+getChildren				NodeChildren Chaged  NodeDeleted NodeChildren Chaged
+# ACL
+zk身份验证方式： Digest：用户名密码 sasl：kerberos ip：ip
+ACL权限	允许的操作
+CREATE		create（子节点）
+READ		getChildren， getData
+WRITE		setData
+DELETE		delete
+ADMIN		setACL
+#在类 ZooDefs.Ids中有一些预定义的ACL，OPEN_ACL_UNSAFE是其中之一，它将所有的权限（除ADMIN）授予每个人
+```
+
+##### 实现
+
+```shell
+# 选举
+阶段 1 leader选举（200ms）
+leader(提交写请求) 其他为 follower（响应读请求）
+阶段 2 原子广播
+所有写请求都会被转发给leader，leader发送更新广播给follower，当半数以上的follower已经修改持久化之后，领导者才会提交这个更新，客户端收到更新成功的响应（原子性）
+# 一致性
+每一个对znode树的更新都被赋予一个zxid（全局唯一），决定了分布式系统的执行顺序。z1<z2 ,先z1
+1， 顺序一致性
+2， 原子性
+3， 单一系统映像
+4， 持久性
+5， 及时性
+# 会话
+
+```
+
+
+
+
 
