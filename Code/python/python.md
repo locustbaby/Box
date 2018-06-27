@@ -1,183 +1,282 @@
-#### python
-
-###### 基本数据类型
+###### 类
 
 ```python
-整数 ： 十六进制 0xff00 
-浮点数 : 小数点位置可以改变
-字符串 ： ''和""相同 转义 'Bob said \"I\'m OK\".'	可切片 不可变
-布尔值 ： true和flase , 运算： and or not
-空值 ： None
+类，实例化，实例属性  
+//类是模板，而实例则是根据类创建的对象。实例属性每个实例各自拥有，互相独立，而类属性有且只有一份。
+class Person(object):
+    def __init__(self, name, gender, birth, job):
+        self.name = name
+        self.gender = gender
+        self.birth = gender
+        self.job = job
 
-print : , + //结尾加 ','前后会同行打印
-注释 ：
-字符串操作 ：find join lower replace spilt strip translate
+xiaoming = Person('Xiao Ming', 'Male', '1990-1-1', job='Student')
+
+print xiaoming.name
+print xiaoming.job
+
+访问限制
+class Person(object):
+    def __init__(self, name, score):
+        self.name = name
+        self.__score = score	//私有  _score 单下划线也可被访问，但不应该被访问
+    def get_name(self):
+        return self.__score
+
+p = Person('Bob', 59)
+
+print p.name
+try :
+    print p.__score
+except AttributeError:
+    print 'attributeerror'
+print p.get_name //返回的是函数对象
+print p.get_name //返回的是方法调用
+
+类属性 //实例属性 和 类属性重名时，实例属性优先级高
+class Person(object):
+    count=0
+    def __init__(self,name):
+        self.name=name
+        Person.count=Person.count+1
+        
+p1 = Person('Bob')
+print Person.count  //1
+
+p2 = Person('Alice')
+print Person.count  //2
+
+p3 = Person('Tim')
+print Person.count   #3
+
+添加方法到实例上 //types.MethodType() 
+import types
+def fn_get_grade(self):
+    if self.score >= 80:
+        return 'A'
+    if self.score >= 60:
+        return 'B'
+    return 'C'
+
+class Person(object):
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+
+p1 = Person('Bob', 90)
+p1.get_grade = types.MethodType(fn_get_grade, p1, Person)
+print p1.get_grade()
+# => A
+p2 = Person('Alice', 65)
+print p2.get_grade()
+# ERROR: AttributeError: 'Person' object has no attribute 'get_grade'
+# 因为p2实例并没有绑定get_grade
+### 给一个实例动态添加方法并不常见，直接在class中定义要更直观。
+
+定义类方法 @classmethod
+class Person(object):
+    count = 0
+    @classmethod
+    def how_many(cls):
+        return cls.count
+    def __init__(self, name):
+        self.name = name
+        Person.count = Person.count + 1
+
+print Person.how_many()
+p1 = Person('Bob')
+print Person.how_many()
 ```
 
-###### 数据结构
+类 继承 
 
 ```python
-变量：动态类型
-	赋值魔法： x,y,z = 1,2,3 ; x,y = y,x ; 当函数或方法返回元组时，key, value = s.popitem()
-Sequence :
-    list:	//有序 索引
-        L = [] ;L[1];L[-2];L.append('Paul');L.insert(0,'Paul');L.pop();L.pop(2);
-        方法：append,insert,pop,count,index,remove,reverse,sort
-        切片 ：L[::2]	//起 终 间隔 半闭包[) 	L[::2] L[-4:-1:2] 插入：L[1:1] = L1	删除：L[1:4] = []; L[:] 复制列表
-        内建函数	：len min max
-    tuple:	//有序 不可变
-        T = ('s','d'),T = (1,)//单元素,T = ('a',['s','d']) ；tuple()函数
-    dict:  //无序
-        d = {	//无序 关键字
-            'a':'s'
-        }
-        d['key'] = 'v'(新增) //key不可变 ; if 'key' in d:  // ;d.get('value') ; for key in d: ; d = (d1, **d2) //dict合并  for k, v in a.items(): pass //遍历键值
-		字典的格式化字符： phone = {'a':'1111'};"a's number's %(a)s" % phone
-		方法：clear copy fromkeys get has_key items iteritems keys iterkeys pop popitem//返回键值对 setdefault update values itervalues
-		函数： items = [('', ''), ('', '')] ;d = dict(items); del d[key]
-    set: //无序
-        s = set(['A', 'C', 'B']) //内部无序 不可重复 ； 'A' in s :True ; s.add() ;s.remove(4) //4必须在 set中，不然会报错
+Person —— 父类，基类，超类
+student —— 子类，派生类，继承类
+class Person(object):
+    def __init__(self, name, gender):	//构造函数
+        self.name = name
+        self.gender = gender
+class Student(Person):
+    def __init__(self, name, gender, score):
+        super(Student, self).__init__(name, gender)
+        self.score = score
+# 一定要用 super(Student, self).__init__(name, gender) 去初始化父类，否则，继承自 Person 的 Student 将没有 name 和 gender。self参数已在super()中传入，在__init__()中将隐式传递，不需要写出（也不能写）。
 ```
 
-###### 列表生成式
+类 多态
 
 ```python
-列表生成式 ： [x * x for x in range(1, 11)] range(1, 100, 2) 可以生成list [1, 3, 5, 7, 9,...]
-复杂表达式	dict :
-tds = ['<tr><td>%s</td><td>%s</td></tr>' % (name, score) for name, score in d.iteritems()]
-print '<table>'
-print '<tr><th>Name</th><th>Score</th><tr>'
-print '\n'.join(tds)	//join将list拼接成string
-print '</table>'
-条件过滤	：
-[x * x for x in range(1, 11) if x % 2 == 0]
-多层表达式（嵌套）：[m + n for m in 'ABC' for n in '123']
+import json
+
+class Students(object):
+    def read(self):	#任何对象，只要有read()方法，就称为File-like Object,都可以传给json.load
+        return r'["Tim", "Bob", "Alice"]'
+
+s = Students()
+
+print json.load(s)
 ```
 
-###### 流程控制
+类 多重继承
 
 ```python
-if	:
-    if score >= 90:
-        //
-    elif score >= 80:
-        //
-    else:
-布尔值 : False None 0 "" () [] {} 
-比较 :== != is//是同一个对象 is not;in;not in ；
-布尔运算符 :
-| x or y | if x is false,then y,else x |
-| :--- | :--- |
-| x and y | if x is false,then x,else y |
-| :--- | :--- |
-| not x | if x is false,then True,else Flase |
-断言 ： assert 
+class A(object):
+    def __init__(self, a):
+        print 'init A...'
+        self.a = a
 
-for	:
-    for name in L: //L list
-        //
-while	:
-    while x < N:
-        //
-如果 能用for循环，尽量不用 while循环		xrange区别于range：range一次创建整个序列，xrange一次只创建一个数
-break
-continue
+class B(A):
+    def __init__(self, a):
+        super(B, self).__init__(a)
+        print 'init B...'
+
+class C(A):
+    def __init__(self, a):
+        super(C, self).__init__(a)
+        print 'init C...'
+
+class D(B, C):
+    def __init__(self, a):
+        super(D, self).__init__(a)
+        print 'init D...'
+                
+A-> B,C -> D
 ```
 
-###### 函数
+获取对象信息
 
 ```python
-def my_abs(x):
-    return nx, ny	//多返回值返回的是 tuple
-递归	：
-class A(self):
-	def __fact(n):
-    	'fact __doc__属性可以查看 '	//文档化函数
-    	if n==1:
-        	return 1
-    	return n * fact(n - 1)
-s._A__fact
-默认参数	：//简化调用 默认参数只能定义在必需参数的后面：
-可变参数	：*args //positional arguments tuple | **kwargs //keyword arguments dict
-超类	（基类）：__bases__ ; issubclass ; isinstance ; __class__
-多基类	：class A(cal, sss) //多重继承  注意：先继承的类中的方法会覆盖后继承的类中方法 （MRO顺序）
-匿名函数 ：lambda x: x * x
-    			参数 ： 表达式 （不写return）
+type()
+dir()
+getattr()
+setattr( )
+class Person(object):
 
-内省	：
-hasattr（tc, 'talk'） // （类， 方法）
-callable(getattr(tc, 'talk', None))	//3.0 hasattr(x.'__call__')代替callable（x）
-setattr(tc, 'name', 'Mr. Gumby')	//设置对象的特性
-__dict__ 特性查看对象内所有储存的值
+    def __init__(self, name, gender, **kw):
+        self.name = name
+        self.gender = gender
+        for k, v in kw.iteritems():
+            setattr(self, k, v)
+
+p = Person('Bob', 'Male', age=18, course='Python')
+print p.age
+print p.course
 ```
 
-##### 高阶函数
+python 特殊（魔法）方法
 
 ```python
-函数也可作为参数
-map(func,[1,2,3])
-reduce(func,[1,2,3,4],100)	//func, list, 初始值
-filter(func,[1,2,3]) 	//filter根据判断结果自动过滤掉不符合条件的元素
-sorted（list）
+# __str__ 和 __repr__
+class Person(object):
+    def __init__(self, name, gender):
+        self.name = name
+        self.gender = gender
+
+class Student(Person):
+    def __init__(self, name, gender, score):
+        super(Student, self).__init__(name, gender)
+        self.score = score
+    def __str__(self):
+        return '(Student: %s, %s, %s)' % (self.name, self.gender, self.score)
+    __repr__ = __str__
+
+s = Student('Bob', 'male', 88)
+print s
+# __len__
+class Students(object):
+    def __init__(self, *args):
+        self.names = args
+    def __len__(self):
+        return len(self.names)
+print len(ss)
+# __getitem__
+# __setitem__
+# __deltiem__
 ```
 
-###### 异常
+##### @property （处理 属性）
+
+```shell
+class Student(object):
+    def __init__(self, name, score):
+        self.name = name
+        self.__score = score
+    @property
+    def score(self):
+        return self.__score
+    @score.setter
+    def score(self, score):
+        if score < 0 or score > 100:
+            raise ValueError('invalid score')
+        self.__score = score
+```
+
+##### \_\_slots__
+
+```shell
+class Student(object):
+    __slots__ = ('name', 'gender', 'score')
+    def __init__(self, name, gender, score):
+        self.name = name
+        self.gender = gender
+        self.score = score
+```
+
+##### \_\_call__
+
+```shell
+class Person(object):
+    def __init__(self, name, gender):
+        self.name = name
+        self.gender = gender
+
+    def __call__(self, friend):
+        print 'My name is %s...' % self.name
+        print 'My friend is %s...' % friend
+```
+
+##### 迭代器
 
 ```python
-内建异常	:
-Exception :
-AttributeError :
-IOError :
-IndexError :
-KeyError :
-NameError ：
-SyntaError :
-TypeError :
-ValueError :
-ZeroDivisionError :
+class Fibs:
+    def __init__(self):
+        self.a = 0
+        self.b = 1
+    def next(self):
+        self.a, self.b = self.b, self.a + self.b
+        return self.a
+    def __iter__(self):
+        return self
 
-捕捉异常 ：
-class muffledcalculator：
-	muffled= False
-    def calc(self. expr):
-        try:
-            return eval(expr)
-        except (ZeroDivisionError, NamwError):
-            if self.muffled:
-                print '0 is illegal'
-            else:
-                raise
-        except (TypeError), e:
-            print e
-        except:
-            print 'something broken'
-        else:
-            print 'runs ok'
-        finally：
-        	print 'cleaning up'
-            del x
+b = Fibs()
+for i in b:
+    print i  
+    time.sleep(1)
+    print '1'
+# 从迭代器得到序列 list(b)
 ```
 
-###### 模块
+##### 生成器
 
 ```python
-# 动态引入模块
-try:
-    import json
-except ImportError:
-    import simplejson as json
-
-# 使用 __future__
-from __future__ import unicode_literals
-# 测试
-if __name__ == '__main__':
-    test()
-# 包
-必须有 __init__.py
+def flatten(nested):
+    for sublist in nested:
+        for element in sublist:
+            yield element	# 任何包含yield语句的函数称为生成器
+# 每一次yield 函数就冻结；等待被唤醒
+# 递归生成器
+def flatten(nested):
+    try:
+        for sublist in nested:
+            for element in flatten(sublist):
+                yield element
+	except TypeError:
+        yield nested
+# 模拟生成器
 ```
 
-##### 正则表达式 re
 
-```python
 
-```
+
+
