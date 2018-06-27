@@ -31,7 +31,7 @@ Sequence :
         d = {	//无序 关键字
             'a':'s'
         }
-        d['key'] = 'v'(新增) //key不可变 ; if 'key' in d:  // ;d.get('value') ; for key in d: ; d = (d1, **d2) //dict合并
+        d['key'] = 'v'(新增) //key不可变 ; if 'key' in d:  // ;d.get('value') ; for key in d: ; d = (d1, **d2) //dict合并  for k, v in a.items(): pass //遍历键值
 		字典的格式化字符： phone = {'a':'1111'};"a's number's %(a)s" % phone
 		方法：clear copy fromkeys get has_key items iteritems keys iterkeys pop popitem//返回键值对 setdefault update values itervalues
 		函数： items = [('', ''), ('', '')] ;d = dict(items); del d[key]
@@ -161,12 +161,23 @@ class muffledcalculator：
 ###### 模块
 
 ```python
-动态引入模块
+# 动态引入模块
 try:
     import json
 except ImportError:
     import simplejson as json
 
-使用 __future__
+# 使用 __future__
 from __future__ import unicode_literals
+# 测试
+if __name__ == '__main__':
+    test()
+# 包
+必须有 __init__.py
+```
+
+##### 正则表达式 re
+
+```python
+
 ```
