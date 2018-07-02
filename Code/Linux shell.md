@@ -1,3 +1,13 @@
+##### bash
+
+```shell
+bash
+	-c : string with args
+	-i : interactive
+	-l : shell act as login shell
+	-s : 标准输入
+```
+
 ##### ps
 
 ```shell
@@ -87,6 +97,15 @@ date -d @1361542596 +"%Y-%m-%d %H:%M:%S"
 -x 10.19.110.55:8080 https://artifacts.elastic.co/downloads/logstash/logstash-6.1.3.tar.gz -O
 -D cookie0001.txt 存储cookie
 -b cookie 使用cookie
+FTP
+curl ftp://www.xxx.com/ --user name:passwd	//列出目录列表
+curl ftp://www.xxx.com/ –u name:passwd #简洁写法
+curl ftp://name:passwd@www.xxx.com #简洁写法2
+curl ftp://www.xxx.com –u name:passwd -s	//只列出目录
+curl ftp://www.xxx.com/size.zip –u name:passwd -o size.zip	//下载 -O保留文件名
+curl –u name:passwd -T size.mp3 ftp://www.xxx.com/mp3/	//上传
+curl –u name:passwd ftp://www.xxx.com/ -X 'DELE mp3/size.mp3'	//删除
+
 ```
 
 ##### tar
@@ -94,6 +113,10 @@ date -d @1361542596 +"%Y-%m-%d %H:%M:%S"
 ```shell
 tar -ztvf log.tar.gz 不解压查看文件
 tar -zxvf log.tar.gz 1.log 解压包内部分文件
+tar -cvf log.tar log2012.log    仅打包，不压缩！ 
+tar -zcvf log.tar.gz log2012.log   打包后，以 gzip 压缩 
+tar -jcvf log.tar.bz2 log2012.log  打包后，以 bzip2 压缩 
+tar --exclude scf/service -zcvf scf.tar.gz scf/* 排除
 ```
 
 ##### netstat
@@ -132,6 +155,15 @@ netstat -nt | grep -e 127.0.0.1 -e 0.0.0.0 -e ::: -v | awk '/^tcp/ {++state[$NF]
 netstat -anpo | grep "php-cgi" | wc -l
 ```
 
+##### lsof
+
+```shell
+默认：没有选项，lsof列出活跃进程的所有打开文件
+	-a ： 与运算 （默认或）
+	-l :
+	-i :
+```
+
 ##### chage
 
 ```shell
@@ -160,9 +192,11 @@ g 全替换 p 打印 w file，将替换的结果写到文件中
 echo 
 	-e 转义字符处理，比如\t显示为制表符而不是显示输出\t
 	-n 把文本字符串和命令输出显示在同一行中
+##### cat追加 ： cat  - file <<< "start:"
 ##### 运算
 result=$(expr 5 + 5) 注意点：*乘法运算符号需要转义
 result=$[5 + 5] 
+let i++ ; let i-- ; let i+=10 ; let i-=10
 ##### 判断
 if [ x$1 = x];then
     no key;
@@ -196,10 +230,33 @@ return 最大返回256，表示结果码，有特殊含义，并且只能返回�
 参数的获取使用$1,$2以此类推，特别地$0表示文件名、$#表示参数的个数
 ```
 
+#####  数组
+
+```shell
+array_name=(value0 value1 value2 value3)
+#读取
+${数组名[下标]}
+# 取得数组元素的个数
+length=${#array_name[@]}
+# 或者
+length=${#array_name[*]}
+# 取得数组单个元素的长度
+lengthn=${#array_name[n]}
+#### 可做子串切分
+```
+
 ##### 读取
 
 ```shell
 $IFS是文件循环处理的分隔符，按按行处理数据需要把该值设置为$'\n'，处理完成之后恢复旧值
+echo "=======循环for in======="file="data"
+IFS_OLD=$IFS
+IFS=$'\n'
+for line in $(cat $file)
+do
+	echo "${line}"
+done
+IFS=${IFS_OLD}# 输出：=======
 ```
 
 ##### 模块
@@ -224,5 +281,143 @@ echo -en -n 选项让光标处于同一行，用户的输入会显示在同一�
 使用while循环获取用户的输入，在while循环中使用case分支处理不同的操作
 ```
 
+##### 内存检查
 
+###### 系统swap内存检查
+
+```
+# Modified by Mikko Rantalainen 2012-08-09
+# Pipe the output to "sort -nk3" to get sorted output
+# Modified by Marc Methot 2014-09-18
+# removed the need for sudo
+
+
+SUM=0
+OVERALL=0
+for DIR in `find /proc/ -maxdepth 1 -type d -regex "^/proc/[0-9]+"`
+do
+    PID=`echo $DIR | cut -d / -f 3`
+    PROGNAME=`ps -p $PID -o comm --no-headers`
+for SWAP in `grep VmSwap $DIR/status 2>/dev/null | awk '{ print $2 }'`
+do
+    let SUM=$SUM+$SWAP
+done
+if (( $SUM > 0 )); then
+    echo "PID=$PID swapped $SUM KB ($PROGNAME)"
+fi
+let OVERALL=$OVERALL+$SUM
+SUM=0
+done
+echo "Overall swap used: $OVERALL KB"
+```
+
+##### tcpdump
+
+```shell
+tcpdump
+	-s 0 //忽略大小
+	-c num //抓（符合条件）包数量
+	-i interface //监听接口 -i eth0
+	-n //地址数字形式显示
+```
+
+```shell
+#   jboss password加密
+/opt/wildfly/java64/jdk1.7.0_25/bin/java -cp /opt/wildfly/modules/system/layers/base/org/picketbox/main/picketbox-4.0.21.Beta1.jar:/opt/wildfly/modules/system/layers/base/org/jboss/logging/main/jboss-logging-3.1.4.GA.jar:/opt/wildfly/java64/jdk1.7.0_25/lib/ org.picketbox.datasource.security.SecureIdentityLoginModule PAAWORD
+
+#   ssh 免yes	超时	次数	跳过密码输入
+-o stricthostkeychecking=no -o ConnectTimeout=3  -o ConnectionAttempts=3 -o PasswordAuthentication=no
+
+#   FTP
+ftp -inv 10.105.73.170 <<!
+user username password
+bin
+cd soft/sndp/
+put
+!
+
+#   下载
+wget ftp://deploy:extdeploy@192.168.241.12/17liucf/cache/
+wget -r -nd -m $Log_url/package && unzip ./$software && rm -f ./$software
+
+#   上传
+curl -T   $file  ftp://192.168.241.12/17liucf/cache/ -u deploy:extdeploy
+
+#   追加
+cat>>1.list<<EOF
+EOF
+#    javacore & dump
+收集topCPU及javacore：
+top -H -p <pid> -b -n1 >> dump_high_cpu.txt;/opt/jboss/java64/jdk1.7.0_25/bin/jstack <pid> > javacore.txt
+收集dump：
+/opt/jboss/java64/jdk1.7.0_25/bin/jmap -dump:format=b,file=heap.prof <pid>
+
+#   loop
+for ip in  `cat ip.conf`;do command;done
+for ip in 1 2 3 4 5 ;do command;done
+cat ip.conf | while read ip ;do command & wait;done
+
+#	文本三剑客
+#	sed
+sed -n Np file
+sed -i '3s/aaa/fff/' file --表示针对file文件中的第三行，将其中的aaa替换为fff
+sed -i '/xxx/s/aaa/fff/g' file --表示针对文件，找出包含xxx的行，并将其中的aaa替换为fff
+sed -i '1s/[#*]/fff/gp' file --表示针对文件第1行，将其中的#号或是*号替换为fff
+
+#   Thread
+
+# 	if case while
+#	if脚本参数
+if [ x$1 = x];then
+    no key;
+elif [];then
+
+else
+
+fi
+
+数值比较 ：-eq	-ge -gt -le -lt -ne 
+字符比较 ：= !=  < > -n(字符串长度非0) -z(字符串长度为0)
+文件比较 ：-d(directory) -e(exit) -f(file) -r(read) -s(存在且非空) -w(write) -x(execut) -O(是否存在且属当前用户) -G(存在且默认组与当前用户相同) -nt(newer than) -ot(older than) 
+
+# for
+
+# chage 密码延期
+
+# unix time
+date
+
+#	nc
+#	netstat
+#	ps top
+#	lsof
+#	du
+#	find which rsync
+#	sort wc
+#	tee
+
+# Nginx
+        location / {
+            #root   html;
+            #index  index.html index.htm;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_pass http://list1;
+            if ($request_uri ~ ^/qrs-web/(.*)){
+                rewrite ^(.*)$ $1 break;
+                }
+            if ($request_uri ~ ^/NginxStatus/(.*)){
+                rewrite ^(.*)$ $1 break;
+                }
+           rewrite ^(.*)$ /qrs-web$1 break;
+		   #if ( $request_uri !~ ^/dtm-web ){
+           #     rewrite (.*) /dtm-web$1 break;
+           #}
+        }
+#       if ($host = "qrssit.cnsuning.com"){
+#            rewrite ^(.*)$ /qrs-web$1 last;   #500
+#        }
+location =/ {index index.html ; rewrite /(.*) /ssrc-web/ last ;}
+
+```
 
