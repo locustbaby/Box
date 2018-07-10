@@ -5,7 +5,7 @@ bash
 	-c : string with args
 	-i : interactive
 	-l : shell act as login shell
-	-s : 标准输入
+	-s : < 标准输入
 ```
 
 ##### ps
@@ -105,7 +105,6 @@ curl ftp://www.xxx.com –u name:passwd -s	//只列出目录
 curl ftp://www.xxx.com/size.zip –u name:passwd -o size.zip	//下载 -O保留文件名
 curl –u name:passwd -T size.mp3 ftp://www.xxx.com/mp3/	//上传
 curl –u name:passwd ftp://www.xxx.com/ -X 'DELE mp3/size.mp3'	//删除
-
 ```
 
 ##### tar
@@ -321,6 +320,8 @@ tcpdump
 	-n //地址数字形式显示
 ```
 
+##### code
+
 ```shell
 #   jboss password加密
 /opt/wildfly/java64/jdk1.7.0_25/bin/java -cp /opt/wildfly/modules/system/layers/base/org/picketbox/main/picketbox-4.0.21.Beta1.jar:/opt/wildfly/modules/system/layers/base/org/jboss/logging/main/jboss-logging-3.1.4.GA.jar:/opt/wildfly/java64/jdk1.7.0_25/lib/ org.picketbox.datasource.security.SecureIdentityLoginModule PAAWORD
@@ -337,11 +338,11 @@ put
 !
 
 #   下载
-wget ftp://deploy:extdeploy@192.168.241.12/17liucf/cache/
+wget ftp://liucf/cache/
 wget -r -nd -m $Log_url/package && unzip ./$software && rm -f ./$software
 
 #   上传
-curl -T   $file  ftp://192.168.241.12/17liucf/cache/ -u uname:password
+curl -T   $file  ftp://192.168.241.12/17liucf/cache/ -u deploy:extdeploy
 
 #   追加
 cat>>1.list<<EOF
@@ -418,6 +419,71 @@ date
 #            rewrite ^(.*)$ /qrs-web$1 last;   #500
 #        }
 location =/ {index index.html ; rewrite /(.*) /ssrc-web/ last ;}
+```
+
+##### core dump
+
+```shell
+kill -SIGABRT pid 即可产生core dump
+gdb $coredump_PATH/coredump
+$java_HOME/jstack $java_HOME/java $coredump_PATH/coredump
+$java_HOME/jmap $java_HOME/java $coredump_PATH/coredump
+```
+
+##### kill
+
+```shell
+kill -l
+ 1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL
+ 5) SIGTRAP      6) SIGABRT      7) SIGBUS       8) SIGFPE
+ 9) SIGKILL     10) SIGUSR1     11) SIGSEGV     12) SIGUSR2
+13) SIGPIPE     14) SIGALRM     15) SIGTERM     16) SIGSTKFLT
+17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
+21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU
+25) SIGXFSZ     26) SIGVTALRM   27) SIGPROF     28) SIGWINCH
+29) SIGIO       30) SIGPWR      31) SIGSYS      34) SIGRTMIN
+35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3  38) SIGRTMIN+4
+39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
+43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12
+47) SIGRTMIN+13 48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14
+51) SIGRTMAX-13 52) SIGRTMAX-12 53) SIGRTMAX-11 54) SIGRTMAX-10
+55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7  58) SIGRTMAX-6
+59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+63) SIGRTMAX-1  64) SIGRTMAX
+```
+
+##### iptables
+
+```shell
+iptables -FXZ
+```
+
+##### 内核参数
+
+```shell
 
 ```
+
+##### sysctl
+
+```shell
+
+```
+
+##### wget
+
+```shell
+wget -x ./download/package/ -r -nd -m $ES_url -P ./download/package/
+wget -o 
+wget -c continue
+wget -x 强制创建目录
+wget -r 递归
+wget -m mirror
+wget -P 将文件保存到目录
+wget -l,  --level=NUMBER       最大递归深度
+```
+
+
+
+
 
