@@ -37,3 +37,68 @@ user = ​User.query.filter(User.name.like("%"+search+"%") if search is not None
 
 scripts update => everyone UP DOWN  ssh的-o 
 脚本：ftp down 包 配置 if没有配置 up down 配置 => server
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Plan
+
+##### Python
+
+```python
+
+```
+
+##### Go
+
+```go
+
+```
+
+##### Linux
+
+```shell
+
+```
+
+##### 运维
+
+```shell
+# 中间件
+Nginx/Apache
+Zookeeper
+Tomcat/Jboss
+Redis/MongoDB
+ELK
+RabbitMQ/Websphere MQ
+Kafka
+zabbix/promethus
+Ansible/Saltstack
+Docker+k8s+swarm
+DNS/CDN/bind
+Mycat/PostgreSQL
+```
+
+##### 大数据
+
+```shell
+Hadoop/Hive
+Storm/Spark
+lambda
+MPP
+```
+
+
+
