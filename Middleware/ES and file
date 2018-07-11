@@ -2,7 +2,7 @@
 
 #env
 Eshome=/opt/eshome
-ES_url=ftp://deploy:extdeploy@192.168.241.12/17liucf/ES
+ES_url=ftp://y@192.168.241.12/17liucf/ES
 software=`curl -l $ES_url/package/`
 soft_dir=`$software |awk -F '.zip' '{print $1}'`
 
@@ -115,7 +115,7 @@ for conf in `find /opt/ -name $profile 2>/dev/null`
 do
 	server_id=`$conf |awk -F '/' '{print $6}'`
 	ftp -inv 192.168.241.12 <<!
-user deploy extdeploy
+user 
 bin
 prom
 put $conf $ip"_"$server_id
