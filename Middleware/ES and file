@@ -11,7 +11,7 @@ function get_conf()
 	#read -p "Pls "
 	wget -x ./download/conf/ -r -nd -m $ES_url -P ./download/conf/
 	wget -x ./download/package/ -r -nd -m $ES_url -P ./download/package/
-	#wget ftp://deploy:extdeploy@192.168.241.12/17liucf/ES/package/*
+	#wget ftp://17liucf/ES/package/*
 }
 
 #modify the sysctl.conf
@@ -129,7 +129,7 @@ done
 function Upload()
 {
 ftp -inv $ftpip <<!
-user deploy extdeploy
+user 
 bin
 cd 17liucf/cache/
 put $profile
