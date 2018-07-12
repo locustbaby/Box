@@ -1,28 +1,3 @@
-```shell
-# Nginx
-        location / {
-            #root   html;
-            #index  index.html index.htm;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_pass http://list1;
-            if ($request_uri ~ ^/qrs-web/(.*)){
-                rewrite ^(.*)$ $1 break;
-                }
-            if ($request_uri ~ ^/NginxStatus/(.*)){
-                rewrite ^(.*)$ $1 break;
-                }
-           rewrite ^(.*)$ /qrs-web$1 break;
-		   #if ( $request_uri !~ ^/dtm-web ){
-           #     rewrite (.*) /dtm-web$1 break;
-           #}
-        }
-#       if ($host = "qrssit.cnsuning.com"){
-#            rewrite ^(.*)$ /qrs-web$1 last;   #500
-#        }
-location =/ {index index.html ; rewrite /(.*) /ssrc-web/ last ;}
-```
-
 #### Nginx
 
 ```shell
@@ -147,5 +122,29 @@ location @fallback (
 )
 recursive_error_pages [on | off];
 try_files path1 [path2] uri;
+```
+
+##### 负载均衡
+
+```shell
+upstream backend {
+    server backend1.example.com weight=5;
+    server 127.0.0.1:8080 max_fails=3 fail_timeout=30s;
+    server unix:/tmp/backend3;
+}
+# down 永久下线（ip_hash） backup(备份，不用于ip_hash)
+```
+
+##### 反向代理
+
+```shell
+proxy_pass url
+proxy_set_header Host $host //带host头
+proxy_method method; //GET POST
+proxy_hide_header the_header;
+proxy_pass_header;
+proxy_pass_request_body on|off;
+proxy_redirect [default|off|redirect replacement]
+proxy_next_upstream [error|timeout|500|502|503|504||404|invaild_header] //如果 ，下一台处理
 ```
 
