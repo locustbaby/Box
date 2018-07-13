@@ -185,6 +185,12 @@ sed -i '1s/[#*]/fff/gp' file --表示针对文件第1行，将其中的#号或�
 g 全替换 p 打印 w file，将替换的结果写到文件中
 ```
 
+##### eval
+
+```shell
+
+```
+
 ##### 基础
 
 ```shell
@@ -232,7 +238,7 @@ return 最大返回256，表示结果码，有特殊含义，并且只能返回�
 #####  数组
 
 ```shell
-array_name=(value0 value1 value2 value3)
+array_name=(value0 value1 value2 value3)	#从0开始
 #读取
 ${数组名[下标]}
 # 取得数组元素的个数
@@ -242,6 +248,29 @@ length=${#array_name[*]}
 # 取得数组单个元素的长度
 lengthn=${#array_name[n]}
 #### 可做子串切分
+```
+
+##### 字典
+
+```shell
+#必须先声明
+declare -A dic
+dic=([key1]="value1" [key2]="value2" [key3]="value3")
+
+#打印指定key的value
+echo ${dic["key1"]}
+#打印所有key值
+echo ${!dic[*]}
+#打印所有value
+echo ${dic[*]}
+#字典添加一个新元素
+dic+=（[key4]="value4"）
+
+#遍历key值
+for key in $(echo ${!dic[*]})
+do
+    echo "$key : ${dic[$key]}"
+done
 ```
 
 ##### 读取
@@ -320,7 +349,7 @@ tcpdump
 	-n //地址数字形式显示
 ```
 
-##### code
+##### code  实用记录
 
 ```shell
 #   jboss password加密
@@ -396,6 +425,11 @@ date
 #	find which rsync
 #	sort wc
 #	tee
+
+# list & dict
+
+
+
 
 # Nginx
         location / {
