@@ -89,6 +89,8 @@ Ansible/Saltstack
 Docker+k8s+swarm
 DNS/CDN/bind
 Mycat/PostgreSQL
+mesos marathon ceph
+druid
 ```
 
 ##### 大数据
