@@ -58,7 +58,7 @@ scripts update => everyone UP DOWN  ssh的-o
 ##### Python
 
 ```python
-
+Django
 ```
 
 ##### Go
@@ -77,13 +77,13 @@ scripts update => everyone UP DOWN  ssh的-o
 
 ```shell
 # 中间件
-Nginx/Apache
-Zookeeper
-Tomcat/Jboss
-Redis/MongoDB
-ELK
-RabbitMQ/Websphere MQ
-Kafka
+Nginx/Apache	nginx配置手册
+Zookeeper	zookeeper分布式协调
+Tomcat/Jboss	tomcat权威指南第二版 tomcat8权威
+Redis/MongoDB	redis运维和开发
+ELK		官方文档
+RabbitMQ/Websphere MQ	rabbitmq
+Kafka	kafka权威指南
 zabbix/promethus
 Ansible/Saltstack
 Docker+k8s+swarm
@@ -94,8 +94,8 @@ Mycat/PostgreSQL
 ##### 大数据
 
 ```shell
-Hadoop/Hive
-Storm/Spark
+Hadoop/Hive	hadoop权威指南
+Storm/Spark	spark快速数据分析
 lambda
 MPP
 ```
