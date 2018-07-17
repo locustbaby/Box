@@ -194,12 +194,14 @@ if __name__ == '__main__':
 # random
 # shelve
 # functools
+https://mp.weixin.qq.com/s/SdVMhiCwAdmU9uVBbK13jQ
 # difflib
 # hashlib
 # csv
 # timeit、profile、trace
 # datetime
 # itertools
+https://mp.weixin.qq.com/s/jKIGcsaMe5FtOxUs6x5WXw
 # logging
 # getopt
 # optparse
