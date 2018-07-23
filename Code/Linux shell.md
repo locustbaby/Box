@@ -345,8 +345,16 @@ echo "Overall swap used: $OVERALL KB"
 tcpdump
 	-s 0 //忽略大小
 	-c num //抓（符合条件）包数量
-	-i interface //监听接口 -i eth0
+	-i interface //监听接口 -i eth0 
 	-n //地址数字形式显示
+	host hostname(ip)
+	tcpdump host 210.27.48.1 and \ (210.27.48.2 or 210.27.48.3 \) #48.1 和 2，3的通信
+	tcpdump ip host ace and not helios
+	tcpdump ip host 210.27.48.1 and ! 210.27.48.2 #1和除了2之外的所有主机的包
+	tcpdump -i eth0 src host hostname #主机hostname发送的所有包
+	tcpdump tcp port 23 and host 210.27.48.1 #1接收或发出的telnet包
+	tcpdump 'tcp[tcpflags] & (tcp-syn|tcp-fin) != 0 and not src and dst net localnet'
+	#打印TCP会话中的的开始和结束数据包, 并且数据包的源或目的不是本地网络上的主机.(nt: localnet, 实际使用时要真正替换成本地网络的名字))
 ```
 
 ##### code  实用记录
