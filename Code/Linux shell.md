@@ -379,7 +379,7 @@ wget ftp://liucf/cache/
 wget -r -nd -m $Log_url/package && unzip ./$software && rm -f ./$software
 
 #   上传
-curl -T   $file  ftp://192.168.241.12/17liucf/cache/ -u deploy:extdeploy
+curl -T   $file  ftp://192.168.241.12/17liucf/cache/ -u user:password
 
 #   追加
 cat>>1.list<<EOF
