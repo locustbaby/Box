@@ -9,6 +9,9 @@ git commit
 git push
 
 git clone git@github.com:locustbaby/Box.git #or HTTPS
+
+git pull
+
 ```
 
 
