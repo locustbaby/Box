@@ -179,10 +179,48 @@ netstat -anpo | grep "php-cgi" | wc -l
 
 ```shell
 sed -n Np file
+sed -n 's///p' file --显示修改的行
 sed -i '3s/aaa/fff/' file --表示针对file文件中的第三行，将其中的aaa替换为fff
 sed -i '/xxx/s/aaa/fff/g' file --表示针对文件，找出包含xxx的行，并将其中的aaa替换为fff
 sed -i '1s/[#*]/fff/gp' file --表示针对文件第1行，将其中的#号或是*号替换为fff
 g 全替换 p 打印 w file，将替换的结果写到文件中
+```
+
+##### wait
+
+```shell
+wait [作业指示或进程号]
+1.等待作业号或者进程号制定的进程退出，返回最后一个作业或进程的退出状态状态。如果没有制定参数，则等待所有子进程的退出，其退出状态为0.
+2.如果是shell中等待使用wait，则不会等待调用函数中子任务。在函数中使用wait，则只等待函数中启动的后台子任务。
+wait $! #$!表示上个子进程的进程号，wait等待一个子进程，等待5秒后，退出
+3.在shell中使用wait命令，相当于高级语言里的多线程同步。
+e.g. :函数中使用wait
+#!/bin/bash
+source ~/.bashrc
+ 
+fun(){
+    echo "fun is begin.timeNum:$timeNum"
+    local timeNum=$1
+    sleep $timeNum &
+    wait #这个只等待wait前面sleep
+    
+    echo "fun is end.timeNum:$timeNum"
+}
+ 
+fun 10 &
+fun 20 &
+ 
+wait #如果fun里面没有wait，则整个脚本立刻退出，不会等待fun里面的sleep
+echo "all is ending"
+e.g. :shell中使用wait
+#!/bin/bash
+sleep 10 &
+sleep 5&
+wait #等待10秒后，退出
+#!/bin/bash
+sleep 10 &
+sleep 5&
+wait $! #$!表示上个子进程的进程号，wait等待一个子进程，等待5秒后，退出
 ```
 
 ##### eval
@@ -345,16 +383,8 @@ echo "Overall swap used: $OVERALL KB"
 tcpdump
 	-s 0 //忽略大小
 	-c num //抓（符合条件）包数量
-	-i interface //监听接口 -i eth0 
+	-i interface //监听接口 -i eth0
 	-n //地址数字形式显示
-	host hostname(ip)
-	tcpdump host 210.27.48.1 and \ (210.27.48.2 or 210.27.48.3 \) #48.1 和 2，3的通信
-	tcpdump ip host ace and not helios
-	tcpdump ip host 210.27.48.1 and ! 210.27.48.2 #1和除了2之外的所有主机的包
-	tcpdump -i eth0 src host hostname #主机hostname发送的所有包
-	tcpdump tcp port 23 and host 210.27.48.1 #1接收或发出的telnet包
-	tcpdump 'tcp[tcpflags] & (tcp-syn|tcp-fin) != 0 and not src and dst net localnet'
-	#打印TCP会话中的的开始和结束数据包, 并且数据包的源或目的不是本地网络上的主机.(nt: localnet, 实际使用时要真正替换成本地网络的名字))
 ```
 
 ##### code  实用记录
@@ -379,7 +409,7 @@ wget ftp://liucf/cache/
 wget -r -nd -m $Log_url/package && unzip ./$software && rm -f ./$software
 
 #   上传
-curl -T   $file  ftp://192.168.241.12/17liucf/cache/ -u user:password
+curl -T   $file  ftp://192.168.241.12/17liucf/cache/ -u deploy:extdeploy
 
 #   追加
 cat>>1.list<<EOF
