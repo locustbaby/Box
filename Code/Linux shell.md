@@ -107,6 +107,14 @@ curl –u name:passwd -T size.mp3 ftp://www.xxx.com/mp3/	//上传
 curl –u name:passwd ftp://www.xxx.com/ -X 'DELE mp3/size.mp3'	//删除
 ```
 
+##### rsync
+
+```shell
+rsync -a /data /backup	# -a = -rtopgDl
+rsync -avz *.c foo:src	#远程机器
+rsync -av root@ip::www /databack #rsync服务器
+```
+
 ##### tar
 
 ```shell
