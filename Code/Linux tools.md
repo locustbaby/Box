@@ -31,5 +31,27 @@ iptables -t	filter	-A	INPUT			-p tcp			-j ACCEPT
 		    		   				   	  multiport
 ```
 
+##### nmap
 
+```shell
+
+```
+
+##### hydra
+
+```shell
+
+```
+
+##### rsyslog
+
+```shell
+
+```
+
+##### coredump
+
+```shell
+http://www.111cn.net/sys/linux/67291.htm
+```
 
