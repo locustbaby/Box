@@ -22,8 +22,8 @@ filter：访问控制，规则匹配
 信息记录：LOG
 		table	 command			Parmeter & Xmatch	target
 iptables -t	filter	-A	INPUT			-p tcp			-j ACCEPT
-			nat		   FORWARD		    -s				  DROP
-		    		   OUTPUT			-d				  REJECT
+			nat	   -I   FORWARD		    -s				  DROP
+		    	   -D   OUTPUT			-d				  REJECT
 		    		   PREROUTING		--sport			   DNAT
 		    		   POSTROUTING		--dports		   SNAT
 		    		   				   -m tcp
@@ -31,10 +31,27 @@ iptables -t	filter	-A	INPUT			-p tcp			-j ACCEPT
 		    		   				   	  multiport
 ```
 
+> 实践
+
+```shell
+iptables -FXZ
+iptables -L # list	(先后顺序)
+iptables -F # flushall
+iptables -I INPUT -p tcp --dport 80 -j ACCEPT # -I添加到最前
+iptables -I INPUT -p tcp --dport 22 -j ACCEPT
+iptables -A INPUT -j REJECT	# -A 往后添加
+# 外无法访问本机，本机也无法访问外，无法访问本地
+
+iptables -I INPUT -i lo -j ACCEPT # 可以与本地通信
+iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT # 允许本地访问外网
+
+
+```
+
 ##### nmap
 
 ```shell
-
+nmap -sS -p 0-1000 10.10.163.233
 ```
 
 ##### hydra
