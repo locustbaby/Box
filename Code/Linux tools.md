@@ -48,6 +48,27 @@ iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT # 允许本地�
 
 ```
 
+##### tcp_wrappers
+
+```shell
+/etc/hosts.allow > /etc/hosts.deny (先后)
+service:host(s) [:action]
+ALL:ALL EXCEPT ip
+```
+
+##### chattr & lsattr
+
+```shell
+chattr -RV [mode:+ - = a c i s u]
+lsattr [-aslRvV]
+```
+
+##### /etc/fstab
+
+```shell
+LABEL=/tmp /tmp ext3 rw,nosuid,noexec,nodev 0 0 #不允许任何suid程序，不能运行任何脚本，不存在设备文件
+```
+
 ##### nmap
 
 ```shell
@@ -70,5 +91,30 @@ nmap -sS -p 0-1000 10.10.163.233
 
 ```shell
 http://www.111cn.net/sys/linux/67291.htm
+```
+
+##### iftop
+
+```shell
+yum install libpcap libpcap-devel ncurses ncurses-devel
+yum install flex byacc	#编译安装 or EPEL安装
+```
+
+##### 网络监控和分析工具
+
+```shell
+Ntop MRTG Ntopng iperf 
+```
+
+##### perf
+
+```shell
+
+```
+
+##### stat
+
+```shell
+
 ```
 
