@@ -44,6 +44,12 @@ USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT
 jbossuse pts/0    192.168.242.9    09:43    0.00s  0.07s  0.00s w
 ```
 
+##### find
+
+```shell
+find / -type f -perm -2 -o -perm -20 |xargs ls -al
+```
+
 ##### top
 
 ```shell
