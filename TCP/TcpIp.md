@@ -1,0 +1,1 @@
+![tcp state](https://images2015.cnblogs.com/blog/771321/201603/771321-20160322190300026-1722844812.png) 
