@@ -111,6 +111,7 @@ curl ftp://www.xxx.com –u name:passwd -s	//只列出目录
 curl ftp://www.xxx.com/size.zip –u name:passwd -o size.zip	//下载 -O保留文件名
 curl –u name:passwd -T size.mp3 ftp://www.xxx.com/mp3/	//上传
 curl –u name:passwd ftp://www.xxx.com/ -X 'DELE mp3/size.mp3'	//删除
+curl -X GET/PORT/DELETER 
 ```
 
 ##### rsync
