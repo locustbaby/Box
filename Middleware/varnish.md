@@ -1,3 +1,4 @@
+```
 include "host.vcl";
 acl purge {
 	"localhost";
@@ -159,3 +160,4 @@ sub vcl_deliver {
 sub vcl_error {
 	return (deliver);
 }
+```
