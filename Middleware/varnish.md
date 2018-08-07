@@ -139,7 +139,7 @@ sub vcl_fetch {
 sub vcl_deliver {
      ##设置hit or miss的标志和具体哪一台标志，方便故障排查和调优
 	if (obj.hits > 0) {
-		set resp.http.X-Cache = "Suning-HIT_68";
+		set resp.http.X-Cache = "S-HIT_68";
 		set resp.http.X-Cache-Hits = obj.hits;
 		set resp.http.Age = 0;
 	} else {
@@ -147,7 +147,7 @@ sub vcl_deliver {
 	}
 	unset resp.http.X-Varnish;
 	unset resp.http.x-host;
-	set resp.http.Via = "1.1 Xcache_Suning_68";
+	set resp.http.Via = "1.1 Xcache_S_68";
 	if (resp.http.magicmarker) {
 		/* Remove the magic marker */
 		unset resp.http.magicmarker;
