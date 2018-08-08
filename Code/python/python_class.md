@@ -94,7 +94,7 @@ print Person.how_many()
 Person —— 父类，基类，超类
 student —— 子类，派生类，继承类
 class Person(object):
-    def __init__(self, name, gender):
+    def __init__(self, name, gender):	//构造函数
         self.name = name
         self.gender = gender
 class Student(Person):
@@ -164,7 +164,7 @@ print p.age
 print p.course
 ```
 
-python 特殊方法
+python 特殊（魔法）方法
 
 ```python
 # __str__ 和 __repr__
@@ -190,9 +190,12 @@ class Students(object):
     def __len__(self):
         return len(self.names)
 print len(ss)
+# __getitem__
+# __setitem__
+# __deltiem__
 ```
 
-##### @property
+##### @property （处理 属性）
 
 ```shell
 class Student(object):
@@ -232,6 +235,48 @@ class Person(object):
         print 'My name is %s...' % self.name
         print 'My friend is %s...' % friend
 ```
+
+##### 迭代器
+
+```python
+class Fibs:
+    def __init__(self):
+        self.a = 0
+        self.b = 1
+    def next(self):
+        self.a, self.b = self.b, self.a + self.b
+        return self.a
+    def __iter__(self):
+        return self
+
+b = Fibs()
+for i in b:
+    print i  
+    time.sleep(1)
+    print '1'
+# 从迭代器得到序列 list(b)
+```
+
+##### 生成器
+
+```python
+def flatten(nested):
+    for sublist in nested:
+        for element in sublist:
+            yield element	# 任何包含yield语句的函数称为生成器
+# 每一次yield 函数就冻结；等待被唤醒
+# 递归生成器
+def flatten(nested):
+    try:
+        for sublist in nested:
+            for element in flatten(sublist):
+                yield element
+	except TypeError:
+        yield nested
+# 模拟生成器
+```
+
+
 
 
 

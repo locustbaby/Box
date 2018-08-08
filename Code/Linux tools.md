@@ -56,6 +56,12 @@ service:host(s) [:action]
 ALL:ALL EXCEPT ip
 ```
 
+##### pam认证
+
+```shel
+
+```
+
 ##### chattr & lsattr
 
 ```shell
