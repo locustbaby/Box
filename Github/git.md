@@ -1,6 +1,11 @@
 #### git
 
 ```shell
+git remote -v
+git remote add $gitname
+git fetch $gitname
+git push $gitname
+
 git checkout -b dev
 git checkout master #change
 
