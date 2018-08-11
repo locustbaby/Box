@@ -165,7 +165,7 @@ tar --exclude scf/service -zcvf scf.tar.gz scf/* 排除
 netstat -ntu | grep :80 | awk '{print $5}' | cut -d: -f1 | awk '{++ip[$1]} END {for(i in ip) print ip[i],"\t",i}' | sort -nr
 TCP各种状态列表：
 netstat -nt | grep -e 127.0.0.1 -e 0.0.0.0 -e ::: -v | awk '/^tcp/ {++state[$NF]} END {for(i in state) print i,"\t",state[i]}'
-**查看phpcgi进程数，如果接近预设值，说明不够用，需要增加：
+** 查看phpcgi进程数，如果接近预设值，说明不够用，需要增加：
 netstat -anpo | grep "php-cgi" | wc -l
 ```
 
@@ -281,13 +281,40 @@ wait $! #$!表示上个子进程的进程号，wait等待一个子进程，等�
 
 ```
 
+##### nc
+
+```shell
+# 监听端口
+nc -lp 8888
+# 连接端口
+nc -vz -w 5 127.0.0.1 8888
+# 端口扫描
+nc -vz -w 5 127.0.0.1 1-100
+# 远程拷贝文件
+server:	nc -lp 1234 > install.log
+server:	nc -w 1 192.168.228.222 1234 < install.log
+# 克隆硬盘或分区
+nc -l -p 1234 | dd of=/dev/sda
+dd if=/dev/sda | nc 192.168.228.222 1234
+# 保存web页面
+while true; do
+    nc -l -p 80 -q 1 < somepage.html;
+done
+# 聊天
+nc -lp 1234
+nc 192.168.228.222 1234
+# 传输目录
+nc -l 1234 | tar xzvf -
+tar czvf – nginx-0.6.34 | nc 192.168.228.222 1234
+```
+
 ##### 基础
 
 ```shell
 echo 
 	-e 转义字符处理，比如\t显示为制表符而不是显示输出\t
 	-n 把文本字符串和命令输出显示在同一行中
-##### cat追加 ： cat  - file <<< "start:"
+##### cat追加 ： cat>file<<EOF"start:"EOF
 ##### 运算
 result=$(expr 5 + 5) 注意点：*乘法运算符号需要转义
 result=$[5 + 5] 

@@ -71,9 +71,10 @@ print(output.decode('utf-8'))
 print('Exit code:', p.returncode)
 ```
 
-> Queue
+> Queue	
 
 ```python
+# multiprocessing.Queue/Pipes 进程内非阻塞队列，进程私有
 from multiprocessing import Process, Queue
 import os, time, random
 
