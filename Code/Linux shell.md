@@ -74,6 +74,7 @@ W：  将当前设置写入~/.toprc文件中。这是写top配置文件的推荐
 两种形式
 awk [-F ERE] [-v assignment] ... program [argument ...]
 awk [-F ERE] -f progfile ...  [-v assignment] ...[argument ...]
+awk [-F|-f|-v] 'BEGIN{} //{command1; command2} END{}' file
 INPUT ：默认 \n 可以用内置变量RS更改
 FIELD ：-F ERE 或者 内置变量FS更改	awk中可以用$0,$1,$2...(同shell 命令行参数)
 
@@ -86,6 +87,8 @@ FIELD ：-F ERE 或者 内置变量FS更改	awk中可以用$0,$1,$2...(同shell 
 		echo | awk -v a=1 'BEGIN {print a}'
 		1
 	argument ：输入文件 和 变量赋值
+#	e.g.
+
 ```
 ##### date
 
