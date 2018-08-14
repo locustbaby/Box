@@ -2,6 +2,26 @@
 
 ##### ElasticSearch
 
+> install
+
+```shell
+修改每台服务器的/etc/sysctl.conf，添加
+vm.max_map_count=262144
+vm.swappiness=0
+
+在每台服务器的/etc/profile最后添加
+export ES_HEAP_SIZE=31g
+然后执行
+source /etc/profile
+
+在每台服务器执行
+swapoff -a
+ulimit -l unlimited
+# 远程启动会读不到本地变量
+```
+
+> 配置样例
+
 ```shell
 ##################### Elasticsearch Configuration Example #####################
 
@@ -35,7 +55,7 @@
 # multiple clusters on the same network, make sure you're using unique names.
 #
 #cluster.name: elasticsearch
-cluster.name: rsf_prd_cluster
+cluster.name: prd_cluster
 
 
 #################################### Node #####################################

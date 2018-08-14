@@ -67,25 +67,41 @@ Content-Language
 ##### 状态码
 
 ```shell
-2xx (success)
+#	2xx (success)
 200 OK
 204 No Content
 206 Partial Content
-3xx (重定向)
+#	3xx (重定向)
 301 Moved Permanently	(URI忘记加'/')
 302 Found
 303 See Other
 304 Not Modified
 307 
-4xx
+#	4xx
 400
 401
-403
-404
-5xx
-500
-503
+403	forbidden
+404	Not Found
+499	规定时间内无响应（总时间）
+#	5xx
+500	web,php,lua语法错误 访问量大的时候，由于资源限制，不能打开过多的句柄
+502 Bad Gateway(未给出正确的响应，但是有响应)
+503	（认为后端fail，limit_req）
+504	后端服务无反应
 
 
+```
+
+##### HTTPS
+
+```shell
+公开密钥加密（非对称密钥加密）建立连接传送共享密钥
+共享密钥加密（对称密钥加密）传输数据
+```
+
+##### HTTP/2
+
+```shell
+https://ye11ow.gitbooks.io/http2-explained/content/
 ```
 

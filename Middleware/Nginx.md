@@ -127,6 +127,7 @@ try_files path1 [path2] uri;
 ##### 负载均衡
 
 ```shell
+#	ip_hash	url_hash weight 轮询 fair（响应）
 upstream backend {
     server backend1.example.com weight=5;
     server 127.0.0.1:8080 max_fails=3 fail_timeout=30s;

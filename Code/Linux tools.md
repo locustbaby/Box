@@ -93,6 +93,13 @@ nmap -sS -p 0-1000 10.10.163.233
 
 ```
 
+##### rsync
+
+```shel
+rsync详解
+https://blog.csdn.net/qq_21419995/article/details/80458379
+```
+
 ##### coredump
 
 ```shell

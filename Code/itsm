@@ -33,7 +33,7 @@ browser.find_element_by_class_name('login-button').click()
 while 1:
     try:
         time.sleep(10)
-        browser.get('http://html')
+        browser.get('http://zabbix/')
         # buttonlst = browser.find_element_by_xpath('//*[@id="alarmtbody"]')
         # buttonlst = browser.find_element_by_id("alarmtbody")
         browser.refresh()
@@ -60,7 +60,7 @@ while 1:
                     break
                 print text
     except selenium.common.exceptions.StaleElementReferenceException, e:
-        # browser.get('http://itsm.cnsuning.com/traffic-web-in/alarmdeal/loadAlarmEnevntDealList.htm?alarmeventTag=%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86')
+        # browser.get('http://zabbix/')
         print "staleelement exception: %s" %str(e)
         pass
     except Exception,e:

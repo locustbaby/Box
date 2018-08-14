@@ -8,6 +8,22 @@ bash
 	-s : < 标准输入
 ```
 
+##### 变量子串	
+
+| 编号 | 表达式                       | 说明                                        |
+| ---- | ---------------------------- | ------------------------------------------- |
+| 1    | ${#string}                   | 返回$string的长度                           |
+| 2    | ${string:position}           | 在$string中，从位置position之后开始提取子串 |
+| 3    | ${string:position:length}    | 在length的子串                              |
+| 4    | ${string#substring}          | 从变量substring子串                         |
+| 5    | ${string##substring}         | 从变量substring子串                         |
+| 6    | ${string%substring}          | 从变量substring子串                         |
+| 7    | ${string%%substring}         | 从变量substring子串                         |
+| 8    | ${string/substring/replace}  | 使用substring                               |
+| 9    | ${string//substring/replace} | 使用substring                               |
+| 10   | ${string/#substring/replace} | 如果substring,就用substring                 |
+| 11   | ${string/%substring/replace} | 如果substring,就用substring                 |
+
 ##### ps
 
 ```shell
@@ -635,6 +651,14 @@ wget -r 递归
 wget -m mirror
 wget -P 将文件保存到目录
 wget -l,  --level=NUMBER       最大递归深度
+```
+
+##### 变量
+
+```shell
+$#	个数
+$*	所有参数当成一个参数
+$@	所有参数
 ```
 
 
