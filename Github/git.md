@@ -1,6 +1,18 @@
 #### git
 
 ```shell
+git status
+git diff $file
+git log --pretty=oneline
+git reset --hard 1094a
+git reflog
+
+git checkout -- $file #回到最近一次修改的状态
+```
+
+> 常用
+
+```shell
 git remote -v
 git remote add $gitname
 git fetch $gitname
