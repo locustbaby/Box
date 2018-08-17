@@ -483,6 +483,11 @@ tcpdump
 	-c num //抓（符合条件）包数量
 	-i interface //监听接口 -i eth0
 	-n //地址数字形式显示
+	-w 写入文件
+tcpdump -i eth0 -vnn src host 8.8.8.8 and dst port 22
+tcpdump -i eth0 -vnn src host 8.8.8.8 or port 22  
+tcpdump -i eth0 -vnn \( src host 8.8.8.8 and dst port 22 \) or   \( src host 4.4.4.4 and dst port 80 \)
+tcpdump 'tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)'	#打印所有源或目的端口是80, 网络层协议为IPv4, 并且含有数据,而不是SYN,FIN以及ACK-only等不含数据的数据包
 ```
 
 ##### code  实用记录
@@ -637,7 +642,18 @@ iptables -FXZ
 ##### sysctl
 
 ```shell
-
+#	sysctl.conf
+net.ipv4.ip_forward = 1
+#
+echo "1" > /proc/sys/net/ipv4/ip_forward
+#
+sysctl -w net.ipv4.ip_forward = 1	# write
+sysctl -p
+ARP抑制
+echo "1">/proc/sys/net/ipv4/conf/lo/arp_ignore
+echo "2">/proc/sys/net/ipv4/conf/lo/arp_announce 
+echo "1">/proc/sys/net/ipv4/conf/all/arp_announce
+echo "2">/proc/sys/net/ipv4/conf/all/arp_announce
 ```
 
 ##### wget
