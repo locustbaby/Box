@@ -1,3 +1,5 @@
+##### Varnish
+
 ```
 include "host.vcl";
 acl purge {
@@ -161,3 +163,4 @@ sub vcl_error {
 	return (deliver);
 }
 ```
+

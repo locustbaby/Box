@@ -22,6 +22,27 @@ git log --graph --pretty=oneline --abbrev-commit
 #	合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并
 git stash	#储藏
 git stash list
+
+#	修复master bug
+git checkout
+git checkout -b issue-101
+git add $file
+git commit -m "fix bug 101"
+git checkout master
+git merge --no-ff -m "merged bug fix 101" issue-101
+#	切回stash
+git checkout dev
+git status
+git stash list
+#	恢复并删除stash
+1:	git stash apply
+	git stash drop
+2:	git stash pop
+
+git stash apply stash@{0}
+
+#	Feature分支
+git branch -D feature-vulcan	#强行删除分支
 ```
 
 > 常用
