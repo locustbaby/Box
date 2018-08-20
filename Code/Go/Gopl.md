@@ -132,6 +132,27 @@ fmt.Printf("%q\n", runes) // "['H' 'e' 'l' 'l' 'o' ',' ' ' '世' '界']"
 ###### map
 
 ```go
+//	make语法
+ages := make(map[string]int) // mapping from strings to ints
+//	对比
+ages := map[string]int{
+	"alice": 31,
+	"charlie": 34,
+}	//	相当于
+ages := make(map[string]int)
+ages["alice"] = 31
+ages["charlie"] = 34
+//	创建空的map
+map[string]int{}
+//	通过key对应下标访问
+ages["alice"] = 32
+//	内置delete函数可以删除元素	所有操作是安全的，查找失败将返回value对应零值
+delete(ages, "alice") // remove element ages["alice"]
+//	遍历
+for name, age := range ages {
+	fmt.Printf("%s\t%d\n", name, age)
+}
+//	map类型零值nil，map上的大部分操作，包括查找、删除、len和range循环都可以安全工作在nil值的map上，它们的行为和一个空的map类似。但是向一个nil值的map存入元素将导致一个panic异常。
 
 ```
 
