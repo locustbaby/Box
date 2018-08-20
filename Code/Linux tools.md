@@ -45,7 +45,6 @@ iptables -A INPUT -j REJECT	# -A 往后添加
 iptables -I INPUT -i lo -j ACCEPT # 可以与本地通信
 iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT # 允许本地访问外网
 
-
 ```
 
 ##### tcp_wrappers
@@ -129,5 +128,17 @@ Ntop MRTG Ntopng iperf
 
 ```shell
 
+```
+
+##### Snmp
+
+> SNMP 简介
+
+```shell
+SNMP采用UDP 161端口接收和发送请求，162端口接收trap，执行SNMP的设备缺省都必须采用这些端口。SNMP消息全部通过UDP端口161接收，只有Trap信息采用UDP端口162。
+SNMP v1是SNMP协议的最初版本，不过依然是众多厂家实现SNMP基本方式。 
+SNMP v2通常被指是基于community的SNMP V2。Community实质上就是密码。
+SNMP v3 是最新版本的SNMP。它对网络管理最大的贡献在于其安全性。增加了对认证和密文传输的支持。
+SNMP为管理员提供了一个网管平台(NMS)，又称为【管理站】，负责网管命令的发出、数据存储、及数据分析。【被】监管的设备上运行一个SNMP代理(Agent))，代理实现设备与管理站的SNMP通信。
 ```
 

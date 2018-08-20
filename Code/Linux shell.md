@@ -490,7 +490,7 @@ tcpdump -i eth0 -vnn \( src host 8.8.8.8 and dst port 22 \) or   \( src host 4.4
 tcpdump 'tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)'	#打印所有源或目的端口是80, 网络层协议为IPv4, 并且含有数据,而不是SYN,FIN以及ACK-only等不含数据的数据包
 ```
 
-##### code  实用记录
+##### 实用命令
 
 ```shell
 #   jboss password加密
@@ -566,34 +566,6 @@ date
 #	find which rsync
 #	sort wc
 #	tee
-
-# list & dict
-
-
-
-
-# Nginx
-        location / {
-            #root   html;
-            #index  index.html index.htm;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_pass http://list1;
-            if ($request_uri ~ ^/qrs-web/(.*)){
-                rewrite ^(.*)$ $1 break;
-                }
-            if ($request_uri ~ ^/NginxStatus/(.*)){
-                rewrite ^(.*)$ $1 break;
-                }
-           rewrite ^(.*)$ /qrs-web$1 break;
-		   #if ( $request_uri !~ ^/dtm-web ){
-           #     rewrite (.*) /dtm-web$1 break;
-           #}
-        }
-#       if ($host = "qrssit.cnsuning.com"){
-#            rewrite ^(.*)$ /qrs-web$1 last;   #500
-#        }
-location =/ {index index.html ; rewrite /(.*) /ssrc-web/ last ;}
 ```
 
 ##### core dump

@@ -1,3 +1,6 @@
+##### AutoClick
+
+```python
 #coding:utf-8
 
 import selenium
@@ -68,3 +71,7 @@ while 1:
         pass
 browser.quit()
 print '退出浏览器'
+```
+
+
+
