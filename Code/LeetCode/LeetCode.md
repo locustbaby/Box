@@ -9,13 +9,16 @@ class Solution:
         :type nums: List[int]
         :rtype: int
         """  
-        # set(nums)
-        i=0
-        while i < len(nums)-1:
-            if nums[i] == nums[i+1]:
-                nums.remove(nums[i])
-            else:
-                i=i+1
+        if not nums:
+            return 0
+
+        chage = 0
+        for i in range(1, len(nums)):
+            if nums[i] != nums[chage]:
+                chage = chage + 1
+                nums[chage] = nums[i]
+                
+        return chage + 1
 ```
 
 > 买卖股票的最佳时机
@@ -27,23 +30,11 @@ class Solution:
         :type prices: List[int]
         :rtype: int
         """
-        i=0			# list index
-        flag=0		# box state
-        now=0		# now sum
-        SUM=0		# SUM
-        for i in range(0,len(prices)-1):
-            if flag==0 and prices[i]<prices[i+1]:
-                now=now-prices[i]
-                flag=1
-
-            elif flag==1 and prices[i]>prices[i+1]:
-                sale=prices[i]
-                SUM=now=now+prices[i]
-                flag=0
-            else:
-                continue    
-        if flag == 1:SUM=now+prices[-1]
-        return SUM
+        ans = 0
+        for i in range(1, len(prices)):
+            if prices[i] > prices[i - 1]:
+                ans += prices[i] - prices[i - 1]
+        return ans
 ```
 
 > 两数之和	（950ms）
@@ -62,5 +53,23 @@ class Solution:
                 break
             else:
                 continue
+```
+
+> 旋转数组
+
+```python
+class Solution:
+    def rotate(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        #nap = k%len(nums)
+        #for i in range(nap):
+        #    x=nums.pop()
+        #    nums.insert(0,x)
+        a = k%len(nums)
+        nums[:] = nums[-a:]+nums[:-a]
 ```
 
