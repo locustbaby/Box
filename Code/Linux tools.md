@@ -55,6 +55,13 @@ service:host(s) [:action]
 ALL:ALL EXCEPT ip
 ```
 
+##### sshd
+
+```shell
+sshd -t -f /etc/ssh/sshd_config
+ssh -v host # 查看被搁置原因
+```
+
 ##### pam认证
 
 ```shel

@@ -1,5 +1,15 @@
 #### Devops PLAN
 
+> HTTP & TCP
+
+```shell
+#	HTTTP & HTTPS
+https 握手
+#	TCP
+```
+
+
+
 > PY并发
 
 ```shell
@@ -60,7 +70,9 @@ twisted
 > 算法数据结构
 
 ```shell
-网易公开课
+C语言描述
+C++
+网易公开课 -> （浙大）数据结构
 LeetCode
 ```
 
@@ -71,11 +83,11 @@ urllib
 
 requests
 
-beautifulsoap
+BeautifulSoap
 
 Xpath
 
-scrapy
+Scrapy
 
 selenium
 
@@ -88,7 +100,7 @@ phamtjs
 > PY自动化测试
 
 ```shell
-# selenium+phantomjs
+# selenium + phantomjs
 ```
 
 

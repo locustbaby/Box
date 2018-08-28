@@ -1,6 +1,6 @@
 ##### LeetCode by PY3
 
-> 排序数组中删除重复项
+> 1、排序数组中删除重复项
 
 ```python
 class Solution:
@@ -19,7 +19,7 @@ class Solution:
         return chage + 1
 ```
 
-> 买卖股票的最佳时机
+> 2、买卖股票的最佳时机
 
 ```python
 class Solution:
@@ -35,7 +35,7 @@ class Solution:
         return ans
 ```
 
-> 两数之和	（950ms）
+> 3、两数之和	（950ms）
 
 ```python
 class Solution:	
@@ -53,7 +53,7 @@ class Solution:
                 continue
 ```
 
-> 旋转数组
+> 4、旋转数组
 
 ```python
 class Solution:
@@ -67,7 +67,7 @@ class Solution:
         nums[:] = nums[-a:]+nums[:-a]
 ```
 
-> 存在重复
+> 5、存在重复
 
 ```python
 class Solution:
@@ -82,7 +82,7 @@ class Solution:
             return True
 ```
 
-> 只出现一次的数字
+> 6、只出现一次的数字
 
 ```python
 class Solution:
