@@ -11,13 +11,11 @@ class Solution:
         """  
         if not nums:
             return 0
-
         chage = 0
         for i in range(1, len(nums)):
             if nums[i] != nums[chage]:
                 chage = chage + 1
-                nums[chage] = nums[i]
-                
+                nums[chage] = nums[i]        
         return chage + 1
 ```
 
@@ -65,11 +63,37 @@ class Solution:
         :type k: int
         :rtype: void Do not return anything, modify nums in-place instead.
         """
-        #nap = k%len(nums)
-        #for i in range(nap):
-        #    x=nums.pop()
-        #    nums.insert(0,x)
         a = k%len(nums)
         nums[:] = nums[-a:]+nums[:-a]
+```
+
+> 存在重复
+
+```python
+class Solution:
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        if len(set(nums)) == len(nums):
+            return False
+        else:
+            return True
+```
+
+> 只出现一次的数字
+
+```python
+class Solution:
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        num = 0
+        for i in nums:
+            num ^= i
+        return num
 ```
 
