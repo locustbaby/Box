@@ -88,8 +88,6 @@ Content-Language
 502 Bad Gateway(未给出正确的响应，但是有响应)
 503	（认为后端fail，limit_req）
 504	后端服务无反应
-
-
 ```
 
 ##### HTTPS

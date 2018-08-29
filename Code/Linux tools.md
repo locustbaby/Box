@@ -55,6 +55,24 @@ service:host(s) [:action]
 ALL:ALL EXCEPT ip
 ```
 
+##### perf
+
+```shell
+
+```
+
+##### strace
+
+```shell
+
+```
+
+##### gdb
+
+```shell
+
+```
+
 ##### sshd
 
 ```shell
@@ -131,6 +149,12 @@ Ntop MRTG Ntopng iperf
 
 ```
 
+##### sysstat
+
+```shell
+#	https://www.cnblogs.com/digdeep/p/4878138.html
+```
+
 ##### stat
 
 ```shell
@@ -147,5 +171,44 @@ SNMP v1是SNMP协议的最初版本，不过依然是众多厂家实现SNMP基�
 SNMP v2通常被指是基于community的SNMP V2。Community实质上就是密码。
 SNMP v3 是最新版本的SNMP。它对网络管理最大的贡献在于其安全性。增加了对认证和密文传输的支持。
 SNMP为管理员提供了一个网管平台(NMS)，又称为【管理站】，负责网管命令的发出、数据存储、及数据分析。【被】监管的设备上运行一个SNMP代理(Agent))，代理实现设备与管理站的SNMP通信。
+```
+
+##### rpm
+
+```shell
+#	安装rpm包
+方法一：
+rpm -i your-package.src.rpm
+cd /usr/src/redhat/SPECS
+rpmbuild -bp your-package.specs             #一个和你的软件包同名的specs文件
+cd /usr/src/redhat/BUILD/your-package/      #一个和你的软件包同名的目录
+./configure                                 #这一步和编译普通的源码软件一样，可以加上参数
+make
+make install
+
+方法二：
+rpm -i you-package.src.rpm
+cd /usr/src/redhat/SPECS
+前两步和方法一相同
+rpmbuild -bb your-package.specs       #一个和你的软件包同名的specs文件
+这时在/usr/src/redhat/RPM/i386/（根据具体包的不同，也可能是i686,noarch等等）在这个目录下，有一个新的rpm包，这个是编译好的二进制文件。
+执行rpm -i new-package.rpm即可安装完成。
+
+rpm -qa
+rpm -ivh	#--force
+rpm -e
+rpm2cpio xxx.rpm | cpio -idmv
+rpm -qf `which 程序名`    #返回软件包的全名
+rpm -qif `which 程序名`   #返回软件包的有关信息
+rpm -qlf `which 程序名`   #返回软件包的文件列表
+```
+
+##### which whereis locate find
+
+```shell
+which	#PATH
+whereis	#文件索引
+locate	#updatedb (匹配)
+find	#直接搜硬盘
 ```
 

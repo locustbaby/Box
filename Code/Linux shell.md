@@ -8,21 +8,21 @@ bash
 	-s : < 标准输入
 ```
 
-##### 变量子串	
+##### 变量子串  $string	
 
 | 编号 | 表达式                       | 说明                                        |
 | ---- | ---------------------------- | ------------------------------------------- |
 | 1    | ${#string}                   | 返回$string的长度                           |
 | 2    | ${string:position}           | 在$string中，从位置position之后开始提取子串 |
 | 3    | ${string:position:length}    | 在length的子串                              |
-| 4    | ${string#substring}          | 从变量substring子串                         |
-| 5    | ${string##substring}         | 从变量substring子串                         |
-| 6    | ${string%substring}          | 从变量substring子串                         |
-| 7    | ${string%%substring}         | 从变量substring子串                         |
-| 8    | ${string/substring/replace}  | 使用substring                               |
-| 9    | ${string//substring/replace} | 使用substring                               |
-| 10   | ${string/#substring/replace} | 如果substring,就用substring                 |
-| 11   | ${string/%substring/replace} | 如果substring,就用substring                 |
+| 4    | ${string#substring}          | 从变量string开头(通配)匹配 最短删除（左右） |
+| 5    | ${string##substring}         | 从变量string开头(通配)匹配 最长删除（左右） |
+| 6    | ${string%substring}          | 从变量结尾最短匹配删除substring子串（左右） |
+| 7    | ${string%%substring}         | 从变量结尾最长匹配删除substring子串（左右） |
+| 8    | ${string/substring/replace}  | 替换第一个匹配                              |
+| 9    | ${string//substring/replace} | 全替换                                      |
+| 10   | ${string/#substring/replace} | 开头匹配                                    |
+| 11   | ${string/%substring/replace} | 结尾匹配                                    |
 
 ##### ps
 
@@ -66,22 +66,58 @@ jbossuse pts/0    192.168.242.9    09:43    0.00s  0.07s  0.00s w
 find / -type f -perm -2 -o -perm -20 |xargs ls -al
 ```
 
+##### sar
+
+```shell
+#	https://www.cnblogs.com/howhy/p/6396437.html
+sar -u 1 3	#cpu 1s 3次
+sar -p 1 3 #每个CPU
+sar -q #查看平均负载：
+-o #output 二进制	#-f 读取
+sar -r #内存
+sar -W #查看系统swap分区的统计信息
+sar -b #查看I/O和传递速率的统计信息
+sar -d #磁盘使用详情统计
+sar -v #进程、inode、文件和锁表状态
+sar -n #统计网络信息
+#sar -n选项使用6个不同的开关：DEV，EDEV，NFS，NFSD，SOCK，IP，EIP，ICMP，EICMP，TCP，ETCP，UDP，SOCK6，IP6，EIP6，ICMP6，EICMP6和UDP6 ，DEV显示网络接口信息，EDEV显示关于网络错误的统计数据，NFS统计活动的NFS客户端的信息，NFSD统计NFS服务器的信息，SOCK显示套接字信息，ALL显示所有5个开关。它们可以单独或者一起使用。
+```
+
+##### sort
+
+```shell
+-b	# 忽略每行前的空格
+-u 	#去重
+-t	#指定分隔符
+-r	#反序
+-n	#按数值大小
+#	-n是按照数字大小排序，-r是以相反顺序，-k是指定需要爱排序的栏位，-t指定栏位分隔符为冒号
+```
+
 ##### top
 
 ```shell
-f或者F :从当前显示中添加或者删除项目。
-o或者O  :改变显示项目的顺序。
+f或者F : 从当前显示中添加或者删除列。
+o或者O : 改变显示项目的顺序。 
 s:刷新时间间隔（s）
 1: 显示多核cpu
 l: 切换显示平均负载和启动时间信息。即显示影藏第一行
-m： 切换显示内存信息。即显示影藏内存行
-t ： 切换显示进程和CPU状态信息。即显示影藏CPU行
-c：  切换显示命令名称和完整命令行。 显示完整的命令。 这个功能很有用。
-M ： 根据驻留内存大小进行排序。
+m：切换显示内存信息。即显示影响内存行
+t ：切换显示进程和CPU状态信息。即显示影响CPU行
+c：切换显示命令名称和完整命令行。 显示完整的命令。 这个功能很有用。
+M ：根据驻留内存大小进行排序。
 P：根据CPU使用百分比大小进行排序。
 T： 根据时间/累计时间进行排序。
-W：  将当前设置写入~/.toprc文件中。这是写top配置文件的推荐方法。
+W： 将当前设置写入~/.toprc文件中。这是写top配置文件的推荐方法。
+b：打开高亮
+x：排序列 shift + > <	切换行
 查看某一进程的所有线程 top -H -p <pid>
+
+#	优先级
+https://blog.csdn.net/longdel/article/details/7317511
+PRI 	#越小越高
+nice	#改变进程占用cpu百分比 root可set负值
+PRI(new)=PRI(old)+nice
 ```
 
 ##### awk
@@ -93,7 +129,7 @@ awk [-F ERE] -f progfile ...  [-v assignment] ...[argument ...]
 awk [-F|-f|-v] 'BEGIN{} //{command1; command2} END{}' file
 INPUT ：默认 \n 可以用内置变量RS更改
 FIELD ：-F ERE 或者 内置变量FS更改	awk中可以用$0,$1,$2...(同shell 命令行参数)
-
+内部变量：NR 行号 NF 行数
 参数：
 	-F ERE ：指定分隔符
 		echo "1:2:3" | awk -F: '{print $1 " and " $2 " and " $3}'
@@ -104,7 +140,12 @@ FIELD ：-F ERE 或者 内置变量FS更改	awk中可以用$0,$1,$2...(同shell 
 		1
 	argument ：输入文件 和 变量赋值
 #	e.g.
-
+awk 'NR==10' file.txt
+#	转置文件
+awk '{ for(i=1;i<=NF;i++){ if(NR==1){ arr[i]=$i; }else{ arr[i]=arr[i]" "$i; } } } END{ for(i=1;i<=NF;i++){ print arr[i]; } }'  file.txt	
+#	统计词频
+sed 's/\ /\n/g' words.txt|egrep -v '^$'|sort|uniq -c|sort -r|awk '{print $2,$1}'
+awk '{ for(i=1;i<=NF;i++) {print $i}}' words.txt |sort|uniq -c|sort -n -r -k 1 -t ' '|awk -F ' ' {'print $2" "$1'}
 ```
 ##### date
 
@@ -233,6 +274,20 @@ ss -t -a # TCP
 	-l :
 	-i :
 ```
+
+#####	time
+
+```shell
+#	st_atime           
+Time when file data was last accessed. Changed by  the           following   functions:   creat(),   mknod(),   pipe(),           utime(2), and read(2).
+#	st_mtime           
+Time when data was last modified. Changed by the  fol           lowing  functions:  creat(), mknod(), pipe(), utime(),           and write(2).
+#	st_ctime           
+Time when file status was last changed. Changed by the           following   functions:   chmod(),   chown(),  creat(),           link(2),  mknod(),  pipe(),  unlink(2),  utime(),  and           write().
+
+```
+
+
 
 ##### chage
 

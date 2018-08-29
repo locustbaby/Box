@@ -1,3 +1,9 @@
+##### 读取
+
+```shell
+read -t 5 -p "please input"	#timeout
+```
+
 ##### 顺序数字
 
 ```shell
