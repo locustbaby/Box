@@ -20,6 +20,12 @@ ulimit -l unlimited
 # 远程启动会读不到本地变量
 ```
 
+> 调优
+
+```shell
+https://www.cnblogs.com/hseagle/p/6015245.html
+```
+
 > 配置样例
 
 ```shell
@@ -424,6 +430,5 @@ discovery.zen.ping.unicast.hosts: ["10.100.7.229", "10.100.7.230", "10.100.7.231
 threadpool:
     bulk:
         queue_size: 1000
-
 ```
 
