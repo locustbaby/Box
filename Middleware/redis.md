@@ -88,6 +88,12 @@ INFO commandstats    查看命令执行了多少次，执行命令所耗费的�
 slowlog len ; slowlog get 10
 ```
 
+###### REDIS 复制
+
+```shell
+#	https://www.cnblogs.com/lukexwang/p/4711977.html
+```
+
 ###### REDIS补充
 
 ```shell
@@ -284,5 +290,55 @@ net.ipv4.tcp_fin_timeout = 30
 net.ipv4.tcp_keepalive_time = 300
 net.ipv4.tcp_max_syn_backlog = 511
 net.core.somaxconn = 511
+```
+
+##### redis.conf
+
+```shell
+daemonize yes
+pidfile "/opt/logs/redis.pid"
+port 6379
+tcp-backlog 511
+timeout 0
+tcp-keepalive 0
+loglevel notice
+logfile "/opt/logs/redislog.log"
+databases 16
+stop-writes-on-bgsave-error no
+rdbcompression yes
+rdbchecksum yes
+dbfilename "dump.rdb"
+dir "/opt/logs"
+slave-serve-stale-data yes
+slave-read-only yes
+repl-disable-tcp-nodelay no
+slave-priority 100
+rename-command config suningconfig
+rename-command flushall suningflushall
+maxmemory-policy noeviction
+appendonly no
+appendfilename "appendonly.aof"
+appendfsync everysec
+no-appendfsync-on-rewrite no
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+lua-time-limit 5000
+slowlog-log-slower-than 10000
+slowlog-max-len 128
+notify-keyspace-events ""
+hash-max-ziplist-entries 512
+hash-max-ziplist-value 64
+list-max-ziplist-entries 512
+list-max-ziplist-value 64
+set-max-intset-entries 512
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+activerehashing yes
+client-output-buffer-limit normal 0 0 0
+client-output-buffer-limit slave 256mb 64mb 60
+client-output-buffer-limit pubsub 32mb 8mb 60
+hz 10
+aof-rewrite-incremental-fsync yes
+maxmemory 2410404249
 ```
 

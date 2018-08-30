@@ -73,6 +73,7 @@ ansible webservers:&nginx #并集
 ##### playbook
 
 ```shell
+#	/etc/ansible/*.yml
 Ad-Hoc # 临时命令
 ansible atlanta -a -u username --sudo "/sbin/reboot/" -f 10 (10个子进程)
 ansible webservers -m file -a "dest=/path/to/c mode=755 owner=maehaan group=maehaan state=directory" # 创建目录
@@ -81,6 +82,28 @@ ansible # 包管理
 # git模块
 # service模块
 ansible all -B 3600 -P 0 -a "code" # -B 秒 -P 0 不获取状态（每0分钟获取状态）
+```
 
+> Playbook.yaml
+
+```shell
+---
+- hosts: webservers
+  vars:
+    http_port: 80
+    max_clients: 200
+  remote_user: root
+  tasks:
+  - name: ensure apache is at the latest version
+    yum: pkg=httpd state=latest
+  - name: write the apache config file
+    template: src=/srv/httpd.j2 dest=/etc/httpd.conf
+    notify:
+    - restart apache
+  - name: ensure apache is running
+    service: name=httpd state=started
+  handlers:
+    - name: restart apache
+      service: name=httpd state=restarted
 ```
 
