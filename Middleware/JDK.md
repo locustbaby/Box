@@ -1,5 +1,37 @@
 ##### JDK
 
+> JVM原理讲解和调优
+
+```shell
+#	https://blog.csdn.net/hjxgood/article/details/53896229
+#	讲解
+JVM栈	-> 堆
+		-> 栈
+		-> 本地方法栈
+		-> 方法区
+#	堆
+new	创建对象的内存存放于堆中
+堆	->新生代(Young)		->Eden
+						  ->Survivor	-> From Space
+									   -> To Space
+	 ->旧生代(Old)			->Tenured Space
+	 ->持久代(Permanent)	->Permanent Space
+#	垃圾回收
+基本回收策略	-> 引用计数
+			-> 标记清除
+			-> 复制
+			-> 标记-整理
+#	JVM对新生代和旧生代采用不同的垃圾回收策略
+新生代GC
+执行机制	-> 串行GC		 -XX:+UseSerialGC
+		   -> 并行回收GC   -XX:+UseParallelGC -XX:ParallelGCThreads=4来指定线程数
+		   -> 并行GC	与旧生代的并发GC配合使用
+#	调优
+
+```
+
+> 堆栈查看
+
 ```shell
 jmap -heap pid
 jmap -dump:format=b,file=temp_heapdump.hprof pid
