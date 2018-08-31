@@ -1,11 +1,13 @@
-#### Devops PLAN
+#### Dev
 
-> HTTP & TCP
+> Ddevops Tools
 
 ```shell
-#	HTTTP & HTTPS
-https 握手
-#	TCP
+#	Ansible
+
+#	gitlab
+
+#	jenkins
 ```
 
 > PY并发
@@ -72,6 +74,7 @@ https://cn.vuejs.org/
 > 算法数据结构
 
 ```shell
+C语言基础
 C语言描述
 C++
 网易公开课 -> （浙大）数据结构
@@ -105,5 +108,57 @@ phamtjs
 # selenium + phantomjs
 ```
 
+##### Ops
 
+> 协议
+
+```shell
+#	HTTTP & HTTPS
+https 握手
+#	TCP
+
+#	DNS
+
+#	CDN
+Squid Varnish
+```
+
+> 中间件
+
+```shell
+#	JVM
+Jboss Tomcat
+#	web
+PHP Nginx Apache
+#	Lvs+keepalive
+
+#	Pxe+Keepalived
+
+#	ELK
+ES
+#	ZooKeeper
+
+#	kafka
+
+#	mq
+avtivemq	rabbitmq	
+
+```
+
+> SQL
+
+```shell
+#	Nosql
+Redis
+#	
+mysql oracle pgsql
+#
+
+```
+
+> 网络
+
+```shell
+
+```
 

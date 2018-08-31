@@ -103,3 +103,10 @@ Content-Language
 https://ye11ow.gitbooks.io/http2-explained/content/
 ```
 
+##### session cookie token
+
+```shell
+#	https://www.cnblogs.com/wxinyu/p/9154178.html
+
+```
+

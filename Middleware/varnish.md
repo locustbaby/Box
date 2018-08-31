@@ -1,6 +1,15 @@
 ##### Varnish
 
+> varnish
+
+```shell
+#	https://mp.weixin.qq.com/s/PISCksSpbYevmDxj6S8kmw
 ```
+
+##### 配置
+
+```shell
+#	varnish.vcl
 include "host.vcl";
 acl purge {
 	"localhost";
