@@ -93,6 +93,8 @@ Content-Language
 ##### HTTPS
 
 ```shell
+#	https://blog.csdn.net/hherima/article/details/52469674
+#	https://blog.csdn.net/anningzhu/article/details/77517432	SSL/TLS区别
 公开密钥加密（非对称密钥加密）建立连接传送共享密钥
 共享密钥加密（对称密钥加密）传输数据
 ```
