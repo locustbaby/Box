@@ -221,12 +221,14 @@ tar --exclude scf/service -zcvf scf.tar.gz scf/* 排除
 -x或--unix：此参数的效果和指定"-A unix"参数相同；
 --ip或--inet：此参数的效果和指定"-A inet"参数相同。
 **IP和TCP分析
-查看连接某服务端口最多的的IP地址：
+#	查看连接某服务端口最多的的IP地址：
 netstat -ntu | grep :80 | awk '{print $5}' | cut -d: -f1 | awk '{++ip[$1]} END {for(i in ip) print ip[i],"\t",i}' | sort -nr
-TCP各种状态列表：
+#	TCP各种状态列表：
 netstat -nt | grep -e 127.0.0.1 -e 0.0.0.0 -e ::: -v | awk '/^tcp/ {++state[$NF]} END {for(i in state) print i,"\t",state[i]}'
-** 查看phpcgi进程数，如果接近预设值，说明不够用，需要增加：
+#	查看phpcgi 进程 数，如果接近预设值，说明不够用，需要增加：
 netstat -anpo | grep "php-cgi" | wc -l
+#	查看 端口 进程
+netstat -anp
 ```
 
 ##### ss
@@ -249,6 +251,8 @@ netstat -anpo | grep "php-cgi" | wc -l
 -w：仅显示RAW套接字；
 -x：仅显示UNIX域套接字。
 ss -t -a # TCP
+#	查看端口进程占用
+ss
 ```
 
 ##### ip
@@ -273,6 +277,7 @@ ss -t -a # TCP
 	-a ： 与运算 （默认或）
 	-l :
 	-i :
+#	查看端口进程占用
 ```
 
 #####	time
