@@ -147,6 +147,13 @@ awk '{ for(i=1;i<=NF;i++){ if(NR==1){ arr[i]=$i; }else{ arr[i]=arr[i]" "$i; } } 
 sed 's/\ /\n/g' words.txt|egrep -v '^$'|sort|uniq -c|sort -r|awk '{print $2,$1}'
 awk '{ for(i=1;i<=NF;i++) {print $i}}' words.txt |sort|uniq -c|sort -n -r -k 1 -t ' '|awk -F ' ' {'print $2" "$1'}
 ```
+##### grep
+
+```shell
+#	https://blog.csdn.net/hzjkb24/article/details/47104809	grep比较异同
+#	https://blog.csdn.net/wzhwho/article/details/6169603
+```
+
 ##### date
 
 ```shell
@@ -291,8 +298,6 @@ Time when data was last modified. Changed by the  fol           lowing  function
 Time when file status was last changed. Changed by the           following   functions:   chmod(),   chown(),  creat(),           link(2),  mknod(),  pipe(),  unlink(2),  utime(),  and           write().
 
 ```
-
-
 
 ##### chage
 
