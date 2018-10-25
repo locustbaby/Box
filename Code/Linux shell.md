@@ -165,6 +165,7 @@ date -d @1361542596 +"%Y-%m-%d %H:%M:%S"
 ##### curl
 
 ```shell
+-s 不显示 %等进度
 -a append
 -A "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36"
 -x 10.19.110.55:8080 https://artifacts.elastic.co/downloads/logstash/logstash-6.1.3.tar.gz -O
