@@ -152,6 +152,12 @@ awk '{ for(i=1;i<=NF;i++) {print $i}}' words.txt |sort|uniq -c|sort -n -r -k 1 -
 ```shell
 #	https://blog.csdn.net/hzjkb24/article/details/47104809	grep比较异同
 #	https://blog.csdn.net/wzhwho/article/details/6169603
+-niR 行号
+-wvf 在后不在前
+-BA num 前后
+-E 正则（EREs）
+-e 多项
+-o 分片
 ```
 
 ##### date
