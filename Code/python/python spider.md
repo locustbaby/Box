@@ -5,6 +5,7 @@
 ##### requests
 
 ```python
+requests.get(url, params=data, headers=headers, cookies=cookies)
 requests.post(url, data=data, headers=headers, cookies=cookies)
 ```
 

@@ -4,13 +4,13 @@
 
 #### Linux
 
-> [Linux 常用命令](./Code/Linux%20shell.md)
+> [Linux 常用命令](./Code/Shell/Linux%20shell.md)
 >
-> [Linux 常用工具](./Code/Linux%20tools.md)
+> [Linux 常用工具](./Code/Shell/Linux%20tools.md)
 >
-> [Linux 安全相关](./Code/Linux%20security.md)
+> [Linux 安全相关](./Code/Shell/Linux%20security.md)
 >
-> [Linux Scripts](./Code/Linux%20scripts.md)
+> [Linux Scripts](./Code/Shell/Linux%20scripts.md)
 
 #### python
 

@@ -216,3 +216,30 @@ locate	#updatedb (匹配)
 find	#直接搜硬盘
 ```
 
+##### dd
+
+```shell
+# 打满cpu
+for i in `seq 1 $(cat /proc/cpuinfo |grep "physical id" |wc -l)`; do dd if=/dev/zero of=/dev/null & done	
+```
+
+##### fork炸弹
+
+```shell
+:() { :|:& };:
+# https://www.jianshu.com/p/9e508888e2d9
+```
+
+##### 锁内存
+
+```shell
+#!/bin/bash  
+mkdir /tmp/memory  
+mount -t tmpfs -o size=1024M tmpfs /tmp/memory  
+dd if=/dev/zero of=/tmp/memory/block  
+sleep 3600  
+rm /tmp/memory/block  
+umount /tmp/memory  
+rmdir /tmp/memory  
+```
+

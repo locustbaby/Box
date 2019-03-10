@@ -208,3 +208,46 @@ https://mp.weixin.qq.com/s/jKIGcsaMe5FtOxUs6x5WXw
 # cmd
 ```
 
+##### re
+
+```python
+r/R 字符串前：非转义的原始字符串
+#	re
+https://docs.python.org/3/library/re.html
+import re
+re.sub(r'.baidu.com', '', addr[0])
+request_compile = (r'<input type="hidden" name="lt".*?value="(.*?)"')
+lt_value = re.search(request_compile, res.text).group(1)
+```
+
+##### getopt
+
+```python
+import getopt
+try:
+    opts, args = getopt.getopt(sys.argv[1:], "c:f:i:t:n:u:h", ["help"])
+except getopt.GetoptError:
+    print("wrong!!")
+for opt, arg in opts:
+    if opt in ('-h', '--help'):
+        Usage()
+    elif opt in ('-c'):
+        Func = arg
+    elif opt in ('-f'):
+        HostsFile = arg
+    elif opt in ('-i'):
+        Host = arg
+    elif opt in ('-t'):
+        Tag = arg
+    elif opt in ('-n'):
+        Num = arg
+    elif opt in ('-C'):
+        Target_Cluster = arg
+    elif opt in ('-P'):
+        Target_Pool = arg
+    elif opt in ('-r'):
+        reason = arg
+    else:
+        print('no such option: {}'.format(opt))
+```
+

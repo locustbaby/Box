@@ -47,16 +47,22 @@ def long_time_task(name):
     time.sleep(random.random() * 3)
     end = time.time()
     print('Task %s runs %0.2f seconds.' % (name, (end - start)))
+    return "AAAA"
 
 if __name__=='__main__':
+    def call_print(AAA):
+        print(AAA)
+   
     print('Parent process %s.' % os.getpid())
     p = Pool(4)	# 进程数 默认核数
     for i in range(5):
-        p.apply_async(long_time_task, args=(i,))
+        p.apply_async(long_time_task, args=(i,),callback=call_print)
     print('Waiting for all subprocesses done...')
     p.close()
     p.join()
     print('All subprocesses done.')
+    
+
 ```
 
 > subprocess
@@ -65,10 +71,14 @@ if __name__=='__main__':
 import subprocess
 
 print('$ nslookup')
-p = subprocess.Popen(['nslookup'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+p = subprocess.Popen(['nslookup'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE) #空格-> ,
 output, err = p.communicate(b'set q=mx\npython.org\nexit\n')	#子进程输入
 print(output.decode('utf-8'))
 print('Exit code:', p.returncode)
+
+host_state = subprocess.Popen(['ping', '-qc', '4', self.Ip],stdout=subprocess.PIPE)
+o = host_state.communicate()
+loss=re.search('\d+%',o[0]).group()
 ```
 
 > Queue	
