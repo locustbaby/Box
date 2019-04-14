@@ -399,6 +399,12 @@ nc -l 1234 | tar xzvf -
 tar czvf – nginx-0.6.34 | nc 192.168.228.222 1234
 ```
 
+##### du
+
+```shell
+du -sh *
+```
+
 ##### 基础
 
 ```shell

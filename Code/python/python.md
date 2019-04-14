@@ -214,6 +214,8 @@ https://mp.weixin.qq.com/s/jKIGcsaMe5FtOxUs6x5WXw
 r/R 字符串前：非转义的原始字符串
 #	re
 https://docs.python.org/3/library/re.html
+http://www.runoob.com/python/python-reg-expressions.html
+    
 import re
 re.sub(r'.baidu.com', '', addr[0])
 request_compile = (r'<input type="hidden" name="lt".*?value="(.*?)"')
