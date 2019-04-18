@@ -153,7 +153,7 @@ class muffledcalculator：
             print 'something broken'
         else:
             print 'runs ok'
-        finally：
+        finally：#都会执行
         	print 'cleaning up'
             del x
 ```
