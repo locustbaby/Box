@@ -51,7 +51,7 @@ mkvirtualenv --python=/path/to/python env_name
 | 2.0            | 3.4 3.5 3.6         |
 | 2.1            | 3.5 3.6 3.7         |
 
-##### Tornado
+##### [Tornado](<https://tornado-zh.readthedocs.io/zh/latest/index.html>)
 
 ```python
 import os
@@ -92,10 +92,39 @@ if __name__ == '__main__':
     tornado.ioloop.IOLoop.instance().start()
 ```
 
-##### Flask
+##### [Flask](<http://docs.jinkan.org/docs/flask/index.html>)
 
 ```python
-import flask
+#!/bin/env python
+# -*- coding:utf-8 -*-
+from flask import Flask,render_template,request,redirect,session
+import json
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return render_template('index.html')
+
+@app.route('/input.html',methods=['POST','GET'])
+def input():
+    if request.method=='POST':
+        testInfo = {}
+        testInfo['name'] = request.form.get('user')
+        testInfo['age'] = '28'
+    return json.dumps(testInfo)
+  
+@app.route('/user/<username>')
+def show_user_profile(username):
+    # show the user profile for that user
+    return 'User %s' % username
+
+@app.route('/post/<int:post_id>') #int float path
+def show_post(post_id):
+    # show the post with the given id, the id is an integer
+    return 'Post %d' % post_id
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0',port=8080,debug=True)
 ```
 
 

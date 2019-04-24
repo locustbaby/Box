@@ -1,4 +1,4 @@
-#### python
+#### [python](<https://docs.python.org/zh-cn/3/index.html>)
 
 ###### 基本数据类型
 
