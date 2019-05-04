@@ -1,5 +1,16 @@
 #### Vue
 
+##### 参考资料
+
+```markdown
+Vue api: https://cn.vuejs.org/v2/api/index.html
+Vue js:  https://cn.vuejs.org/
+Bootstrap-Vue: https://bootstrap-vue.js.org/
+Axios: https://www.kancloud.cn/yunye/axios/234845
+```
+
+##### Vue jinjia2 冲突
+
 ```html
 # 修改Vue 
 // ES6 模板字符串
@@ -22,3 +33,4 @@ new Vue({
 })
 ```
 
+##### sss

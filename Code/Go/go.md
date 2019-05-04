@@ -104,6 +104,7 @@ func main() {
         fmt.Printf(i,v) //只能打印格式化字符
     }
 }
+
 多维
 func printarray(a [3][2]string) {
     for _, v1 := range a {
@@ -131,6 +132,7 @@ func main() {
     fmt.Printf("\n")
     printarray(b)
 }
+
 切片：
 func main() {
     a := [5]int{76, 77, 78, 79, 80}
