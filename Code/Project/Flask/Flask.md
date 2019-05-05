@@ -3,6 +3,7 @@
 ```python
 #!/bin/env python
 # -*- coding:utf-8 -*-
+import re
 import json
 import flask
 from flask import Flask,render_template,request,redirect,session
@@ -20,9 +21,10 @@ def input():
     if request.method == 'POST':
         testInfo = {}
         testInfo['name'] = request.get_json()['user']
-        print(type(testInfo['name']))
-        testInfo['age'] = '28'
+        #host=re.sub(r'\n','AAA',testInfo['name'])
+        testInfo['age'] = [{ 'isActive': 'false', 'age': '29', 'name': { 'first': 'Dick', 'last': 'Dunlap' }}]
         return json.dumps(testInfo)
+
     elif request.method == 'GET':
         return render_template('input.html')
 
