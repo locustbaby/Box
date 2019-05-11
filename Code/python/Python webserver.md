@@ -92,9 +92,11 @@ if __name__ == '__main__':
     tornado.ioloop.IOLoop.instance().start()
 ```
 
-##### [Flask](<http://docs.jinkan.org/docs/flask/index.html>)
+##### [Flask](<https://dormousehole.readthedocs.io/en/latest/>)
 
 ```python
+##### 官方博客例子： https://github.com/pallets/flask/tree/master/examples/tutorial
+
 #!/bin/env python
 # -*- coding:utf-8 -*-
 from flask import Flask,render_template,request,redirect,session

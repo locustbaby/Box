@@ -34,9 +34,7 @@ def show():
 
 @app.route('/transform/<host>',methods=['GET'])
 def trans(host):
-    theShy=Draven.Nox()
-    theShy.transform(host)
-    return theShy.Hostname
+    return host
 
 @app.route('/rms', methods=['GET','POST'])
 def RMS():
