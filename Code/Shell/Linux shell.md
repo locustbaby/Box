@@ -146,6 +146,9 @@ awk '{ for(i=1;i<=NF;i++){ if(NR==1){ arr[i]=$i; }else{ arr[i]=arr[i]" "$i; } } 
 #	统计词频
 sed 's/\ /\n/g' words.txt|egrep -v '^$'|sort|uniq -c|sort -r|awk '{print $2,$1}'
 awk '{ for(i=1;i<=NF;i++) {print $i}}' words.txt |sort|uniq -c|sort -n -r -k 1 -t ' '|awk -F ' ' {'print $2" "$1'}
+# gsub
+awk '{gsub(/\([0-9]+\)/,NONE);if($3>90||$4>85||$NF<10)print $1, "MountPoint: "$2, " DISK_USED "$3"%" ,"MEM_USED "$4,"CPU_IDLE "$NF,strftime("%Y%m%d%H%M%S")}' result
+result: njjs-sys-hsc05be3431.njjs       0.070000(20190522110615)        26.530000(20190522110615)       9.830000(20190522110615)        96.000000(20190522110615)
 ```
 ##### grep
 
