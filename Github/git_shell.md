@@ -1,3 +1,4 @@
+```shell
 
 #copy from 菜鸟教程 http://www.runoob.com/manual/git-guide/
 #Easy github
@@ -64,4 +65,7 @@ git config color.ui.true
 git config format.pretty oneline
 #interactive
 git add -i
+
+
+```
 

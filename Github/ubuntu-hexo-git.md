@@ -1,3 +1,4 @@
+```shell
 #!/bin/bash
 
 #Ubuntu + Hexo + github by locustbaby
@@ -14,9 +15,9 @@ sudo apt-get install git
 
 #git-ssh config
 git config --global user.name "locustbaby"
-git config --global user.email "1415182877@qq.com"
+git config --global user.email "email"
 
-ssh-keygen -t rsa -C "1415182877@qq.com"
+ssh-keygen -t rsa -C "email"
 #ssh-agent
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
@@ -77,5 +78,5 @@ git push origin hexo
 
 # 依次执行git add .、git commit -m "..."、git push origin hexo指令将改动推送到GitHub（此时当前分支应为hexo）；然后再执行hexo g -d发布网站到master分支上。
 
-
+```
 

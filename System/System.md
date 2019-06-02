@@ -1,3 +1,4 @@
 #  System
 
-![55462379834](..\pic\sys_hard.png)
+<img src="..\pic\sys_hard.png">
+
