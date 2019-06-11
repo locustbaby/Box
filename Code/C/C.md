@@ -120,12 +120,17 @@ void copy(void)
     ++i;
 }
 
+```
 
+##### C  now start
 
-
-
-
-
-
+```c
+/* 变量名： 数字字母下划线 */
+/* 数据类型及长度 */
+char /* signed unsigned */
+int  /* 默认整数自然长度 short（16位） long（32位）（int 可省略）|signed unsigned */
+float
+double
+/* 常量： 字符常量 => 整数 */
 ```
 
