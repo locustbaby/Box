@@ -266,7 +266,14 @@ char pattern[] = "ould"; /* 等价于：char pattern[] = { 'o','u','l','d','\0' 
 ##### 指针与数组
 
 ```c
-p = &c
+p = &c /* &取一个对象的地址;*间接寻址,作用于指针时,取指针指向的对象 */
+void swap(int *px, int *py)
+{
+  int temp;
+  temp = *px;
+  *px = *py;
+  *py = temp;
+}
 ```
 
 ##### 结构
