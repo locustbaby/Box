@@ -273,6 +273,19 @@ void swap(int *px, int *py)
   temp = *px;
   *px = *py;
   *py = temp;
+  /* 指针与数组 */
+  int a[10];
+  int *pa;
+  pa = &a[0];
+  x = *pa; /* x = a[0] ; *(pa+i) = a[i] */
+}
+/* strlen */
+int strlen(char *s)
+{
+  int n;
+  for (n=0; *s != '\0'; s++)
+    n++;
+  return n;
 }
 ```
 
