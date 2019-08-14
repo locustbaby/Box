@@ -408,6 +408,16 @@ tar czvf – nginx-0.6.34 | nc 192.168.228.222 1234
 du -sh *
 ```
 
+##### mail
+
+```shell
+export LANG="en_US.UTF-8" #mail 避免生成ATT文件
+# mail by file
+mail -s "Hello from linuxde.net by shell" admin@linuxde.net <{filename}
+# mail by pipe
+echo "hello,this is the content of mail.welcome to www.linuxde.net" | mail -s "Hello from linuxde.net by pipe" admin@linuxde.net
+```
+
 ##### 基础
 
 ```shell
