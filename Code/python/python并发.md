@@ -38,6 +38,7 @@ if __name__=='__main__':
 > Pool
 
 ```python
+# func 不能为类函数
 from multiprocessing import Pool
 import os, time, random
 
@@ -62,7 +63,13 @@ if __name__=='__main__':
     p.join()
     print('All subprocesses done.')
     
+```
 
+> ThreadPool
+
+```python
+from multiprocessing.pool import ThreadPool as Pool
+使用与Pool相同；py > 2.7.5
 ```
 
 > subprocess

@@ -418,6 +418,13 @@ mail -s "Hello from linuxde.net by shell" admin@linuxde.net <{filename}
 echo "hello,this is the content of mail.welcome to www.linuxde.net" | mail -s "Hello from linuxde.net by pipe" admin@linuxde.net
 ```
 
+##### jq
+
+```shell
+# https://www.ibm.com/developerworks/cn/linux/1612_chengg_jq/index.html
+jq -r '.[]|select(.>2)'
+```
+
 ##### 基础
 
 ```shell
