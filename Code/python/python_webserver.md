@@ -141,5 +141,12 @@ if __name__ == '__main__':
 
 ```
 
+##### json
+
+```python
+json.loads() 是将字符串传化为字典
+json.dumps() 是将字典转化为字符串
+```
+
 
 

@@ -5,11 +5,17 @@
 ##### requests
 
 ```python
-requests.get(url, params=data, headers=headers, cookies=cookies)
+requests.get(url, params=params, data=data, headers=headers, cookies=cookies)
 requests.post(url, data=data, headers=headers, cookies=cookies)
 ```
 
-beautifulsoap
+##### beautifulsoup
+
+```python
+soup = BeautifulSoup(res.text, 'lxml')
+tables = soup.findAll('tr')
+resource = [[re.findall(r'\d+', i.findAll('td')[l_index].getText()) for i in tables[1:]] for l_index in [4, 5, 6, 8, 10, 11, 12]]
+```
 
 Xpath
 
