@@ -74,7 +74,7 @@ ALL:ALL EXCEPT ip
 ##### gdb
 
 ```shell
-
+https://www.linuxblogs.cn/articles/15041200.html
 ```
 
 ##### sshd

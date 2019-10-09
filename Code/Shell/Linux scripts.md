@@ -1,3 +1,9 @@
+##### Bash最佳实践
+
+```shell
+https://segmentfault.com/a/1190000018110219
+```
+
 ##### 读取
 
 ```shell

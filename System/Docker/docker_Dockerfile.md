@@ -1,7 +1,5 @@
 # Dockerfile
 ```shell
-#!/bin/bash
+#!/bin/b
 ```
-{% codeblock [lang:language] [title] [url] [link text] %}
-code snippet
-{% endcodeblock %}
+
