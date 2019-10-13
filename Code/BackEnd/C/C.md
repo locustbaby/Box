@@ -9,6 +9,7 @@ main()
 {
   printf("hello world\n");
 }
+/* 编译： cc hello.c */
 ```
 
 代码实例

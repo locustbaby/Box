@@ -1,7 +1,8 @@
-```python2
+```python
+''' py3 Pool 可直接调用class.func py2不可，py2需 调用ThreadPool;ThreadPool 线程共享内存'''
 import multiprocessing
 from multiprocessing.pool import ThreadPool as Pool
-#from multiprocessing import  Pool
+#from multiprocessing import Pool
 import time
 
 class A(object):
