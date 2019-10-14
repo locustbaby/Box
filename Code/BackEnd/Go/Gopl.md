@@ -1,33 +1,32 @@
 #### Gopl
 
-##### e.g. : hw.go 
-
-```go
-package main
-import "fmt"
-func main() {
-fmt.Println("Hello, 世界")
-}
-```
-
 ##### 程序结构
 
-> 命名
+> 名称
 
 ```go
-//
+//关键字 25个
+//预声明
 ```
 
 > 声明
 
 ```go
-
+package main
+import "fmt"
+const boilingF = 212.0
+func main() {
+  var f = boilingF
+  var c = (f - 32) * 5 / 9
+  fmt.Printf("boiling point = %g F or %g C\n", f, c)
+}
 ```
 
 > 变量
 
 ```go
-
+var name type = value
+name := value //短变量声明，类型由expression决定
 ```
 
 > 赋值
