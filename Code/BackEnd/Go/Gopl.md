@@ -1,15 +1,15 @@
 #### Gopl
 
-##### 程序结构
+#### 程序结构
 
-> 名称
+##### 名称
 
 ```go
 //关键字 25个
 //预声明
 ```
 
-> 声明
+##### 声明
 
 ```go
 package main
@@ -22,17 +22,73 @@ func main() {
 }
 ```
 
-> 变量
+##### 变量
 
 ```go
 var name type = value
 name := value //短变量声明，类型由expression决定
 ```
 
-> 赋值
+###### 指针
+
+```go
+x := 1
+p := &x
+fmt.Println(*p) //"1"
+*p = 2
+fmt.Println(x) //2
+```
+
+```go
+//gopl.io/ch2/echo4
+package main
+
+import (
+	"flag"
+  "fmt"
+  "strings"
+)
+
+var n = flag.Bool("n", false, "omit trailing newline")
+var sep = flag,String("s", " ", "separator")
+
+func main() {
+  flag.Parse()
+  fmt.Print(strings.Join(flag.Args(), *sep))
+  if !*n {
+    fmt.Println()
+  }
+}
+```
+
+###### new函数
+
+```go
+// new(T) 创建一个未命名的 T 类型变量
+p := new(int)		//int类型
+fmt.Println(*p)
+*p = 2
+fmt.Println(*p)
+```
+
+###### 变量的生命周期
 
 ```go
 
+```
+
+##### 赋值
+
+```go
+//斐波那契数列第n个数
+func fib(n int) int {
+  x,y := 0,1
+  for i := 0; i < n; i++ {
+    x, y = y, x+y
+  }
+  return x
+}
+_, err = io.Copy(dst, src) //丢弃不需要的值
 ```
 
 > 类型

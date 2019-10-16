@@ -260,6 +260,5 @@ dig监控
 ```shell
 #	https://www.cnblogs.com/losbyday/p/5843960.html
 用户->请求->本地DNS->权威DNS->view技术->上海电信CDN节点->缓存+代理的方式->源站
-
 ```
 
