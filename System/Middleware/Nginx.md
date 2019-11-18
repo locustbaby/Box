@@ -1,6 +1,8 @@
 #### Nginx
 
 > 参考书：		<<深入理解NGINX>>
+>
+> http://nginx.org/en/docs/
 
 ---
 

@@ -1,5 +1,7 @@
 ####  DNS
 
+https://www.bind9.net/bind-9.10.8-manual.pdf
+
 ##### 递归查询 迭代查询
 
 ```shell
