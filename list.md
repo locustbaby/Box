@@ -88,5 +88,11 @@ http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html
 https://blog.csdn.net/yufenghyc/article/details/51078107
 
 # 快速占用端口 python -m SimpleHTTPServer 8116
+
+# prjquota
+
+# slab 泄漏
+
+# cache 泄漏
 ```
 
