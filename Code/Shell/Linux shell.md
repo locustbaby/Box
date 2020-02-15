@@ -647,7 +647,7 @@ else
 
 fi
 
-数值比较 ：-eq	-ge -gt -le -lt -ne 
+数值比较 ：-eq	-ge -gt -le -lt -ne #BUG:[[ "" -eq 0 ]] && echo 1
 字符比较 ：= !=  < > -n(字符串长度非0) -z(字符串长度为0)
 文件比较 ：-d(directory) -e(exit) -f(file) -r(read) -s(存在且非空) -w(write) -x(execut) -O(是否存在且属当前用户) -G(存在且默认组与当前用户相同) -nt(newer than) -ot(older than) 
 

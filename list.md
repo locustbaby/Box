@@ -41,6 +41,16 @@ https://www.tldp.org/LDP/abs/abs-guide.pdf
 https://github.com/cafedeflore/mini_spider/tree/master/mini_spider
 
 # flock 无法自控并发，文件🔒 为单锁
+单锁：https://my.oschina.net/leejun2005/blog/108656
+http://blog.lujun9972.win/blog/2019/02/15/linux-shell-flock%E6%96%87%E4%BB%B6%E9%94%81%E7%9A%84%E7%94%A8%E6%B3%95%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/index.html
+# 单锁
+exec 3<>/tmp/lock
+flock -n 3
+[[ $? -eq 1 ]] && exit
+date
+
+
+# 并发抢占单锁
 #!/bin/bash
 function com() {
     echo $(($(cat $1)+1)) >$1
@@ -94,5 +104,24 @@ https://blog.csdn.net/yufenghyc/article/details/51078107
 # slab 泄漏
 
 # cache 泄漏
+
+# scan
+florder=$1
+dir=$(ls -l $florder |awk '/^d/ {print $NF}')
+for i in $dir
+do
+    if [ "$i" != 'home' -a "$i" != 'proc' ];then
+    f=$i
+    if [ $florder != '/' ];then
+        f=$florder/$i
+    fi
+        rs=$(ls -lR $f|grep "^-"| wc -l)
+    echo $f 文件以及子文件个数 $rs
+    fi
+done
+# sed 
+sed -i 's/指定的字符/要插入的字符&/g' 文件
+# IFS （分隔符） FS OFS RS ORS
+# lsof ss netstat ip 
 ```
 
