@@ -179,5 +179,55 @@ group by product_cd, open_branch_id;
 select extract(YEAR FROM start_date) year, count(*) how_many
 from employee
 group by extract(YEAR FROM start_date);
+/* 分组过滤条件 */
+select product_cd, sum(avail_balance) prod_balance
+from account
+where status = 'ACTIVE'
+group by product_cd
+having sum(avail_balance) >= 10000;
+```
+
+##### 子查询
+
+```mysql
+/* 子查询通常在包含语句之前 */
+/* 返回结果集：单列单行，单列多行，多列多行 */
+select account_id, product_cd, cust_id, avail_balance
+from account
+where account_id = (select max(account_id) from account);
+/* 多行单列子查询 */
+/* in,not in,all,any */
+select emp_id, fname, lname, title
+from employee
+where emp_id in (select superior_emp_id
+                from employee);
+/* all (需要与 =,<>,<,>) */
+select emp_id, fname, lname, title
+from employee
+where emp_id <> all (select superior_emp_id
+                    from employee
+                    where superior_emp_id IS NOT NULL);
+/* any */
+select account_id, cust_id, product_cd, avail_balance
+from account
+where avail_balance > ANY (select a.avail_balance
+                          from account a inner join individual i
+                          on a.cust_id = i.cust_id
+                          where i.fname = 'Frank' and i.lname = 'Tucker');
+/* 多列子查询 */
+select account_id, product_cd, cust_id
+from account
+where open_branch_id = (select branch_id
+                       from branch
+                       where name = 'Woburn Branch')
+                       and open_emp_id in (select emp_id
+                                          from employee
+                                          where title = 'Teller' or title = 'Head Teller');
+/* 关联子查询 */
+select c.cust_id, c.cust_type_cd, c.city
+from customer c
+where 2 = (select count(*)
+          from account a 
+          where a.cust_id = c.cust_id);
 ```
 

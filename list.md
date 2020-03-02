@@ -123,5 +123,10 @@ done
 sed -i 's/指定的字符/要插入的字符&/g' 文件
 # IFS （分隔符） FS OFS RS ORS
 # lsof ss netstat ip 
+
+# awk排除某列
+awk '{ $1=""; print $0 }' ur_file
+awk -F'|' 'BEGIN {OFS = FS} NR != 1 {$5 += 0.1} {print}' myfile
+
 ```
 
