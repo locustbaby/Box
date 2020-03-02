@@ -77,3 +77,107 @@ from account a inner join
  on e.assigned_branch_id = b.branch_id
 ```
 
+##### 集合
+
+```mysql
+/* 并：union;union all */
+/* 
+union:并集 并排序去除重复项
+union all:保留重复项
+*/
+select 1 num, 'abc' str
+union
+select 9 num, 'bcd' str
+
+/* 交：intersect;intersect all */
+select emp_id
+from employee
+intersect
+select emp_id
+from individual
+
+/* 差：except;except all */
+select emp_id
+from employee
+except
+select open_emp_id
+from account
+```
+
+##### 字符串
+
+```mysql
+/* 字符集 */
+select char(128,129);
+/* 根据字符查 acsii */
+select ascii('a');
+/* 连接字符串 concat() 或 || */
+select 'dan' || 'ke';
+select concat('dan','ke');
+/* 字符串函数：length() position() locate() strcmp()[只有mysql有] */
+select length(char_fld) char_length
+from tb1;
+select position('ca' in vchar_fld) /* 起始位置1 */
+from string_tb1;
+select locate('is',vchar_fld,5)
+from string_tbl;
+/* 比较字符串：like regexp;结果为1（true）或0（false） */
+select name, name like '%ns' ends_in_ns
+from department;
+select cust_id, cust_type_cd, fed_id, fed_id
+regexp '.{3}-.{2}-.{4}' is_ss_no_format
+from customer;
+```
+
+##### 数值
+
+```mysql
+select (37 * 59) / (8 * 6);
+/* mod */
+select mod(10,4);
+/* 限制浮点数精度：ceil() floor() round() truncate() */
+
+/* 处理有符号数 */
+select account_id, sign(avail_balance), ABS(avail_balance)
+from account;
+```
+
+##### 时间
+
+```mysql
+/* 产生时间的函数 */
+select current_date(), current_time(), current_timestamp();
+/* 操作时间数据 */
+select date_add(current_date(), interval 5 day);
+```
+
+##### 分组
+
+```mysql
+select open_emp_id
+from account
+group by open_emp_id
+/* 聚集函数：Max() Min() Avg() Sum() Count() */
+
+/* 隐式或显式分组 */
+select max(avail_balance) max_balance
+from account
+where product_cd = 'CHK';/* 隐式 */
+select product_cd,
+max(avail_balance) max_balance
+from account
+group by product_cd;/* 显式 */
+/* 对单列的分组 */
+select product_cd, sum(avail_balance) prod_balance
+from account
+group by product_cd;
+/* 对多列的分组 */
+select product_cd, open_branch_id, sum(avail_balance) tot_balance
+from account
+group by product_cd, open_branch_id;
+/* 根据表达式分组 */
+select extract(YEAR FROM start_date) year, count(*) how_many
+from employee
+group by extract(YEAR FROM start_date);
+```
+
