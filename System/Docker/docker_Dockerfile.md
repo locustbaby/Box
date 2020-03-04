@@ -1,5 +1,0 @@
-# Dockerfile
-```shell
-#!/bin/b
-```
-
