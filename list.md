@@ -127,6 +127,15 @@ sed -i 's/指定的字符/要插入的字符&/g' 文件
 # awk排除某列
 awk '{ $1=""; print $0 }' ur_file
 awk -F'|' 'BEGIN {OFS = FS} NR != 1 {$5 += 0.1} {print}' myfile
+# 统计学/巴菲特
 
+# latex
+
+#论坛
+v2ex gmail
+china unix
+https://segmentfault.com/
+
+# linux 编程： linux/unix系统编程手册 pdf https://www.itpanda.net/book/9
 ```
 
