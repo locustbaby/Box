@@ -135,7 +135,15 @@ awk -F'|' 'BEGIN {OFS = FS} NR != 1 {$5 += 0.1} {print}' myfile
 v2ex gmail
 china unix
 https://segmentfault.com/
+https://juejin.im/
 
 # linux 编程： linux/unix系统编程手册 pdf https://www.itpanda.net/book/9
+
+# 罪与罚
+
+# k8s 指南：https://kubernetes.feisky.xyz/
+
+#pandas
+sheet1[~sheet1['b'].isin(remove_db)].sort_values(by=['a']).tail(10)
 ```
 

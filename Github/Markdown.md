@@ -63,3 +63,8 @@ $$\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix} \mathbf{i} & \mathbf{j} & 
 
 [Markdown语法]: https://www.jianshu.com/p/bb1c4fb0fbc4
 [Topora md语法]: https://www.jianshu.com/p/092de536d948
+
+[ 流程图，时序图，甘特图 ]:https://www.jianshu.com/p/a9ff5a9cdb25
+[  md高级技巧  ]:https://www.runoob.com/markdown/md-advance.html
+
+[ mdguide ]:https://www.markdownguide.org/

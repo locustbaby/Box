@@ -239,6 +239,7 @@ class Person(object):
 ##### 迭代器
 
 ```python
+# 可以被next()函数调用并不断返回下一个值的对象称为迭代器：Iterator
 class Fibs:
     def __init__(self):
         self.a = 0
@@ -260,6 +261,7 @@ for i in b:
 ##### 生成器
 
 ```python
+# 生成器都是迭代器
 def flatten(nested):
     for sublist in nested:
         for element in sublist:
