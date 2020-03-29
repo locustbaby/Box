@@ -57,7 +57,38 @@ Footnotes[^1]
 
 数学表达式块：
 $$\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\\frac{\partial X}{\partial u} &  \frac{\partial Y}{\partial u} & 0 \\\frac{\partial X}{\partial v} &  \frac{\partial Y}{\partial v} & 0 \\\end{vmatrix}$$
+
 ```
+
+```mermaid
+graph TB
+　　client-->|2 findConfigServices|LoadBalancer;
+　　LoadBalancer-->|3 findService|metaServer;
+　　metaServer-->Eureka;
+　　client-->|4 access via ip:port/client load balance/error retry|ConfigService;
+　　ConfigService-->|1 register/cancel|Eureka;
+　　ConfigService-->|read/write|ConfigDB;
+```
+
+~~~flow
+```flow
+st=>start: Start|past:>http://www.google.com[blank]
+e=>end: End:>http://www.google.com
+op1=>operation: My Operation|past
+op2=>operation: Stuff|current
+sub1=>subroutine: My Subroutine|invalid
+cond=>condition: Yes 
+or No?|approved:>http://www.baidu.com
+c2=>condition: Good idea|rejected
+io=>inputoutput: catch something...|request
+
+st->op1(right)->cond
+cond(yes, right)->c2
+cond(no)->sub1(left)->op1
+c2(yes)->io->e
+c2(no)->op2->e
+```　
+~~~
 
 
 
@@ -66,5 +97,4 @@ $$\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix} \mathbf{i} & \mathbf{j} & 
 
 [ 流程图，时序图，甘特图 ]:https://www.jianshu.com/p/a9ff5a9cdb25
 [  md高级技巧  ]:https://www.runoob.com/markdown/md-advance.html
-
-[ mdguide ]:https://www.markdownguide.org/
+[  mdguide ]:https://www.markdownguide.org/
