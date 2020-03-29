@@ -1,4 +1,4 @@
-###### list
+###### learn
 
 ```shell
 # 20191031
@@ -143,7 +143,14 @@ https://juejin.im/
 
 # k8s 指南：https://kubernetes.feisky.xyz/
 
-#pandas
+# pandas
 sheet1[~sheet1['b'].isin(remove_db)].sort_values(by=['a']).tail(10)
+
+# readline
+easy_install readline
+https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/lsof.html
+
+# 腾讯开发者手册
+https://cloud.tencent.com/developer/devdocs
 ```
 
