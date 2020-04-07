@@ -2,7 +2,7 @@
 
  Linux内核设计与实现
 
-[Howto](https://www.kernel.org/doc/html/v4.15/process/howto.html)
+[The Linux Kernel](https://www.kernel.org/doc/html/v4.15/process/howto.html)
 
 深入理解Linux内核
 

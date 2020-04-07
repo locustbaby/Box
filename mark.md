@@ -152,5 +152,13 @@ https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/lsof.html
 
 # 腾讯开发者手册
 https://cloud.tencent.com/developer/devdocs
+
+# IFS=$'\n' 分隔符指定为换行符
+
+# 美林投资时钟
+
+# https://mooc.study.163.com/learn/1000029000?tid=2403023011#/learn/content
+
+# logging.basicConfig(filemode='a+',handlers=[RotatingFileHandler(filename='log2bigpipe.log',maxBytes=10000,backupCount=3)],level=logging.INFO, format='%(asctime)s %(process)d %(funcName)s : %(message)s')
 ```
 

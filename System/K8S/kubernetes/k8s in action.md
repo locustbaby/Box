@@ -43,8 +43,7 @@ graph TD
       api3-->|10 更新Pod|etcd3(ETCD)
       api3(API-server)-->|7 上报事件<br> Pod Created|etcd3
     end
-    
-		subgraph 2
+    subgraph 2
       cm(Controller Mgr<br>watch各类Set,处理生命周期事件<br>定期list做同步处理,保证最终一致)-->|0 发起<br>watch ReplicaSet|api2
       cm-->|5 创建Pod|api2(API-server)
       api2-->|4 上报事件<br>ReplicaSet Created|cm
