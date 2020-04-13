@@ -1,4 +1,4 @@
-参考书：[https://doc.lagout.org](https://doc.lagout.org/)
+参考书：[外语参考书](https://doc.lagout.org/)
 
  Linux内核设计与实现
 
@@ -8,3 +8,10 @@
 
 Linux设备驱动程序
 
+[linux kernel document](https://www.kernel.org/doc/Documentation/)
+
+#####	epoll
+
+```shell
+#	https://www.cnblogs.com/lojunren/p/3856290.html
+```

@@ -62,7 +62,10 @@ ALL:ALL EXCEPT ip
 ##### perf
 
 ```shell
-
+https://www.ibm.com/developerworks/cn/linux/l-cn-perf1/
+http://www.ibm.com/developerworks/cn/linux/l-cn-perf2/
+https://perf.wiki.kernel.org/index.php/Tutorial
+https://mp.weixin.qq.com/s/T0wSAd9IAtB9BoaT7qPeIg
 ```
 
 ##### strace
@@ -262,5 +265,11 @@ function urlencode() {
         esac
     done
 }
+```
+
+##### sar
+
+```shell
+sar
 ```
 

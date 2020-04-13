@@ -160,5 +160,15 @@ https://cloud.tencent.com/developer/devdocs
 # https://mooc.study.163.com/learn/1000029000?tid=2403023011#/learn/content
 
 # logging.basicConfig(filemode='a+',handlers=[RotatingFileHandler(filename='log2bigpipe.log',maxBytes=10000,backupCount=3)],level=logging.INFO, format='%(asctime)s %(process)d %(funcName)s : %(message)s')
+
+# https://blog.csdn.net/f2006116/article/details/89058601
+
+
+# systemctl
+http://www.jinbuguo.com/systemd/systemd.html
+
+# ipcmk 消息队列
+
+#ps 信息读取自 procfs
 ```
 

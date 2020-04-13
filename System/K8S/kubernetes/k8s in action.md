@@ -25,10 +25,6 @@ subgraph addons
 end
 ```
 
-
-
-
-
 ```mermaid
 graph TD
     subgraph 4
