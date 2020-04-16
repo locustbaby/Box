@@ -72,7 +72,16 @@ vi /etc/selinux/config
 # 关闭防火墙
 systemctl disable firewalld && systemctl stop firewalld
 # 配置 ali yum源
-
+cat <<EOF > kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+EOF
+mv kubernetes.repo /etc/yum.repos.d/k8s.repo 
 # 安装基础组件
 yum install -y docker kubelet kubeadm kubectl kubernetes-cni
 # 启动docker & kubelet
@@ -92,9 +101,70 @@ hostnamectl --static set-hostname node1.k8s
 192.168.64.139 node1.k8s
 192.168.64.140 node2.k8s
 #
-kubeadm init
+kubeadm init --image-repository registry.aliyuncs.com/google_containers --ignore-preflight-errors=Swap
 #
 export KUBECONFIG=/etc/kubernetes/admin.conf
 kubectl get po -n kube-system
+
+# 补充
+[root@master kubelet.service.d]# cat  /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf 
+# Note: This dropin only works with kubeadm and kubelet v1.11+
+[Service]
+Environment="KUBELET_KUBECONFIG_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf"
+Environment="KUBELET_CONFIG_ARGS=--config=/var/lib/kubelet/config.yaml"
+# 以下一行为添加，似乎并没有报错？解决swap问题
+Environment="KUBELET_SYSTEM_PODS_ARGS=--pod-manifest-path=/etc/kubernetes/manifests --allow-privileged=true --fail-swap-on=false"
+# This is a file that "kubeadm init" and "kubeadm join" generates at runtime, populating the KUBELET_KUBEADM_ARGS variable dynamically
+EnvironmentFile=-/var/lib/kubelet/kubeadm-flags.env
+# This is a file that the user can use for overrides of the kubelet args as a last resort. Preferably, the user should use
+# the .NodeRegistration.KubeletExtraArgs object in the configuration files instead. KUBELET_EXTRA_ARGS should be sourced from this file.
+EnvironmentFile=-/etc/sysconfig/kubelet
+ExecStart=
+ExecStart=/usr/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS
+
+# kubelet 无法启动问题
+[root@master ~]# cat /usr/lib/systemd/system/docker.service
+[Unit]
+Description=Docker Application Container Engine
+Documentation=http://docs.docker.com
+After=network.target
+Wants=docker-storage-setup.service
+Requires=docker-cleanup.timer
+
+[Service]
+Type=notify
+NotifyAccess=main
+EnvironmentFile=-/run/containers/registries.conf
+EnvironmentFile=-/etc/sysconfig/docker
+EnvironmentFile=-/etc/sysconfig/docker-storage
+EnvironmentFile=-/etc/sysconfig/docker-network
+Environment=GOTRACEBACK=crash
+Environment=DOCKER_HTTP_HOST_COMPAT=1
+Environment=PATH=/usr/libexec/docker:/usr/bin:/usr/sbin
+ExecStart=/usr/bin/dockerd-current \
+          --add-runtime docker-runc=/usr/libexec/docker/docker-runc-current \
+          --default-runtime=docker-runc \
+          # kubelet与docker 驱动不同，修改docker驱动为cgroupfs
+          --exec-opt native.cgroupdriver=cgroupfs \
+          --userland-proxy-path=/usr/libexec/docker/docker-proxy-current \
+          --init-path=/usr/libexec/docker/docker-init-current \
+          --seccomp-profile=/etc/docker/seccomp.json \
+          $OPTIONS \
+          $DOCKER_STORAGE_OPTIONS \
+          $DOCKER_NETWORK_OPTIONS \
+          $ADD_REGISTRY \
+          $BLOCK_REGISTRY \
+          $INSECURE_REGISTRY \
+          $REGISTRIES
+ExecReload=/bin/kill -s HUP $MAINPID
+LimitNOFILE=1048576
+LimitNPROC=1048576
+LimitCORE=infinity
+TimeoutStartSec=0
+Restart=on-abnormal
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
 ```
 
