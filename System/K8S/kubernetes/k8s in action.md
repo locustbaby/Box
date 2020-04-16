@@ -1,5 +1,13 @@
 # K8S in action
 
+
+
+```shell
+
+```
+
+##### 流程图
+
 ```mermaid
 graph TB
     subgraph K8S
@@ -52,5 +60,41 @@ graph TD
       api-->|2 创建ReplicaSet |etcd(ETCD)
     end
 
+```
+
+##### kubeadm 搭建多节点k8s集群
+
+```bash
+# 基础环境 Centos 7.3
+# 关闭selinux
+setenforce 0
+vi /etc/selinux/config
+# 关闭防火墙
+systemctl disable firewalld && systemctl stop firewalld
+# 配置 ali yum源
+
+# 安装基础组件
+yum install -y docker kubelet kubeadm kubectl kubernetes-cni
+# 启动docker & kubelet
+systemctl enable docker && systemctl start docker
+systemctl enable kubelet && systemctl start kubelet
+# 修改网络转发
+sysctl -w net.bridge.bridge-nf-call-iptables=1
+echo "net.bridge.bridge-nf-call-iptables=1" > /etc/sysctl.d/k8s.conf
+# 关闭swap
+swapoff -a && sed -i '/ swap / s/^/#/' /etc/fstab
+# 
+reboot
+# 
+hostnamectl --static set-hostname node1.k8s
+# 路由配置
+192.168.64.138 master.k8s
+192.168.64.139 node1.k8s
+192.168.64.140 node2.k8s
+#
+kubeadm init
+#
+export KUBECONFIG=/etc/kubernetes/admin.conf
+kubectl get po -n kube-system
 ```
 

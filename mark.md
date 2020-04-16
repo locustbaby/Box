@@ -170,5 +170,12 @@ http://www.jinbuguo.com/systemd/systemd.html
 # ipcmk 消息队列
 
 #ps 信息读取自 procfs
+
+# Container技术：
+LXC: https://linuxcontainers.org/
+libcontainer: https://github.com/docker/libcontainer
+chroot
+cgroups
+namespace
 ```
 
