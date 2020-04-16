@@ -68,9 +68,23 @@ graph TD
 # 基础环境 Centos 7.3
 # 关闭selinux
 setenforce 0
-vi /etc/selinux/config
+[root@master ~]# cat /etc/selinux/config 
+
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=disabled
+# SELINUXTYPE= can take one of three two values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected. 
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted 
+
 # 关闭防火墙
 systemctl disable firewalld && systemctl stop firewalld
+
 # 配置 ali yum源
 cat <<EOF > kubernetes.repo
 [kubernetes]
@@ -82,31 +96,45 @@ repo_gpgcheck=1
 gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
 EOF
 mv kubernetes.repo /etc/yum.repos.d/k8s.repo 
+
 # 安装基础组件
 yum install -y docker kubelet kubeadm kubectl kubernetes-cni
+
 # 启动docker & kubelet
 systemctl enable docker && systemctl start docker
 systemctl enable kubelet && systemctl start kubelet
+
 # 修改网络转发
 sysctl -w net.bridge.bridge-nf-call-iptables=1
 echo "net.bridge.bridge-nf-call-iptables=1" > /etc/sysctl.d/k8s.conf
+
 # 关闭swap
 swapoff -a && sed -i '/ swap / s/^/#/' /etc/fstab
-# 
+
+# 重启使各种配置永久生效
 reboot
-# 
+
+# 修改hostname
 hostnamectl --static set-hostname node1.k8s
-# 路由配置
+
+# dns配置 /etc/hostss
 192.168.64.138 master.k8s
 192.168.64.139 node1.k8s
 192.168.64.140 node2.k8s
-#
-kubeadm init --image-repository registry.aliyuncs.com/google_containers --ignore-preflight-errors=Swap
-#
+
+# 起集群
+nohup kubeadm init --image-repository registry.aliyuncs.com/google_containers --ignore-preflight-errors=Swap
+# 指定配置文件
 export KUBECONFIG=/etc/kubernetes/admin.conf
+
+# 命令检验
 kubectl get po -n kube-system
 
-# 补充
+# 其他节点接入(from kubeadm init，注意保留)
+kubeadm join 192.168.199.214:6443 --token $token \
+    --discovery-token-ca-cert-hash sha256:$sha
+
+## 补充
 [root@master kubelet.service.d]# cat  /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf 
 # Note: This dropin only works with kubeadm and kubelet v1.11+
 [Service]
