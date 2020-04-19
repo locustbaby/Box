@@ -2,6 +2,83 @@
 
 https://books.studygolang.com/gopl-zh/
 
+#### 基础概念
+
+###### 环境变量
+
+```shell
+GOROOT:
+	Go语言的当前安装目录
+GOPATH:
+	Go语言工作区集合
+	export GOPATH=~/golib:~/goproject
+GOBIN:
+	Go程序的可执行文件的目录
+	export GOBIN=~/gobin
+PATH:
+	追加PATH
+```
+
+###### 概念
+
+```shell
+工作区:放置Go源码文件的目录
+目录结构：
+golib：
+	src/	#用于存放源码文件，以代码包为组织形式
+	pkg/	#用于存放归档文件（.a后缀），所有归档文件都会被放在该目录下的平台相关目录下，以代码包为组织形式
+				#平台相关目录
+				# 隐含Go语言环境变量：GOOS GOARCH
+	bin/	# 用于存放当前工作区中的Go程序的可执行文件（GOBIN存在时，目录无效/GOPATH中包含多个工作区的路径时，必须设置GOBIN，否则无法成功安装Go程序可执行文件）
+```
+
+###### 源码文件
+
+```shell
+# 命令源码文件
+声明自己属于main代码包、包含无参数声明和结果声明的main函数
+被安装后，相应的可执行文件会被存放到GOBIN指向的目录或<当前工作区目录>/bin下
+# 库源码文件
+不具备命令源码文件的两个特征的源码文件
+被安装后，相应的归档文件被存放到<当前工作区目录>/bin/<平台相关目录>
+# 测试源码文件
+至少有一个函数的名称以Test或Benchmark为前缀的，接受一个类型为*testing.T（对应Test）或*testing.B（对应Benchmark）的参数
+```
+
+###### 代码包
+
+```go
+// 代码包声明语句中的包名称是 导入路径的最右子路径
+// hyperming.cn/pkgtool
+package pkgtool
+// 代码包的导入
+// 代码包导入语句中使用的包名称与导入的代码包一致
+import (
+	"flag"
+  "fmt"
+  "strings"
+)
+// 别名
+import str "strings"
+// 本地化导入
+import. "strings" //调用时不写前缀
+// 仅初始化
+import_ "strings"
+// 代码包初始化
+// 代码包初始化函数：无参数声明和结果声明的init函数
+// init函数执行时机--单一代码包内
+// 对所有全局变量求值 -- 执行所有init函数
+```
+
+###### 命令基础
+
+```go
+go run //跟唯一命令源码文件 + 多个包文件
+go build
+go install
+go get
+```
+
 #### 程序结构
 
 ##### 名称
