@@ -204,7 +204,7 @@ func main() {	//对切片所做的任何修改都会反映在底层数组中。
 }
 ```
 
-###### 函数
+##### 函数
 
 ```go
 func functionname(parametername type) returntype {
@@ -216,5 +216,20 @@ func calculateBill(price, no int) ( area, permeter int) {
     permeter = (price + width) * 2
     return //默认返回 area,permeter
 }
+```
+
+##### 包
+
+```go
+package xx	//包
+import "xx" //导入路径
+func f() int { /*...*/ }//包初始化
+```
+
+##### 作用域
+
+```go
+// 声明的作用域是指用到声明时所声明名字的源代码片段
+// 语法块是由大括号围起来的一个语句序列
 ```
 

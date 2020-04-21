@@ -19,4 +19,21 @@ func main() {
 }
 ```
 
-###### 
+######作用域
+
+```go
+package main
+import (
+	"fmt"
+	"os"
+)
+var cwd string
+func main() {
+	cwd, err := os.Getwd()
+	fmt.Println(cwd, err)
+	if err != nil {
+		fmt.Println(cwd)
+	}
+}
+```
+
