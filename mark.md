@@ -96,6 +96,7 @@ http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html
 
 # 正则表达式
 https://blog.csdn.net/yufenghyc/article/details/51078107
+https://www.jb51.net/tools/shell_regex.html
 
 # 快速占用端口 python -m SimpleHTTPServer 8116
 
@@ -177,5 +178,39 @@ libcontainer: https://github.com/docker/libcontainer
 chroot
 cgroups
 namespace
+
+# TCP/IP sockets in C
+# http://cs.baylor.edu/~donahoo/practical/CSockets/
+
+# oauth 2.0
+
+# https://jasper-zhang1.gitbooks.io/influxdb/content/Concepts/key_concepts.html
+
+# https://segmentfault.com/a/1190000013565079
+
+# 桥水/->原则
+
+# https://www.ietf.org/rfc/rfc3339.txt
+
+# https://huataihuang.gitbooks.io/cloud-atlas/studio/
+
+# http://man7.org/index.html
+
+sysctl -w vm.min_free_kbytes=4096000
+sysctl -w vm.vfs_cache_pressure=200
+
+# grpc https://doc.oschina.net/grpc?t=60138 // rpyc
+# https://www.runoob.com/python/python-multithreading.html
+
+# python 原子更新 https://www.runoob.com/python/python-multithreading.html
+
+# google 内部公开文档 https://zijinshi.gitbook.io/google/introduction 
+
+# https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html
+
+# https://scoutapm.com/blog/understanding-load-averages
+
+# sar 性能分析
+https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/sar.html
 ```
 

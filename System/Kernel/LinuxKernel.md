@@ -15,3 +15,6 @@ Linux设备驱动程序
 ```shell
 #	https://www.cnblogs.com/lojunren/p/3856290.html
 ```
+
+[kernel sysctl](https://www.kernel.org/doc/Documentation/sysctl/vm.txt)
+
