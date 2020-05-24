@@ -23,11 +23,35 @@ var splice = func(part1 string, part2 string) string {
 ##### 结构体和方法
 
 ```go
-// 字面量
+// 值类型 
+// 字面量 
 type Person struct {
     Name   string
     Gender string
     Age    uint8
+}
+// 匿名结构体 不拥有方法
+p := struct {
+    Name   string
+    Gender string
+    Age    uint8
+}{"Robert", "Male", 33}
+// 正式 拥有方法
+//func 接受者
+func (person *Person) Grow() {
+    person.Age++
+} 
+p := Person{"Robert", "Male", 33}
+p.Grow()   
+```
+
+##### 接口
+
+```go
+//
+type Animal interface {
+    Grow()
+    Move(string) string
 }
 ```
 
