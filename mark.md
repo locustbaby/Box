@@ -1,3 +1,31 @@
+###### 管道
+
+```shell
+#!/bin/bash
+
+[ -e /tmp/fd1 ] || mkfifo /tmp/fd1 #创建有名管道
+exec 3<>/tmp/fd1                   #创建文件描述符，以可读（<）可写（>）的方式关联管道文件，这时候文件描述符3就有了有名管道文件的所有特性
+rm -rf /tmp/fd1                    #关联后的文件描述符拥有管道文件的所有特性,所以这时管道文件可以删除，我们留下文件描述符来用就可以
+for ((i=1;i<=10;i++))
+do
+        echo >&3                   #&3代表引用文件描述符3，这条命令代表往管道里面放入了一个"令牌"，文件描述符可以使用0/1/2/225之外的其他数字，这几个已被占用
+done
+ 
+for ((i=1;i<=100;i++))
+do
+read -u3                           #代表从管道中读取一个令牌
+{
+        sleep 1  #sleep 1用来模仿执行一条命令需要花费的时间（可以用真实命令来代替）
+        echo 'success'$i       
+        echo >&3                   #代表我这一次命令执行到最后，把令牌放回管道
+}&
+done
+wait
+ 
+exec 3<&-                       #关闭文件描述符的读
+exec 3>&-                       #关闭文件描述符的写
+```
+
 ###### learn
 
 ```shell
@@ -75,7 +103,7 @@ te $@
 trap "rm -f AAA" EXIT
 function run() {
 read -u 7
-sleep 4
+sleep 4 # do
 echo "success"
 echo 1>&7
 }
@@ -83,11 +111,14 @@ if [[ -p AAA ]];then
     exec 7<>AAA
     run
 else
-    tmp=/tmp/lock
+		tmp=/tmp/lock
 echo -e "[[ ! -p AAA ]] && mkfifo 2>/dev/null AAA && { echo 1 > AAA & \n echo 2 > AAA & }" >$tmp && source $tmp
 exec 7<>AAA
 run
 fi
+#关闭读写
+exec 3<&-   #关闭文件描述符的读
+exec 3>&-   #关闭文件描述符的写
 
 # echo $RANDOM
 

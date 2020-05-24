@@ -733,6 +733,7 @@ echo "2">/proc/sys/net/ipv4/conf/all/arp_announce
 ```shell
 wget -x ./download/package/ -r -nd -m $ES_url -P ./download/package/
 wget -o 
+wget -O 覆盖
 wget -c continue
 wget -x 强制创建目录
 wget -r 递归
@@ -747,6 +748,12 @@ wget -l,  --level=NUMBER       最大递归深度
 $#	个数
 $*	所有参数当成一个参数
 $@	所有参数
+```
+
+##### cut
+
+```shell
+cut -d
 ```
 
 

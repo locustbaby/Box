@@ -1,6 +1,4 @@
-#### Go
-
-#### go数据类型
+#### 基本数据类型
 
 ##### 程序实体和关键字
 
@@ -68,11 +66,14 @@ var str1 string = `sjkfljfj\nssd`
 var str2 string = "fjlsjdfj\nsjlfjf"
 ```
 
+#### 高级数据类型
+
 ##### 数组
 
 ```go
 //索引表达式 由字符串、数组、切片或字典类型的值（或者代表此类值的变量或常量）和由方括号包裹的索引值组成。
-type MyNumbers [3]int
+type MyNumbers [3]int //数组字面量
+
 var numbers = [3]int{1,2,3}
 var numbers = [...]int{1,2,3}	//自动识别长度
 numbers[0]//索引范围[0,3)
@@ -82,63 +83,19 @@ var length = len(numbers)
 ##### 切片(空值nil)
 
 ```go 
-[]int	//切片表示
-var numbers3 = [5]int{1,2,3,4,5}
-var slice3 = numbers[1:4]	//容量：｜1-5｜=4
-var cap_slice3 = cap(slice3)
-//切片容量为：切片第一个元素在其底层数组中的索引值 与 该数组的长度 的差值的 绝对值
+[]int	//切片字面量
+
+var numbers3 = [5]int{1,2,3,4,5}//数组
+var slice3 = numbers3[1:4]//长度｜1-4｜=3 容量：｜1-5｜=4
+// slice3 = []int{2,3,4} 即：左闭右开
+var cap_slice3 = cap(slice3) //容量
+//切片容量为：切片第一个元素在其底层数组中的索引值 与 该数组的长度 的差值的绝对值
+slice5 := numbers3[1:3:4] //限量容量上界索引为 4
+slice5 = append(slice5,6,7)
+copy(slice1,slice2) //参数同类型切片，最小复制（被复制的元素的个数=最小切片长度），直接修改slice1
 ```
 
-###### 判断
-
-```go
-if condition {
-    //} else if condition { } else {
-}
-```
-
-###### 循环
-
-```go
-for是Go里唯一循环
-for initialization; condition; post { //三部分可以省略
-    //语句
-}
-for condition { //传统while循环
-    //...
-}
-for { //传统无限循环
-    //...
-}
-//echo 2
-package main
-import (
-	"fmt"
-    "os"
-)
-//
-func main() {
-    s,sep := "",""
-    for _, arg := range os.Args[1:] {	// _ 空白符，被用作任何类型的任何值
-        s += seq + arg
-        sep := " "
-        //break continue
-    }
-    fmt.Println(s)
-}
-```
-
-###### switch
-
-```go
-switch finger {
-    case 1, 2, 3: //不允许重复选项
-    	fallthrough	//移交下一case
-    default：
-}
-```
-
-###### 数组和切片
+##### 数组和切片
 
 ```go
 一维
@@ -204,32 +161,35 @@ func main() {	//对切片所做的任何修改都会反映在底层数组中。
 }
 ```
 
-##### 函数
+##### 
+
+##### map
 
 ```go
-func functionname(parametername type) returntype {
-    //
-}
-func calculateBill(price, no int) ( area, permeter int) {
-    //参数类型若一致，只需最后 附类型
-    area = price * no
-    permeter = (price + width) * 2
-    return //默认返回 area,permeter
-}
+map[K]T //map字面量，字典为引用类型，空：nil
+mm := map[int]string{1:"a",2:"b",3:"c"}
+b := mm[2]
+e,ok := mm[2] // b,true
+delete(mm,4)//有则删，无则不做
 ```
 
-##### 包
+##### 通道
 
 ```go
-package xx	//包
-import "xx" //导入路径
-func f() int { /*...*/ }//包初始化
+chan T //引用类型，空
+// 带缓冲通道
+ch1 := make(chan string, 5) //初始化
+ch1 <- "value1"
+value,ok := <- ch1
+close(ch1)
+// 非缓冲
+make(chan int, 0)
+type Receiver <-chan int //只读
+type Sender chan<- int //只写
+// 例子
+var myChannel = make(chan int, 3)
+var sender Sender = myChannel
+var receiver Receiver = myChannel  
 ```
 
-##### 作用域
-
-```go
-// 声明的作用域是指用到声明时所声明名字的源代码片段
-// 语法块是由大括号围起来的一个语句序列
-```
-
+##### 

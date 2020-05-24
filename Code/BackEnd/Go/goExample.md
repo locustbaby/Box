@@ -37,3 +37,30 @@ func main() {
 }
 ```
 
+###### influxdb
+
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"strings"
+)
+
+func httpPost(requestUrl string) (err error) {
+	a := "cpu_load_short,host=server01,region=us-west value=0.64 1434055562000000000"
+	// fmt.Println(u)
+	resp, err := http.Post(requestUrl, "text/plain", strings.NewReader(a))
+	fmt.Println(resp)
+	defer resp.Body.Close()
+	return err
+}
+
+func main() {
+	var url = "http://influxdbip:8086/write?db=mydb"
+	httpPost(url)
+}
+
+```
+

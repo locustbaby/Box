@@ -84,6 +84,8 @@ https://www.linuxblogs.cn/articles/15041200.html
 
 ```shell
 sshd -t -f /etc/ssh/sshd_config
+# ssh 脚本常用免密
+-o stricthostkeychecking=no -o ConnectTimeout=3 -o ConnectionAttempts=3 -o PasswordAuthentication=no 
 ssh -v host # 查看被搁置原因
 ```
 
@@ -267,9 +269,29 @@ function urlencode() {
 }
 ```
 
+
 ##### sar
 
 ```shell
-sar
+#	https://www.cnblogs.com/howhy/p/6396437.html
+sar -u 1 3	#cpu 1s 3次
+sar -p 1 3 #每个CPU
+sar -q #查看平均负载：
+-o #output 二进制	#-f 读取
+sar -r #内存
+sar -W #查看系统swap分区的统计信息
+sar -b #查看I/O和传递速率的统计信息
+sar -d #磁盘使用详情统计
+sar -v #进程、inode、文件和锁表状态
+sar -n #统计网络信息
+#sar -n选项使用6个不同的开关：DEV，EDEV，NFS，NFSD，SOCK，IP，EIP，ICMP，EICMP，TCP，ETCP，UDP，SOCK6，IP6，EIP6，ICMP6，EICMP6和UDP6 ，DEV显示网络接口信息，EDEV显示关于网络错误的统计数据，NFS统计活动的NFS客户端的信息，NFSD统计NFS服务器的信息，SOCK显示套接字信息，ALL显示所有5个开关。它们可以单独或者一起使用。
+```
+
+##### perl
+
+```shell
+perl -e 'for(<*>){((stat)[9]<(unlink))}' 
+# 删除对比
+# https://mp.weixin.qq.com/s/dsguRKkiWAZb9mGqZg8tlA
 ```
 
