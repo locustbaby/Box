@@ -26,6 +26,16 @@ exec 3<&-                       #关闭文件描述符的读
 exec 3>&-                       #关闭文件描述符的写
 ```
 
+##### go 值传递 值引用
+
+```shell
+https://studygolang.com/articles/10962
+https://www.cnblogs.com/ghj1976/archive/2013/02/28/2936595.html
+https://www.flysnow.org/2018/02/24/golang-function-parameters-passed-by-value.html
+https://studygolang.com/articles/11313
+https://juejin.im/post/5ca2f37ce51d4502a27f0539
+```
+
 ###### learn
 
 ```shell
@@ -243,5 +253,23 @@ sysctl -w vm.vfs_cache_pressure=200
 
 # sar 性能分析
 https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/sar.html
+
+# tee
+
+#Error starting daemon: Error initializing network controller: list bridge addresses failed: no available network
+
+ip link add name docker0 type bridge
+ip addr add dev docker0  172.17.0.1/16
+ip link set docker0 up
+
+kubeadm init --image-repository docker.mirrors.ustc.edu.cn/google_containers --ignore-preflight-errors=Swap
+
+registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.17.4
+
+yum list kubelet --showduplicates
+
+# https://blog.csdn.net/shenhuxi_yu/article/details/53047012
+
+# https://blog.csdn.net/hanyren/article/details/103204161?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-7.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-7.nonecase
 ```
 

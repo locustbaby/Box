@@ -48,11 +48,20 @@ p.Grow()
 ##### 接口
 
 ```go
-//
+// 隐式实现
 type Animal interface {
     Grow()
     Move(string) string
 }
+// 结构体
+type Person struct {
+    Name   string
+    Gender string
+    Age    uint8
+}   
+p := Person{"Robert", "Male", 33, "Beijing"} //Person实例
+v := interface{}(&p) //类型转换
+h, ok := v.(Animal)  //类型断言表达式
 ```
 
 ##### 判断

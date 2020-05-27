@@ -32,3 +32,7 @@ docker 中文文档：http://www.dockerinfo.net/document
 
 https://docs.docker.com/
 
+
+
+k8s指南[https://feisky.gitbooks.io/kubernetes/deploy/kubeadm.html#%E5%AE%89%E8%A3%85-master](https://feisky.gitbooks.io/kubernetes/deploy/kubeadm.html#安装-master)
+
