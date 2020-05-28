@@ -258,10 +258,6 @@ https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/sar.html
 
 #Error starting daemon: Error initializing network controller: list bridge addresses failed: no available network
 
-ip link add name docker0 type bridge
-ip addr add dev docker0  172.17.0.1/16
-ip link set docker0 up
-
 kubeadm init --image-repository docker.mirrors.ustc.edu.cn/google_containers --ignore-preflight-errors=Swap
 
 registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.17.4
