@@ -267,5 +267,9 @@ yum list kubelet --showduplicates
 # https://blog.csdn.net/shenhuxi_yu/article/details/53047012
 
 # https://blog.csdn.net/hanyren/article/details/103204161?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-7.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-7.nonecase
+
+
+# redhat
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/kernel_administration_guide/index
 ```
 
