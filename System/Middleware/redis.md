@@ -342,3 +342,7 @@ aof-rewrite-incremental-fsync yes
 maxmemory 2410404249
 ```
 
+##### redis官网
+
+http://www.redis.cn/topics/faq.html
+
