@@ -271,5 +271,22 @@ yum list kubelet --showduplicates
 
 # redhat
 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/kernel_administration_guide/index
+
+# git
+https://github.com/huangchucai/My-Note-Blog/issues/46
+
+# py 多线程
+https://www.jianshu.com/p/e30d302ebdeb
+https://blog.csdn.net/kelvinLLL/article/details/70766836
+
+
+# 阿里云运维实践
+https://developer.aliyun.com/article/761830
+
+# 后端开发
+https://www.zhihu.com/question/24952874
+
+# c10k
+https://zhuanlan.zhihu.com/p/23114695
 ```
 

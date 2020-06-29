@@ -64,6 +64,22 @@ v := interface{}(&p) //类型转换
 h, ok := v.(Animal)  //类型断言表达式
 ```
 
+##### 指针
+
+```go
+// &p :p的指针
+// p = *&p
+// *Person :Person类型的指针类型，Person为基底类型
+
+type MyInt struct {
+    n int
+}
+
+func (myInt *MyInt) Increase() { //指针类型
+	myInt.n++
+}
+```
+
 ##### 判断
 
 ```go
