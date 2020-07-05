@@ -288,5 +288,8 @@ https://www.zhihu.com/question/24952874
 
 # c10k
 https://zhuanlan.zhihu.com/p/23114695
+
+# 分布式
+https://juejin.im/post/5ef9a88ff265da22dc3fd238
 ```
 
