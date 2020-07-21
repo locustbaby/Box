@@ -295,7 +295,7 @@ https://juejin.im/post/5ef9a88ff265da22dc3fd238
 # Istio
 https://www.servicemesher.com/istio-handbook/
 
-# go 语言中文网
-https://books.studygolang.com/The-Golang-Standard-Library-by-Example/chapter01/01.4.html
+# Golang
+https://documentation.help/Golang/encoding_json.htm
 ```
 
