@@ -298,7 +298,10 @@ https://www.servicemesher.com/istio-handbook/
 # Golang
 https://documentation.help/Golang/encoding_json.htm
 
+<<<<<<< HEAD
 # 占位符
 https://www.jianshu.com/p/66aaf908045e
+=======
+>>>>>>> abaa56e406c8867cdf78057167470273827ec732
 ```
 
