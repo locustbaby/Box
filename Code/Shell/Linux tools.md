@@ -152,12 +152,6 @@ yum install flex byacc	#编译安装 or EPEL安装
 Ntop MRTG Ntopng iperf 
 ```
 
-##### perf
-
-```shell
-
-```
-
 ##### sysstat
 
 ```shell
