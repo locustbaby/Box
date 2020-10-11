@@ -23,3 +23,7 @@ https://www.zhihu.com/question/20801814
 go开源项目整理-新手篇
 
 http://www.suoniao.com/article/24074
+
+go教程--C语言中文网
+
+http://c.biancheng.net/view/3990.html
