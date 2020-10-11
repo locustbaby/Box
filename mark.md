@@ -306,5 +306,8 @@ https://www.jianshu.com/p/66aaf908045e
 
 # math
 https://betterexplained.com/
+
+# google sre book
+《Building Secure and Reliable Systems》、《The Site Reliability Workbook》和《Site Reliability Engineering》https://landing.google.com/sre/workbook/toc/
 ```
 
