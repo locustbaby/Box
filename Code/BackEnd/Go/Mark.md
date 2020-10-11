@@ -13,3 +13,11 @@ https://github.com/Workiva/go-datastructures
 GO语言学习资源整理
 
 https://zhuanlan.zhihu.com/p/25493806
+
+Go项目
+
+https://www.zhihu.com/question/20801814
+
+go开源项目整理-新手篇
+
+http://www.suoniao.com/article/24074
