@@ -309,5 +309,10 @@ https://betterexplained.com/
 
 # google sre book
 《Building Secure and Reliable Systems》、《The Site Reliability Workbook》和《Site Reliability Engineering》https://landing.google.com/sre/workbook/toc/
+
+google sre 阅读笔记
+https://www.jianshu.com/p/8bca6279c135
+
+
 ```
 

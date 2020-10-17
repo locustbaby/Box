@@ -41,18 +41,6 @@ scripts update => everyone UP DOWN  ssh的-o
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 ### Plan
 
 ##### Python
