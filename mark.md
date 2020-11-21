@@ -36,6 +36,12 @@ https://studygolang.com/articles/11313
 https://juejin.im/post/5ca2f37ce51d4502a27f0539
 ```
 
+##### 怎么参与开源
+
+```
+https://zhuanlan.zhihu.com/p/78893980
+```
+
 ###### learn
 
 ```shell
@@ -309,5 +315,8 @@ https://betterexplained.com/
 
 # google sre book
 《Building Secure and Reliable Systems》、《The Site Reliability Workbook》和《Site Reliability Engineering》https://landing.google.com/sre/workbook/toc/
+
+阿里云文档
+https://help.aliyun.com/?spm=a2c4g.11186623.6.538.127a35e19bpe4L
 ```
 
