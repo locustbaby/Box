@@ -27,3 +27,9 @@ http://www.suoniao.com/article/24074
 go教程--C语言中文网
 
 http://c.biancheng.net/view/3990.html
+
+7天一个go项目
+
+https://github.com/geektutu/7days-golang
+
+https://geektutu.com/post/gee-day1.html

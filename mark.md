@@ -53,8 +53,8 @@ trap
 shell里变量
 
 # 20191101
-?initrd <- pxe+kickstart
-系统启动过程 bios 。。。+。。。 initrd？
+? initrd <- pxe+kickstart
+系统启动过程 bios 。。。+。。。 initrd ？
 
 #20191103
 协程

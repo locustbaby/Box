@@ -24,3 +24,6 @@ lambda表达式
 异常
 ```
 
+研发需要技能
+
+https://www.zhihu.com/question/24952874
