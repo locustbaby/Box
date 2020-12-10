@@ -8,7 +8,7 @@
 
 #### ConfigMap 和 secret
 
-#### Downloadapi
+#### Download api
 
 #### Deployment
 
