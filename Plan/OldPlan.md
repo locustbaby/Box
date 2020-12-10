@@ -408,3 +408,109 @@ mysql oracle pgsql
 ```shell
 
 ```
+
+
+
+===================
+
+###### 公司
+
+```markdown
+字节跳动
+蚂蚁金服
+~~喜马拉雅~~
+Daocloud
+七牛
+blibli
+哈啰单车
+携程
+拼多多
+EA/Unity
+阅文
+腾讯互娱
+Ucloud
+力扣
+```
+
+###### 技能
+
+```markdown
++ Docker
++ K8S：
+  - ingress
+  - flannel
+  - coredns
++ py
++ go
++ bash
++ Linux 
+	- Redis
+	- DNS
+	- Nginx
+	- LDAP
+	- NTP
+	- SSHD
+	- ansible
+	- puppet
+	- saltstack
++ Jenkins/GitlanCI
++ promethus
++ TCP/IP/HTTP
++ RPC
+
+====
+算法 
+运维复习
+网络 NA + TCP/IP
+
+# 书
+
+入门：
+大话数据结构
+算法图解
+面试：
+编程珠玑
+编程之美
+剑指offer
+不同编程语言：
+数据结构与算法分析xxx语言描述
+经典大部头：
+算法导论
+算法4
+殿堂：
+计算机程序设计艺术
+http://mimoza.marmara.edu.tr/~msakalli/cse706_12/SkienaTheAlgorithmDesignManual.pdf
+```
+
+##### 更新2020 02 26
+
+```
+方向：？
+深度实践KVM
+第一本docker书
+docker技术入门与实践
+docker进阶与实战
+docker数据中心及其内核技术
+k8s in action
+```
+
+##### 畅想
+
+```
+linux内核设计与实现
+深入理解linux内核
+分布式实时系统原理和设计方法
+```
+
+##### 更新2020 02 29
+
+```
+计算机科学丛书：计算机组成原理
+数据库系统概念(原书第6版)
+高性能mysql
+TCP/IP详解
+算法基础
+算法导论
+现代操作系统
+操作系统概念
+```

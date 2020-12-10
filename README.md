@@ -16,17 +16,17 @@
 
 #### python
 
-> [python docs](<https://docs.python.org/zh-cn/3.7/contents.html>)
+> [Python docs](<https://docs.python.org/zh-cn/3.7/contents.html>)
 >
-> [python 基础](./Code/BackEnd/python/python.md)
+> [Python 基础](./Code/BackEnd/python/python.md)
 >
-> [python 类](./Code/BackEnd/python/python_class.md)
+> [Python 类](./Code/BackEnd/python/python_class.md)
 >
-> [python爬虫](./Code/BackEnd/python/python_spider.md)
+> [Python爬虫](./Code/BackEnd/python/python_spider.md)
 >
-> [python web](./Code/BackEnd/python/python_webserver.md)
+> [Python web](./Code/BackEnd/python/python_webserver.md)
 >
-> [LeetCode](./Code/BackEnd/python/Algorithm.md)
+> [Py LeetCode](./Code/BackEnd/python/Algorithm.md)
 
 ##### HTTP & TCP
 
@@ -40,7 +40,9 @@
 
 #### Go
 
-
+> [Go  基本数据结构和类型](./Code/BackEnd/Go/2.Go基本数据结构和类型.md)
+>
+> [Go 函数](./Code/BackEnd/Go/3.Go函数.md)
 
 #### 中间件
 
@@ -57,9 +59,3 @@
 > [LVS+KeepAlived](./System/Middleware/LVS+Keepalive.md)
 >
 > [Tomcat](./System/Middleware/Tomcat.md)
-
-##### ML
-
-> [ML](<https://mp.weixin.qq.com/s/TjpCoyZRT1kI0M6y7pSeiQ>)
->
-> AutoKeras
