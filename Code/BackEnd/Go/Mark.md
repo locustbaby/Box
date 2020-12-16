@@ -33,3 +33,13 @@ http://c.biancheng.net/view/3990.html
 https://github.com/geektutu/7days-golang
 
 https://geektutu.com/post/gee-day1.html
+
+##### go 值传递 值引用
+
+```shell
+https://studygolang.com/articles/10962
+https://www.cnblogs.com/ghj1976/archive/2013/02/28/2936595.html
+https://www.flysnow.org/2018/02/24/golang-function-parameters-passed-by-value.html
+https://studygolang.com/articles/11313
+https://juejin.im/post/5ca2f37ce51d4502a27f0539
+```

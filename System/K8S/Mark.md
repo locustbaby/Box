@@ -13,3 +13,21 @@ https://www.cnblogs.com/hyethebest/p/13547116.html
 https://blog.csdn.net/dongshi_89757/article/details/110189203
 
 https://zhuanlan.zhihu.com/p/106090560
+
+
+
+公司架构
+
+```
+gitlab
+jira
+jenkins
+
+
+rancher
+k8s
+es
+zk
+redis
+```
+

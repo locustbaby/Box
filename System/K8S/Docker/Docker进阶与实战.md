@@ -37,11 +37,21 @@ docker exec命令的实现原理就是setns
 6种namespace:
 # IPC：隔离System V IPC和POSIX消息队列。
 # Network：隔离网络资源。
+netns
+https://blog.csdn.net/u012707739/article/details/78163354
 # Mount：隔离文件系统挂载点。
 # PID：隔离进程ID。
 # UTS：隔离主机名和域名。
 # User：隔离用户ID和组ID。
 ```
+
+##### rootfs
+
+```
+
+```
+
+aufs
 
 
 

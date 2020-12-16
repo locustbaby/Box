@@ -13,6 +13,10 @@
 > [Linux 安全相关](./Code/Shell/Linux%20security.md)
 >
 > [Linux Scripts](./Code/Shell/Linux%20scripts.md)
+>
+> [Linux 三剑客](./Code/Shell/awk%20sed%20grep.md)
+>
+> [Linux 并发与锁](./Code/Shell/Concurrency%20and%20lock.md)
 
 #### python
 
