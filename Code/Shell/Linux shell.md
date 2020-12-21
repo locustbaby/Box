@@ -118,6 +118,9 @@ https://blog.csdn.net/longdel/article/details/7317511
 PRI 	#越小越高
 nice	#改变进程占用cpu百分比 root可set负值
 PRI(new)=PRI(old)+nice
+
+# top字段解释
+https://blog.csdn.net/y33988979/article/details/80901134
 ```
 
 ##### date
