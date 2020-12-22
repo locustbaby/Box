@@ -103,6 +103,36 @@ A调用A
 A重复调用B
 ```
 
+##### 前序遍历-迭代
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func preorderTraversal(root *TreeNode) (vals []int) {
+    // 名 stack 实际 list
+    stack := []*TreeNode{}
+    node := root
+    for node != nil || len(stack) > 0 {
+        for node != nil {
+            vals = append(vals, node.Val)
+            stack = append(stack, node) //[node]
+            node = node.Left    // 轮询左节点 到空：前序遍历
+        }
+        node = stack[len(stack)-1].Right //遍历右节点
+        stack = stack[:len(stack)-1] //右节点遍历结束，删掉
+    }
+    return
+}
+```
+
+
+
 #### N叉树
 
 ---
