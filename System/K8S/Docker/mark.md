@@ -13,3 +13,7 @@ libcontainer: https://github.com/docker/libcontainer
 chroot
 cgroups
 namespace
+
+docker 核心技术
+
+http://dockone.io/article/2941
