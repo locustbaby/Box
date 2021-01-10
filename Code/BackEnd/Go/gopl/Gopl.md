@@ -2,6 +2,8 @@
 
 https://books.studygolang.com/gopl-zh/
 
+https://docs.hacknode.org/gopl-zh/
+
 #### 基础概念
 
 ###### 环境变量

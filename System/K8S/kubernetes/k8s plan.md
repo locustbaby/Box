@@ -71,3 +71,20 @@ https://jimmysong.io/kubernetes-handbook/appendix/about-cka-candidate.html
 阿里云
 
 https://help.aliyun.com/document_detail/128560.html
+
+
+
+k8s 弃用docker
+
+https://blog.csdn.net/RA681t58CJxsgCkJ31/article/details/110601018
+
+k8s练习环境
+
+https://blog.csdn.net/varyall/article/details/105456990
+
+
+
+cka真题
+
+https://blog.csdn.net/qq_43891456/article/details/109707863/
+

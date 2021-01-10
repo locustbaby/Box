@@ -12,6 +12,16 @@ https://github.com/Workiva/go-datastructures
 
 
 
+infoq 推荐Go学习
+
+https://tour.golang.org/welcome/1
+
+https://gobyexample.com/
+
+https://qvault.io/go-mastery-course/
+
+
+
 GO语言学习资源整理
 
 https://zhuanlan.zhihu.com/p/25493806
@@ -42,4 +52,14 @@ https://www.cnblogs.com/ghj1976/archive/2013/02/28/2936595.html
 https://www.flysnow.org/2018/02/24/golang-function-parameters-passed-by-value.html
 https://studygolang.com/articles/11313
 https://juejin.im/post/5ca2f37ce51d4502a27f0539
+
+http://c.biancheng.net/view/4192.html
 ```
+
+值类型和引用类型
+
+https://blog.csdn.net/u014630623/article/details/103930646
+
+effective go
+
+https://learnku.com/docs/effective-go/2020/introduction/6236
