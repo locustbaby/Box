@@ -2,6 +2,8 @@
 
 > 参考书：		<<深入理解NGINX>>
 >
+> nginx cookbook https://chengkai.wang/2020/03/16/nginx-cook-book1/
+>
 > http://nginx.org/en/docs/
 
 ---
