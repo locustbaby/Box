@@ -288,5 +288,9 @@ https://www.cnblogs.com/binghe001/p/12778853.html
 rust 写操作系统
 https://zhuanlan.zhihu.com/p/90710559
 go写linux
+
+nginx config
+https://github.com/chr4/nginx.vim/blob/master/syntax/nginx.vim
+https://github.com/nginx/
 ```
 
