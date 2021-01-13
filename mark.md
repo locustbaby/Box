@@ -238,5 +238,55 @@ https://www.jianshu.com/p/7d6853140e13
 
 https
 
+outh2.0
+
+vim
+http://www.classnotes.cn/2857.html
+
+k8s 命令
+https://zhuanlan.zhihu.com/p/93461178
+http://docs.kubernetes.org.cn/683.html
+
+cfs
+http://c.biancheng.net/view/1255.html
+
+http://www.ymcall.com/artinfo/780867682346446665.html
+
+https://zhuanlan.zhihu.com/p/92536201
+
+
+IO调度算法
+https://blog.csdn.net/xie1xiao1jun/article/details/20629145?utm_source=blogxgwz6
+
+进程调度算法
+https://www.cnblogs.com/bajdcc/p/4707544.html
+
+内存 io 进程
+https://blog.csdn.net/pi9nc/article/details/19848831?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.control
+
 
 ```
+
+Go and 分布式
+
+```
+go 协程
+https://www.cnblogs.com/piaobodewu/p/11075441.html
+v2ex 分布式
+https://www.v2ex.com/t/236294
+分布式经典
+https://www.zhihu.com/question/62486582
+什么是分布式
+https://www.cnblogs.com/xybaby/p/7787034.html
+学习分布式
+https://www.zhihu.com/question/23645117
+什么是协程
+https://zhuanlan.zhihu.com/p/172471249
+高并发分布式解密
+https://www.cnblogs.com/binghe001/p/12778853.html
+
+rust 写操作系统
+https://zhuanlan.zhihu.com/p/90710559
+go写linux
+```
+
