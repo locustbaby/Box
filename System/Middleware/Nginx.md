@@ -243,3 +243,11 @@ net.ipv4.tcp_tw_recycle = 1
 net.ipv4.ip_local_port_range = 5000 65000
 ```
 
+
+
+```
+https://www.kancloud.cn/digest/understandingnginx/202599
+https://blog.csdn.net/xy2204/article/details/47749405
+https://serverfault.com/questions/361421/dump-nginx-config-from-running-process
+```
+

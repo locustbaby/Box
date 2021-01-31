@@ -265,6 +265,24 @@ https://www.cnblogs.com/bajdcc/p/4707544.html
 https://blog.csdn.net/pi9nc/article/details/19848831?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.control
 
 
+每个程序员都应该尝试的项目-InfoQ
+https://www.infoq.cn/article/k5CpCGNqgfErqTol2SpX
+
+公开课资源
+https://www.zhihu.com/question/38335108
+
+16 岁高中生成功将 Linux 移植到 iPhone，并贴出详细指南-InfoQ
+https://www.infoq.cn/article/DMMXsxG1O1Bf76u40l7v
+
+https://prometheus.fuckcloudnative.io/
+
+https://www.cnblogs.com/sunsky303/p/8962628.html
+
+go atomic mutex
+
+https://zhuanlan.zhihu.com/p/153093074
+
+质量效率性能成本安全
 ```
 
 Go and 分布式
@@ -292,5 +310,6 @@ go写linux
 nginx config
 https://github.com/chr4/nginx.vim/blob/master/syntax/nginx.vim
 https://github.com/nginx/
+https://www.cnblogs.com/1993zzd/p/11987442.html
 ```
 
