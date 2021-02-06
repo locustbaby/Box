@@ -313,3 +313,37 @@ https://github.com/nginx/
 https://www.cnblogs.com/1993zzd/p/11987442.html
 ```
 
+
+
+```
+pdf: go语言高并发之道
+
+
+进程线程协程：https://blog.csdn.net/daaikuaichuan/article/details/82951084
+
+准备：nginx es redis ansible
+
+go高级语言编程 https://github.com/chai2010/advanced-go-programming-book
+
+决策算法： https://mp.weixin.qq.com/s/JD6uFshTpGN_3RaekSA36w
+（https://algorithmsbook.com/files/dm.pdf）
+
+全链路压测
+https://www.cnblogs.com/imyalost/p/8439910.html
+
+go并发：channel还是锁
+https://segmentfault.com/a/1190000017890174
+
+go常见的几种并发模型
+https://blog.csdn.net/smartfox80/article/details/77603481
+
+春招计划：https://leetcode-cn.com/circle/discuss/iUZEHo/
+
+EDAS 微服务应用同城容灾最佳实践 https://developer.aliyun.com/article/781642?utm_content=g_1000238405
+
+arthas定位根因
+https://mp.weixin.qq.com/s/RuqltkN9VdVQ1K3GKuJ-Gw
+
+云原生小红书https://mp.weixin.qq.com/s/BFJCWGOJGWfqfcxzVCU5hQ
+```
+
