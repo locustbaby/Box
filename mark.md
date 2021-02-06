@@ -345,5 +345,9 @@ arthas定位根因
 https://mp.weixin.qq.com/s/RuqltkN9VdVQ1K3GKuJ-Gw
 
 云原生小红书https://mp.weixin.qq.com/s/BFJCWGOJGWfqfcxzVCU5hQ
+
+
+https://roadmap.sh/backend
+https://blog.csdn.net/a724888/article/details/83000249
 ```
 
