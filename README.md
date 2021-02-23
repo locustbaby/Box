@@ -2,6 +2,23 @@
 
 <img src="./pic/k11.png">
 
+###### 严肃学习
+真正为了深入某个领域而学习
+读领域公认的经典著作、教科书等
+找能找到的该领域真正权威请教
+投入的时间长，大量时间反复练习
+注重探讨，而不是证明自己是对的
+
+###### 消遣学习
+喜欢“收集/收藏”，给自己“我在学习“的感觉
+仪式感重于内容，如沉溺于“我到底该读电子书还是纸质书”
+喜欢速成、集合的内容
+喜欢直接到结论而不想深入了解得出结论的过程
+喜欢争论而非探讨，喜欢证明自己是对的
+下载一堆电子书、知乎live、得到等
+
+
+
 [编程风格指南](<https://zh-google-styleguide.readthedocs.io/en/latest/>)
 
 #### Linux
@@ -63,3 +80,6 @@
 > [LVS+KeepAlived](./System/Middleware/LVS+Keepalive.md)
 >
 > [Tomcat](./System/Middleware/Tomcat.md)
+
+
+

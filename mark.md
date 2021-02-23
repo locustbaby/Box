@@ -349,5 +349,89 @@ https://mp.weixin.qq.com/s/RuqltkN9VdVQ1K3GKuJ-Gw
 
 https://roadmap.sh/backend
 https://blog.csdn.net/a724888/article/details/83000249
+
+https://w.cnblogs.com/peteremperor/p/12785335.html
+https://zhuanlan.zhihu.com/p/101306188
+
+https://www.zhihu.com/question/20402534?sort=created
+Operating Systems: https://pages.cs.wisc.edu/~remzi/OSTEP/
+
+乐观锁被关锁
+https://mp.weixin.qq.com/s/BQ-nUwL5MrLIJCQTHLtpXw
+
+ebpf
+https://www.cnblogs.com/charlieroro/p/13403672.html
+
+k8s准入控制器
+https://blog.csdn.net/xixihahalelehehe/article/details/112280103
+
+https://yuerblog.cc/2019/11/26/k8s-python-client%E8%8E%B7%E5%8F%96pod%E8%B5%84%E6%BA%90%E5%88%A9%E7%94%A8%E7%8E%87%EF%BC%88cpu-%E5%86%85%E5%AD%98%EF%BC%89/
+
+
+https://leetcode-cn.com/circle/discuss/XXGdoF/#25-%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E7%BA%BF%E7%A8%8B%E5%91%A2%EF%BC%9F
+
+https://zhuanlan.zhihu.com/p/21649950	（https://www.zhihu.com/column/c_1309835600069750784）
+
+k8s与云服务器之间服务互访之节点网络打通
+https://www.cnblogs.com/cuishuai/p/10310698.html
+```
+
+```
+go学习路线
+https://codechina.gitcode.host/developer-roadmap/go/intro/
+
+阿里云csi flexvloume
+https://www.alibabacloud.com/help/zh/doc-detail/100013.htm
+
+pid namespace
+https://blog.csdn.net/tanzhe2017/article/details/81003281
+
+etcd
+https://blog.csdn.net/keets1992/article/details/108722430
+
+go sql
+https://blog.csdn.net/hittata/article/details/52122541
+
+go 复杂json
+https://blog.csdn.net/kevin_tech/article/details/105213359
+
+serverless
+https://blog.csdn.net/cc18868876837/article/details/90672971
+
+mkdown
+https://studygolang.com/markdown
+
+go json 改格式
+https://www.v2ex.com/t/680907
+
+nginx $Query string
+https://blog.csdn.net/liuxiao723846/article/details/54925328
+
+thanos
+http://dockone.io/article/6019
+
+cadvisor 常用指标
+https://blog.csdn.net/yjph83/article/details/84909318
+
+混沌工程
+https://zhuanlan.zhihu.com/p/90294032
+
+promethus cadvisor指标
+https://www.freesion.com/article/6068709518/
+
+tcp
+https://typecodes.com/linux/tcpconnectiontimedout.html
+
+linux
+http://linuxe.cn/
+
+envoy
+https://www.servicemesher.com/envoy/intro/what_is_envoy.html
+
+ioutil.readall 问题
+https://w.cnblogs.com/EasyNVR/p/13265048.html
+
+优雅读取response
+https://blog.csdn.net/thinkercode/article/details/86660632
 ```
 
