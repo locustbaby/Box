@@ -1,3 +1,8 @@
+
+
+
+
+```
 linux namespace知识笔记
 
 https://creaink.github.io/post/Computer/Linux/Linux-namespace.html
@@ -17,3 +22,9 @@ namespace
 docker 核心技术
 
 http://dockone.io/article/2941
+
+linux ns 
+https://creaink.github.io/post/Computer/Linux/Linux-namespace.html
+linux cgroup ns
+https://cloud.tencent.com/developer/article/1437437
+```

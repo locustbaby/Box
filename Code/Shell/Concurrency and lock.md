@@ -35,22 +35,24 @@ te $@
 #!/bin/bash
 trap "rm -f AAA" EXIT
 function run() {
+now=$(date +%s)
 read -u 7
 sleep 4 # do
 echo "success"
+echo $(($(date +%s)-$now))
 echo 1>&7
 }
 if [[ -p AAA ]];then
     exec 7<>AAA
     run
 else
-		tmp=/tmp/lock
-echo -e "[[ ! -p AAA ]] && mkfifo 2>/dev/null AAA && { echo 1 > AAA & \n echo 2 > AAA & }" >$tmp && source $tmp
-exec 7<>AAA
-run
+    tmp=/tmp/lock
+		echo -e "[[ ! -p AAA ]] && mkfifo 2>/dev/null AAA && { echo 1 > AAA & \n echo 2 > AAA & }" >$tmp && source $tmp
+		exec 7<>AAA
+    run
 fi
 #关闭读写
-exec 3<&-   #关闭文件描述符的读
+exec 3	<&-   #关闭文件描述符的读
 exec 3>&-   #关闭文件描述符的写
 
 ```

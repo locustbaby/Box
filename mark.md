@@ -311,6 +311,17 @@ nginx config
 https://github.com/chr4/nginx.vim/blob/master/syntax/nginx.vim
 https://github.com/nginx/
 https://www.cnblogs.com/1993zzd/p/11987442.html
+
+Go语言设计和实现
+https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-goroutine/
+go并发之道
+https://www.kancloud.cn/mutouzhang/go/596844
+https://gobyexample.com/closing-channels
+https://cloud.tencent.com/developer/article/1412500
+https://www.jianshu.com/p/24ede9e90490
+
+goroutine
+https://www.zhihu.com/question/20862617
 ```
 
 
@@ -356,7 +367,7 @@ https://zhuanlan.zhihu.com/p/101306188
 https://www.zhihu.com/question/20402534?sort=created
 Operating Systems: https://pages.cs.wisc.edu/~remzi/OSTEP/
 
-乐观锁被关锁
+乐观锁 悲观锁
 https://mp.weixin.qq.com/s/BQ-nUwL5MrLIJCQTHLtpXw
 
 ebpf
@@ -433,5 +444,164 @@ https://w.cnblogs.com/EasyNVR/p/13265048.html
 
 优雅读取response
 https://blog.csdn.net/thinkercode/article/details/86660632
+
+Go param
+https://stackoverflow.com/questions/30652577/go-doing-a-get-request-and-building-the-querystring
+
+rewrite 作用， /x/(.*) /x/$1
+
+coursea 硕士学位
+
+promethus
+https://yunlzheng.gitbook.io/prometheus-book/
+
+tcpdump
+容器抓包
+
+workflow
+https://zhuanlan.zhihu.com/p/40301198
+
+磁盘
+https://help.aliyun.com/knowledge_detail/42531.html#ejmcJ
+
+k8s
+https://mp.weixin.qq.com/s/Qb5otJT0ZmnPr7Qz0EQ0iQ
+
+
+devops
+https://www.jianshu.com/p/7738f7a6b36d
+
+
+k8s 书
+kubernetes 源码剖析 《programming kubernetes》
+
+什么是service mesh
+https://zhuanlan.zhihu.com/p/61901608
+
+服务网格入口网关大比拼
+https://m.sohu.com/a/314009713_465944
+
+istio流量管理
+https://segmentfault.com/a/1190000037760781
+
+kubernetes快速学习手册
+https://blog.csdn.net/xixihahalelehehe/article/details/108562082?utm_source=app&app_version=4.5.2
+
+kubenetes源码笔记
+https://blog.upweto.top/gitbooks/kubeSourceCodeNote/
+
+istio原理和架构
+https://blog.csdn.net/zhonglinzhang/article/details/85233390
+
+istio服务网格进阶实战
+https://www.bookstack.cn/read/istio-handbook/data-plane-envoy-cds.md
+
+知乎kubernetes
+https://www.zhihu.com/column/c_1236695767592222720
+
+thanos部署
+https://www.kubernetes.org.cn/8308.html
+
+kube promthus
+https://github.com/prometheus-operator/kube-prometheus#quickstart
+
+kubepromethus部署
+https://blog.csdn.net/networken/article/details/85620793
+
+k8s crd详解
+https://www.jianshu.com/p/cc7eea6dd1fb
+
+github访问慢
+https://www.ipaddress.com 
+
+kubernetes CRD开发指南
+https://blog.csdn.net/github_35614077/article/details/98749285
+
+CRD
+https://zhuanlan.zhihu.com/p/52367044
+
+Canal数据库增量同步
+https://blog.csdn.net/tony_vip/article/details/100904024
+
+kubernetes网络原理
+https://www.kubernetes.org.cn/2059.html
+
+k8s hpa
+https://w.cnblogs.com/centos-python/articles/13641576.html
+
+动态修改pod资源
+https://help.aliyun.com/document_detail/197267.html
+
+压测工具
+https://www.imooc.com/article/291715
+
+
+Kubernetes Best Practices 书
+
+grpc 准备工作
+https://grpc.io/docs/languages/go/quickstart/#prerequisites
+
+serverless 
+https://blog.csdn.net/cc18868876837/article/details/90672971
+
+go性能分析pprof
+https://www.jianshu.com/p/4e4ff6be6af9
+
+rx_missed_errors
+https://bbs.csdn.net/topics/392153237?utm_medium=distribute.wap_relevant.none-task-discussion_topic-BlogCommendFromBaidu-2.wap_blog_relevant_pic&depth_1-utm_source=distribute.wap_relevant.none-task-discussion_topic-BlogCommendFromBaidu-2.wap_blog_relevant_pic
+
+全链路压测
+https://www.cnblogs.com/imyalost/p/8439910.html
+
+
+golang并发选择
+https://segmentfault.com/a/1190000017890174
+
+go 常用并发模型框架
+https://blog.csdn.net/smartfox80/article/details/77603481
+
+并发访问slice
+https://juejin.cn/post/6844904134592692231
+
+redis分布式锁
+https://www.cnblogs.com/moxiaotao/p/10829799.html
+
+
+网络IO和磁盘IO
+https://www.cnblogs.com/sunsky303/p/8962628.html
+
+6大设计原则
+https://www.cnblogs.com/LangZXG/p/6242925.html
+
+消息队列价值思考
+https://juejin.cn/post/6844903985522950158
+
+分布式锁：
+基于数据库实现分布式锁；
+基于缓存（Redis等）实现分布式锁；
+基于Zookeeper实现分布式锁；
+
+分布式锁
+https://www.cnblogs.com/makelove/p/12101538.html
+
+https://blog.csdn.net/ydyang1126/article/details/51769010
+cpu mem io
+https://blog.csdn.net/wujizhishui/article/details/89333957
+timewait closewait
+https://www.cnblogs.com/kevingrace/p/9988354.html
+
+ES
+https://www.cnblogs.com/JimShi/p/11525360.html
+https://www.cnblogs.com/weifeng1463/p/14479373.html
+https://www.sohu.com/a/288181416_411876
+https://blog.csdn.net/whichard/article/details/90753727
+https://zhuanlan.zhihu.com/p/102500311
+```
+
+```
+cgroup
+https://www.ibm.com/developerworks/cn/linux/1506_cgroup/index.html
+strace 排查
+https://blog.bruceding.me/595.html
 ```
 

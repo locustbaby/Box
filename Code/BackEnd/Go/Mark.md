@@ -63,3 +63,20 @@ https://blog.csdn.net/u014630623/article/details/103930646
 effective go
 
 https://learnku.com/docs/effective-go/2020/introduction/6236
+
+
+
+
+
+乱七八糟的博客之类的东西
+
+```
+B站kratos 分析
+https://studygolang.com/articles/19995?fr=sidebar
+
+
+
+```
+
+
+
