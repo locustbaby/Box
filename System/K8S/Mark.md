@@ -31,3 +31,16 @@ zk
 redis
 ```
 
+https://cloudnative.to/blog/how-to-pick-gateway-for-service-mesh/
+
+https://jimmysong.io/kubernetes-handbook/usecases/service-mesh-vs-api-gateway.html
+
+https://cloudnative.to/blog/using-traefik-ingress-controller-with-istio-service-mesh/
+
+
+
+
+
+https://www.bookstack.cn/books/istio-handbook
+
+https://shareinto.github.io/2017/04/13/KubernetesIngress(2)/

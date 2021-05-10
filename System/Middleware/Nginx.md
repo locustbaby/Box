@@ -251,3 +251,8 @@ https://blog.csdn.net/xy2204/article/details/47749405
 https://serverfault.com/questions/361421/dump-nginx-config-from-running-process
 ```
 
+```
+RFC
+https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+```
+
