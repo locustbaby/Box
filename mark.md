@@ -611,3 +611,28 @@ https://cloud.tencent.com/developer/article/1576347
 https://start.aliyun.com/course?spm=a2ck6.17690074.0.0.503c2e7dutbTJV&id=0iNJ9RDH
 ```
 
+```
+https://www.bilibili.com/read/cv8081272
+https://zhuanlan.zhihu.com/p/99364894?from_voters_page=true
+https://blog.csdn.net/ZLJ925/article/details/79045034
+https://blog.csdn.net/kaka1121/article/details/89187863
+https://www.zhihu.com/question/34845701
+https://github.com/torvalds/linux/commit/73f576c04b9410ed19660f74f97521bee6e1c546
+https://github.com/torvalds/linux/commit/d6e0b7fa11862433773d986b5f995ffdf47ce672
+https://blog.csdn.net/yunqiinsight/article/details/88103952
+https://docs.pingcap.com/zh/tidb/stable/tikv-overview
+https://www.cnblogs.com/yangyuliufeng/p/13611126.html
+https://golang.design/under-the-hood/
+https://mp.weixin.qq.com/s/C2y8WqjVnLXHRMYJa-hqvA
+https://i.cloudnative.to/kubernetes/kubernetes/index
+https://cloudnative.to/blog/kubernetes-apiserver-cacher/  kuberentes 源码图的完整版，欢迎大家阅读
+Brendan Gregg
+https://www.zhihu.com/question/31413235
+https://mp.weixin.qq.com/s/VulB3tiXTRAjYsuWxgU1Zg
+https://www.oschina.net/translate/debugging-an-evil-go-runtime-bug?print
+lldb -c
+
+
+
+```
+
