@@ -641,7 +641,5 @@ pp协议
 
 学习路线
 https://mp.weixin.qq.com/s/U3Ifpfm4nUnIHJaAYXI1gw
-部署
-https://mp.weixin.qq.com/s/-LA_QFWg9bMgilUU3YQAnQ
 ```
 
