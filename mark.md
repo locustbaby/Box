@@ -641,5 +641,13 @@ pp协议
 
 学习路线
 https://mp.weixin.qq.com/s/U3Ifpfm4nUnIHJaAYXI1gw
+
+
+1 http://t.hk.uy/ymY 新手版 https://roadmap.sh/
+2 http://t.hk.uy/yna
+3 http://t.hk.uy/ync
+4 http://t.hk.uy/ynd
+5 http://t.hk.uy/yne
+6 彼岸教育在线硕士项目：https://www.beaconedu.com/lpv1/assess-0317?cid=83&pp=2&plan=043
 ```
 
